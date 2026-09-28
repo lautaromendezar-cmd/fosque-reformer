@@ -1,0 +1,19 @@
+→ entrada (1991k)
+→ entrada-mobile (1991k)
+→ hacia-el-sol (1991k)
+→ hacia-el-sol-mobile (1991k)
+→ sol-loop (2487k)
+→ sol-loop-mobile (2487k)
+→ reformer-loop (2487k)
+→ reformer-loop-mobile (2487k)
+→ materiales-loop (2487k)
+→ materiales-loop-mobile (2487k)
+
+Empalme entrada → hacia-el-sol (diferencia media por píxel, 0 = idénticos):
+Traceback (most recent call last):
+  File "<stdin>", line 5, in <module>
+  File "C:\Users\Lautaro\AppData\Local\Python\pythoncore-3.14-64\Lib\encodings\cp1252.py", line 19, in encode
+    return codecs.charmap_encode(input,self.errors,encoding_table)[0]
+           ~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+UnicodeEncodeError: 'charmap' codec can't encode character '\u2194' in position 21: character maps to <undefined>
+exit 1
