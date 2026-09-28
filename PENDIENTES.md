@@ -13,7 +13,7 @@ en el código. Esta lista dice dónde tocar cada uno. Nada de esto requiere toca
 | **WhatsApp general** | `content/sitio.ts` → `contacto.whatsapp` (hoy `5491100000000`) | Todos los CTA abren `wa.me/5491100000000`: **hay que cambiarlo antes de publicar** |
 | **Link de Google Maps** | `content/sedes.ts` → `sedes[0].mapa` (hoy `null`) | No aparece el botón "Cómo llegar" hasta que haya link |
 | **Oferta de entrada exacta** (semana sin cargo, postulación o pack de prueba) | `content/sitio.ts` → `cta.principal`, `cta.corto` y `contacto.mensajePrearmado` | CTA dice "Reservá tu Semana de Experiencia" (lo que dice el brief) |
-| **Dominio definitivo** | `content/sitio.ts` → `marca.dominio` y `app/layout.tsx` → `robots` | Canonical y Open Graph apuntan a `fosquereformer.com.ar` (inventado). **El sitio está en `noindex`** hasta que haya dominio: sacar `robots` de `app/layout.tsx` al publicar |
+| **Dominio definitivo** | `content/sitio.ts` → `marca.dominio` **y `marca.dominioActual`** (base del Open Graph, hoy la URL de Vercel) y `app/layout.tsx` → `robots` | Canonical y Open Graph apuntan a `fosquereformer.com.ar` (inventado). **El sitio está en `noindex`** hasta que haya dominio: sacar `robots` de `app/layout.tsx` al publicar |
 | **Instagram** | `content/sitio.ts` → `contacto.instagram` | Link en el footer a `instagram.com/fosquereformer` (sin confirmar) |
 | **Términos y condiciones** | `app/terminos/page.tsx` (o convertir `components/Legal.tsx` en una página con contenido) | Página con placeholder visible "Texto pendiente" |
 | **Políticas de privacidad** | `app/privacidad/page.tsx` | Ídem |

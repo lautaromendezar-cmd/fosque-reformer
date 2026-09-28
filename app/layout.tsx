@@ -23,7 +23,9 @@ const figtree = Figtree({
 });
 
 export const metadata: Metadata = {
-  metadataBase: new URL(marca.dominio), // TODO(cliente): dominio definitivo en content/sitio.ts
+  // Las URLs absolutas del Open Graph salen de acá. Hasta que haya dominio, la de Vercel:
+  // WhatsApp pide la imagen a esta base. TODO(cliente): pasar a marca.dominio al publicar.
+  metadataBase: new URL(marca.dominioActual),
   title: `${marca.nombre} · Pilates Reformer boutique en Núñez`,
   description: marca.descripcion,
   openGraph: {
@@ -31,8 +33,9 @@ export const metadata: Metadata = {
     description: marca.descripcion,
     locale: "es_AR",
     type: "website",
-    images: [{ url: "/img/salon-reformer-sol-frontal-1600.webp", width: 1600, height: 893 }],
+    images: [{ url: "/og.jpg", width: 1200, height: 630, type: "image/jpeg", alt: "Fosque Reformer: sala de Reformers con el sol al fondo" }],
   },
+  twitter: { card: "summary_large_image", title: marca.nombre, description: marca.descripcion, images: ["/og.jpg"] },
   // El dominio no está definido y el sitio todavía no se publica: no indexar hasta el go-live.
   robots: { index: false, follow: false }, // TODO(cliente): sacar al publicar en el dominio final
 };

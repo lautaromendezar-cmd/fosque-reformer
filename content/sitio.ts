@@ -13,6 +13,9 @@ export const marca = {
     "Pilates Reformer boutique en Núñez, Buenos Aires. Reformers de autor, luz cálida y un método en cuatro niveles.",
   // TODO(cliente): dominio definitivo. Se usa para el canonical y el Open Graph.
   dominio: "https://fosquereformer.com.ar",
+  // Base actual de las URLs absolutas (Open Graph) mientras no haya dominio.
+  // TODO(cliente): cuando exista el dominio, poner acá el mismo valor que `dominio`.
+  dominioActual: "https://fosque-reformer.vercel.app",
   ciudad: "Buenos Aires",
 };
 
