@@ -98,3 +98,5 @@ Cada línea: qué decidí y por qué. Fecha de arranque: 27-sep-2026.
   sólo cambia de estado con un desplazamiento acumulado ≥ 8 px, y la transición es sólo de
   `transform` (sin fondo ni blur, que repintaban). Medido con MutationObserver: 1 cambio de
   clase en una bajada continua, contra 6 antes.
+- **Header siempre visible (28-sep, pedido de Lautaro):** se saca el esconder/mostrar por
+  dirección de scroll; queda fijo y toma fondo pasados los 40 px.

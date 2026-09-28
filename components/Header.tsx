@@ -1,7 +1,7 @@
 "use client";
 
 // Header: isotipo a la izquierda, las cuatro anclas del brief y el CTA de WhatsApp.
-// Se esconde al bajar y reaparece al subir. En mobile: isotipo + CTA, anclas en menú.
+// Siempre visible; al bajar toma fondo. En mobile: isotipo + CTA, anclas en menú.
 
 import { useEffect, useRef, useState } from "react";
 import { navegacion, cta, marca } from "@/content/sitio";
@@ -9,30 +9,19 @@ import { linkWhatsApp } from "@/lib/whatsapp";
 import Isotipo from "./Isotipo";
 
 export default function Header() {
-  const [oculto, setOculto] = useState(false);
   const [abierto, setAbierto] = useState(false);
   const [conFondo, setConFondo] = useState(false);
-  const ultimoY = useRef(0);
   const menuRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
     let rafId = 0;
     const onScroll = () => {
       cancelAnimationFrame(rafId);
-      rafId = requestAnimationFrame(() => {
-        const y = window.scrollY;
-        const delta = y - ultimoY.current;
-        setConFondo(y > 40);
-        // Histéresis: con Lenis el scroll dispara cada cuadro y hay cuadros con delta 0 o
-        // de un píxel para atrás. Sin umbral, el header parpadea al bajar.
-        if (Math.abs(delta) < 8) return;
-        setOculto(delta > 0 && y > 120 && !abierto);
-        ultimoY.current = y;
-      });
+      rafId = requestAnimationFrame(() => setConFondo(window.scrollY > 40));
     };
     window.addEventListener("scroll", onScroll, { passive: true });
     return () => { window.removeEventListener("scroll", onScroll); cancelAnimationFrame(rafId); };
-  }, [abierto]);
+  }, []);
 
   // Esc cierra el menú y el foco vuelve al botón
   useEffect(() => {
@@ -48,11 +37,9 @@ export default function Header() {
   return (
     <header
       className={[
-        "fixed inset-x-0 top-0 z-50 transition-transform duration-500 will-change-transform",
-        oculto ? "-translate-y-full" : "translate-y-0",
+        "fixed inset-x-0 top-0 z-50",
         conFondo && !abierto ? "bg-[color-mix(in_srgb,var(--luz-fondo)_78%,transparent)] backdrop-blur-md" : "",
       ].join(" ")}
-      style={{ transitionTimingFunction: "var(--ease-salida)" }}
     >
       <div className="contenedor flex items-center justify-between gap-4 py-4 md:py-5">
         <a href="#inicio" className="flex items-center gap-3 text-current" aria-label={`${marca.nombre}, ir al inicio`}>
