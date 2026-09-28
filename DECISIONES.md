@@ -93,3 +93,8 @@ Cada línea: qué decidí y por qué. Fecha de arranque: 27-sep-2026.
   la simulación de 4G lento con CPU 4× más lenta.
 - **Por qué el LCP es texto y no el póster:** Chrome descarta como candidato a una imagen
   que cubre exacto el viewport (la trata como fondo). Es por diseño: el póster va a sangre.
+- **Header que parpadeaba al bajar (28-sep):** con Lenis el evento de scroll dispara cada
+  cuadro y hay cuadros con delta 0; el header leía "no está bajando" y reaparecía. Ahora
+  sólo cambia de estado con un desplazamiento acumulado ≥ 8 px, y la transición es sólo de
+  `transform` (sin fondo ni blur, que repintaban). Medido con MutationObserver: 1 cambio de
+  clase en una bajada continua, contra 6 antes.

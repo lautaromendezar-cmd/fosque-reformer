@@ -21,9 +21,12 @@ export default function Header() {
       cancelAnimationFrame(rafId);
       rafId = requestAnimationFrame(() => {
         const y = window.scrollY;
-        const bajando = y > ultimoY.current && y > 80;
-        setOculto(bajando && !abierto);
+        const delta = y - ultimoY.current;
         setConFondo(y > 40);
+        // Histéresis: con Lenis el scroll dispara cada cuadro y hay cuadros con delta 0 o
+        // de un píxel para atrás. Sin umbral, el header parpadea al bajar.
+        if (Math.abs(delta) < 8) return;
+        setOculto(delta > 0 && y > 120 && !abierto);
         ultimoY.current = y;
       });
     };
@@ -45,7 +48,7 @@ export default function Header() {
   return (
     <header
       className={[
-        "fixed inset-x-0 top-0 z-50 transition-[transform,background-color,backdrop-filter] duration-500",
+        "fixed inset-x-0 top-0 z-50 transition-transform duration-500 will-change-transform",
         oculto ? "-translate-y-full" : "translate-y-0",
         conFondo && !abierto ? "bg-[color-mix(in_srgb,var(--luz-fondo)_78%,transparent)] backdrop-blur-md" : "",
       ].join(" ")}
