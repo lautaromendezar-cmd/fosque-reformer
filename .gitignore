@@ -1,0 +1,28 @@
+# deps / build
+node_modules/
+.next/
+out/
+.vercel/
+*.tsbuildinfo
+next-env.d.ts
+
+# entorno y secretos
+.env
+.env.*
+!.env.example
+
+# material del cliente (pesado, no va al repo)
+*.pdf
+video-raw/
+assets/source/_pages/
+assets/source/_sheets/
+assets/source/_raw/
+assets/source/descartados/
+
+# reportes pesados
+reports/**/*.html
+reports/screens/*.png
+
+# sistema
+.DS_Store
+Thumbs.db
