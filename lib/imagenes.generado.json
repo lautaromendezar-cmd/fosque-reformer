@@ -1,0 +1,205 @@
+{
+  "corredor-arcos-arbol": {
+    "width": 960,
+    "height": 480,
+    "anchos": [
+      480,
+      960
+    ],
+    "blur": "data:image/webp;base64,UklGRoAAAABXRUJQVlA4IHQAAAAQBACdASoYAAwAPu1iqU2ppaQiMAgBMB2JQBdl4AA8NsX5NC867CE9QAD+FdqRzyOzFdZLqDs++mo3XOn14uoPBFTtf3W6HCKveou98WhiEsnNVP6i19JtVcXEIP7X/++7BsTYmdt21q3A9UK174CddgAAAA=="
+  },
+  "corredor-arcos-dorado": {
+    "width": 960,
+    "height": 480,
+    "anchos": [
+      480,
+      960
+    ],
+    "blur": "data:image/webp;base64,UklGRnYAAABXRUJQVlA4IGoAAACwAwCdASoYAAwAPu1iqU2ppaQiMAgBMB2JQBOgA2hjOdbYxcHLUAD+EdjBsHk3M2l844YVch+jthH8+ayAKMKJcPqo7HLf1FFH/lcFAhwBE4WYM9Dvo9105iqB8CE55Yibdm9ffngIAAAA"
+  },
+  "estanteria-arbol-tallado": {
+    "width": 1076,
+    "height": 717,
+    "anchos": [
+      480,
+      960,
+      1076
+    ],
+    "blur": "data:image/webp;base64,UklGRooAAABXRUJQVlA4IH4AAAAQBACdASoYABAAPu1iqU2ppaOiMAgBMB2JYgCdAB6vrI0E1JZKq+j7QADhw7BNR3aVsdpRzUePkasqVBFkC7KtwEsP9au4kY+nQoqfjCaSdDZP76Ez03vA2hUVK/xmUB6Rzx7ygqTX5fP0AwKEzQnDOCZtG8xM9IXeGngAAAA="
+  },
+  "estanteria-discos-madera": {
+    "width": 1344,
+    "height": 768,
+    "anchos": [
+      480,
+      960,
+      1344
+    ],
+    "blur": "data:image/webp;base64,UklGRqoAAABXRUJQVlA4IJ4AAADQAwCdASoYAA4APu1iqU2ppaOiMAgBMB2JaAC7ABnk7MSPJ6pyMaAA/r92MUH0hWobK1SbbG/dvVLUDIGc0KGVq/kRB9bb+AyoM8sU2y5q9DuUcmANJNs0H9ZtUgF9b369alHhorgy22KRdV2PGtjArnf3eYqQ8Vdvp/ZAv5C/vIPicLBlxgc98FfQWJWm0Vmks1tPGm3iYE3j1+AAAA=="
+  },
+  "fachada-nunez-dia": {
+    "width": 815,
+    "height": 514,
+    "anchos": [
+      480,
+      815
+    ],
+    "blur": "data:image/webp;base64,UklGRqAAAABXRUJQVlA4IJQAAABQBACdASoYAA8APu1iqU2ppaOiMAgBMB2JbACdACHqe2AvSIUyfkmiISfgAP7UqbblkHMC1bImNCTFxv9jKa/hXnGkwf+Hc/+0BkkjVAV+EAUjpy1rMdDrkQAHZouHyKfKZAixpxH2m/TBGyjXMNReYZa1CM0Ct+S6PGO08Yft6zjxeQ85G+HWHBm4sVjziPxcUAAA"
+  },
+  "ministore-retail": {
+    "width": 1200,
+    "height": 600,
+    "anchos": [
+      480,
+      960,
+      1200
+    ],
+    "blur": "data:image/webp;base64,UklGRoIAAABXRUJQVlA4IHYAAAAQBACdASoYAAwAPu1iqU2ppaOiMAgBMB2JQBOgBAx4gNd0Eb1DdcyFIAD+3XbEnYIYwLt5rXqnaKpdkDk6BQiAaGkQQU88v9tZi+FIhBmDUdc9sh0d8EhU2+e4yK63T1W75ZFLQxG8F2ugam5OJgIBR+JZgAAA"
+  },
+  "sala-kids-arbol-reformer": {
+    "width": 1344,
+    "height": 768,
+    "anchos": [
+      480,
+      960,
+      1344
+    ],
+    "blur": "data:image/webp;base64,UklGRqAAAABXRUJQVlA4IJQAAABQBACdASoYAA4APu1iqU2ppaOiMAgBMB2JagCdMoRwABIpuvpKk13/vtgAANvAXKCIJdGvBvmUHtcSSKm3Mlr+GbXXcX5feCnTbab1nxCA5Qzu21qSBxF6WIkndF6PjNH9wUBbMJy1Ubo+cXC+2Irc+NOqQbzBW7WyPhfEd46kMGfQCouZdMzzYu0N8v5O165+wAAA"
+  },
+  "sala-kids-escalada": {
+    "width": 922,
+    "height": 615,
+    "anchos": [
+      480,
+      922
+    ],
+    "blur": "data:image/webp;base64,UklGRnwAAABXRUJQVlA4IHAAAADwAwCdASoYABAAPu1iqU2ppaOiMAgBMB2JYwCw7BcmbDh6OlNx+XoAAPuOFfi47VTCxMofK5o86ZyuyOZXt9pHQBfOOxaHAK2rBktVAdtUO7YM2h5CLd5/dokoIzWuARa3IEgOB0dhcUibUOdB0AAA"
+  },
+  "salon-reformer-cielorraso-organico-a": {
+    "width": 922,
+    "height": 922,
+    "anchos": [
+      480,
+      922
+    ],
+    "blur": "data:image/webp;base64,UklGRowAAABXRUJQVlA4IIAAAABwBACdASoYABgAPu1kqU2ppaQiMBgMATAdiWMAAATyGNlpJeVbhuNPUTdwAADuhyM5VVGAFAhqqXyM7EtX8vHXkxUbyzqU39vgE0UINDLmLcxhX6WCbn16TAg4UsRLaG+T3tCQZM/nVgx3g9e5qaUwRdnecuyxX0gnakgIFtAAAA=="
+  },
+  "salon-reformer-cielorraso-organico-b": {
+    "width": 922,
+    "height": 922,
+    "anchos": [
+      480,
+      922
+    ],
+    "blur": "data:image/webp;base64,UklGRpIAAABXRUJQVlA4IIYAAADwBACdASoYABgAPu1ur1KppiQiqAgBMB2JQBdgAU11w84xZxUmNMK2EYNJcCWjiFAA/R2RZkcYXykaruDyEnRzAvcngvK2uUrfZ3mg7mIR5RPtk+Cw/9VQ/OHowi43V+ZN+ed9zbDIfWfaQchOsVIsnNGt0jNtsUa6GaY/a3B/kWbQ+WgAAA=="
+  },
+  "salon-reformer-domo-general": {
+    "width": 1344,
+    "height": 768,
+    "anchos": [
+      480,
+      960,
+      1344
+    ],
+    "blur": "data:image/webp;base64,UklGRoYAAABXRUJQVlA4IHoAAABQBACdASoYAA4APu1iqU2ppaOiMAgBMB2JZgCdL1yB4V+qokDI+F8d+bPAAP5PC+jaGgtKkVaOT8I+tX4p5blQD52Mde0oa5rMh0jnrov8lfoFPvcaaKqTsjGdAhasprSBs9BVFBPbXksOoKD1jEBLY941dOF27bAAAA=="
+  },
+  "salon-reformer-sol-frontal-alt": {
+    "width": 1600,
+    "height": 893,
+    "anchos": [
+      480,
+      960,
+      1440,
+      1600
+    ],
+    "blur": "data:image/webp;base64,UklGRrwAAABXRUJQVlA4ILAAAABQBACdASoYAA0APu1iqU2ppaOiMAgBMB2JbACdAYxi7O8qz1dOFpDqGuT4APwuwMG6o4Dba6MLPg/uMnHAkveElg9tNQo4iXhdz4mKl27/rL5beMEOpk3CVLULme9kdjpzNgTL5IHVR8BCjzLm8ursPksa5gXUN9gaY7L5yR+0mjwRU54yPqHUAb2E0WDc9Vsvn6YwcihuuKj/ye9G9Hmt7Xc85IcfONJIdOQSEcAAAA=="
+  },
+  "salon-reformer-sol-frontal": {
+    "width": 1600,
+    "height": 893,
+    "anchos": [
+      480,
+      960,
+      1440,
+      1600
+    ],
+    "blur": "data:image/webp;base64,UklGRq4AAABXRUJQVlA4IKIAAABQBACdASoYAA0APu1iqU2ppaOiMAgBMB2JbACdACPg8GA8nbVB0CXE4RkAAM44ssX2qORyPsiWstDW7yqz8W6vqCmyZFMUJDzO83nm5+T0TG/TTtHnAn3eq12NJod9Ch69aVrnqLI3cam8OWudOLiQgHGJxZoOckzexLJLg6lGQYyl5RB5FDPddN+B/fsE3r8RuDf5T+YPE9CqHtUAOC2AAAA="
+  },
+  "salon-reformer-sol-lateral": {
+    "width": 1200,
+    "height": 600,
+    "anchos": [
+      480,
+      960,
+      1200
+    ],
+    "blur": "data:image/webp;base64,UklGRqQAAABXRUJQVlA4IJgAAACQBACdASoYAAwAPu1iqU2ppaOiMAgBMB2JbAC7MoAlsRiOCwhs/WUJUqLpp0gA/tTtVTPfptsxNU1QCl0GPueZSPdfFVmTM1x+50ECJJwYNKgt8sc7JJK8LXBOWa2rmnuqh1FJuGN0hGtDQ/2bDHuIul4hylBXSKhFryvzz0CZEGZo+fxfrRyXLuXOXWJWzunQfJ9PAWQAAA=="
+  },
+  "salon-reformer-sol-nocturno": {
+    "width": 1127,
+    "height": 589,
+    "anchos": [
+      480,
+      960,
+      1127
+    ],
+    "blur": "data:image/webp;base64,UklGRqoAAABXRUJQVlA4IJ4AAABQBACdASoYAA0APu1iqU2ppaOiMAgBMB2JQBOgMY2QpmHDUAFhqeSvSg4AAP60GcAELmqBWcut3LI0UVZX162LoiJp9G3BusmrYP8Ov45qDIqhRF6AlvrqIHeOmBwMM0+xpEMP2uNT51AkBWFJSZScgJNEpoLJQZvPfY77go6rQ/hfntmfsR5hnH06ZXCAjr9iFR27ajJvEPonhQAAAA=="
+  },
+  "snackbar-coffee-corner": {
+    "width": 1200,
+    "height": 600,
+    "anchos": [
+      480,
+      960,
+      1200
+    ],
+    "blur": "data:image/webp;base64,UklGRp4AAABXRUJQVlA4IJIAAAAQBACdASoYAAwAPu1iqU2ppaOiMAgBMB2JZACdACHrOr3du074UPS8AAD+qObjeoSmiCriA9jAbyWzayJy4Vc1A6wuWeSDv8w4xqYPJZoBfXiRM/B0cQL1hyahhcexVh9BYvQVGwdfAOhE0rU2feIFHUERA9qY9avGX3lmQkXzzcZpEGcE4eZoZIMPRaxu1hHQAA=="
+  },
+  "snackbar-detalle": {
+    "width": 960,
+    "height": 480,
+    "anchos": [
+      480,
+      960
+    ],
+    "blur": "data:image/webp;base64,UklGRpAAAABXRUJQVlA4IIQAAABQBACdASoYAAwAPu1iqU2ppaOiMAgBMB2JaACdMoRwABbXJUnTDBC5QnSAAP7rhhK6bqT74pkTXse4TUuUwL7Pa9i47FUY30PaqIw0LnkSAnA1Qyy1vWPMA1XD13FVLGdHY7OaAattuxMBdCSCnBC7iPCm/PV7gQypLRabSOwTBv3vAAA="
+  },
+  "vestuario-bachas-mural-agua": {
+    "width": 1344,
+    "height": 768,
+    "anchos": [
+      480,
+      960,
+      1344
+    ],
+    "blur": "data:image/webp;base64,UklGRpYAAABXRUJQVlA4IIoAAABwBACdASoYAA4APu1iqk2ppaQiMAgBMB2JZgCdMoAC8NkU8xyN+ec47kSPwAD68jOGLr+45k22+np4etqaXTaGu9/5vs4hu8RPDCKMNSTqO7ocTfgtPZMtL32V8lsM7qmcDoTNkAKyWdLCJ9ScxLBjw2pji9y/WkgZC85Sa2IrGycpSW8CUqC8AAA="
+  },
+  "vestuario-detalle-vertical": {
+    "width": 800,
+    "height": 1200,
+    "anchos": [
+      480,
+      800
+    ],
+    "blur": "data:image/webp;base64,UklGRmIBAABXRUJQVlA4IFYBAACwCACdASoYACQAPu1kqk6ppaOiKqwBMB2JbACdMrjKe8eEwJXk4EFntH/0axcAyRVhieXFPK1HrKOONiO3iC9u8J8mKzMLWdRmGPH/WAAA/tR50LegmPgAyE8xhZSMAMXQixViNZA04kXXWHW46o3mreV26+58iOJt6n+GdSNfCNNpSSka1CMiH8deKLis0Wr7C1zbgvRYRPk63wR46h0pMNmEBQaX5OPTRikTuT9GCIcYsgRcH5YSAvzC5xN2y8caGLpBUVnlYS5Ie39KHG6fFzkfgWgcJsYJ33Wfb/DVMU7n5P9zghUztSdaMRDCtW2scrbEwZandOO2DhOfBawQOLLKigHqDcm3zmaJyZ1q+GNUTy0xzcQK7TRFUm+FHQNLFexYCn1gB14qIZgBdQDKvCeIjzi2s7wMMXgipBRTY7tLbtsbUi+poxH0hBzzsFJ0WQ2qAAA="
+  },
+  "vestuario-duchas-mural-agua": {
+    "width": 1344,
+    "height": 768,
+    "anchos": [
+      480,
+      960,
+      1344
+    ],
+    "blur": "data:image/webp;base64,UklGRpIAAABXRUJQVlA4IIYAAADQBACdASoYAA4APu1iqU2ppaOiMAgBMB2JaACdMoR3Az/s6vmFWxu21+bRtF/qAAD+fpTRKR5oq5010YgpkV7cnRjF5oJhkNoiZqk7eOUYVeqPtMhJGDMrBfjHEEOaSa3P7in8XruHYBhF3UQkVpuLP8WTmbl0xENBcvPqZ3FmSf/fhAAAAA=="
+  },
+  "vestuario-piedra-vegetacion": {
+    "width": 922,
+    "height": 615,
+    "anchos": [
+      480,
+      922
+    ],
+    "blur": "data:image/webp;base64,UklGRooAAABXRUJQVlA4IH4AAAAQBACdASoYABAAPu1iqU2ppaQiMAgBMB2JYwC06A95PeuymInC1NI2AAD9mwVMr41FcZZ2buoYepKHUr80d40VArfmgL93aWkQ+j5aCIO0Z/JFaDcCtvd0CMeG1rJh8o1G5CMov3ySk14Fy/1ho6BS0Z85bjR2jb0nhvIgAAA="
+  }
+}
