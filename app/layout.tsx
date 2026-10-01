@@ -26,7 +26,7 @@ export const metadata: Metadata = {
   // Las URLs absolutas del Open Graph salen de acá. Hasta que haya dominio, la de Vercel:
   // WhatsApp pide la imagen a esta base. TODO(cliente): pasar a marca.dominio al publicar.
   metadataBase: new URL(marca.dominioActual),
-  title: `${marca.nombre} · Pilates Reformer boutique en Núñez`,
+  title: { default: `${marca.nombre} · Pilates Moderno en Núñez`, template: `%s · ${marca.nombre}` },
   description: marca.descripcion,
   openGraph: {
     title: marca.nombre,

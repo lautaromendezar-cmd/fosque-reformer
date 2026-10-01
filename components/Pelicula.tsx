@@ -15,6 +15,7 @@
 // solo archivo de video. Cuando los videos existen en /public/video/, se enchufan solos.
 
 import { useEffect, useRef, useState } from "react";
+import Link from "next/link";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { portada, sol, cta } from "@/content/sitio";
@@ -186,7 +187,7 @@ export default function Pelicula() {
         {/* Capa 1: la calle y el corredor */}
         <div className="capa capa-entrada fondo-imagen">
           <div className="poster-anim absolute inset-0 origin-center">
-            <Imagen nombre="fachada-nunez-dia" alt="Fachada del estudio Fosque Reformer en Núñez, con una cortina de curvas terracota y árboles de vereda" prioridad sizes="100vw" />
+            <Imagen nombre="fachada-nunez-atardecer" alt="Fachada blanca de Fosque Reformer en Núñez, con franjas onduladas magenta, coral y naranja, entrada en arco iluminada y árboles de vereda" prioridad sizes="100vw" />
           </div>
           {modo && !estatico && (
             <video ref={vEntrada} muted playsInline preload={scrub ? "none" : "metadata"} disablePictureInPicture tabIndex={-1}
@@ -206,7 +207,7 @@ export default function Pelicula() {
         {/* Capa 2: el salón y el sol */}
         <div className="capa capa-sol fondo-imagen">
           <div className="poster-anim absolute inset-0 origin-center">
-            <Imagen nombre="salon-reformer-sol-frontal" alt="Sala de Reformers en perspectiva central con un gran disco de luz ámbar al fondo y cielorraso que refleja la luz como agua" prioridad={false} sizes="100vw" />
+            <Imagen nombre="salon-sol-reformers-negros" alt="Sala con dos filas de Reformers negros Fosque, un gran disco de luz al fondo y cielorraso que refleja la luz como agua" prioridad={false} sizes="100vw" imgClassName="object-[64%_50%]" />
           </div>
           {modo && !estatico && (
             <video ref={vSol} muted playsInline preload={scrub ? "none" : "metadata"} disablePictureInPicture tabIndex={-1}
@@ -232,17 +233,13 @@ export default function Pelicula() {
 
         {/* Titular de la portada */}
         <div className="titulo-portada contenedor absolute inset-x-0 bottom-[10svh] z-10 md:bottom-[12svh]">
-          <p className="dato entrada-suave mb-4 text-manteca">{portada.antetitulo}</p>
+          <p className="dato entrada-suave mb-4 text-hueso/90">{portada.antetitulo}</p>
           {/* Sin reveal por JS: este titular y la bajada son el LCP en mobile. Entran por transform en CSS. */}
-          <h1 className="h1 entrada-suave max-w-[14ch] text-hueso">
-            {portada.titulo.map((l, i) => (
-              <span key={i} className="block">{l}</span>
-            ))}
-          </h1>
-          <p className="medida entrada-suave mt-6 max-w-[38ch] text-hueso/90" style={{ animationDelay: "0.25s" }}>{portada.bajada}</p>
+          <h1 className="h1 entrada-suave max-w-[13ch] text-hueso">{portada.titulo}</h1>
+          <p className="medida entrada-suave mt-6 max-w-[46ch] text-hueso/90" style={{ animationDelay: "0.25s" }}>{portada.bajada}</p>
           <div className="entrada-suave mt-8 flex flex-wrap items-center gap-4" style={{ animationDelay: "0.4s" }}>
-            <a href={linkWhatsApp()} target="_blank" rel="noopener" className="boton boton-primario">{cta.principal}</a>
-            <a href="#experiencia" className="boton boton-secundario text-hueso">Ver la experiencia</a>
+            <a href={linkWhatsApp()} target="_blank" rel="noopener" className="boton boton-primario">{cta.hero}</a>
+            <Link href="/metodo" className="boton boton-secundario text-hueso">Conocer el método</Link>
           </div>
         </div>
 

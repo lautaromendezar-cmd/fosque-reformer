@@ -1,50 +1,44 @@
-// Membresías (brief §5). El único bloque claro de toda la página: el precio aparece en papel.
-// Precios y moneda: placeholders visibles hasta que el cliente los defina (PENDIENTES.md).
+// Membresías F (Smart Pricing). En el inicio y en /membresias. Los precios son en dólares y
+// van bajo la Garantía de Disponibilidad, como pide el PDF.
 
 import { membresias } from "@/content/membresias";
-import { cta } from "@/content/sitio";
 import { linkWhatsApp } from "@/lib/whatsapp";
 
-function precioTexto(precio: number | null) {
-  if (precio === null || !membresias.moneda) return membresias.placeholderPrecio;
-  return new Intl.NumberFormat("es-AR", { style: "currency", currency: membresias.moneda, maximumFractionDigits: 0 }).format(precio);
-}
+const precio = (n: number) => `${membresias.moneda} ${n}`;
 
 export default function Membresias() {
   return (
-    <section id="membresias" className="escena sobre-claro relative bg-arena text-noche" data-luz="arena" aria-labelledby="t-membresias">
+    <section id="membresias" className="escena claro relative scroll-mt-20" data-luz="lino" aria-labelledby="t-membresias">
       <div className="contenedor py-[16vh] md:py-[20vh]">
-        <p className="dato mb-5 text-corteza" data-revelar>{membresias.antetitulo}</p>
-        <h2 id="t-membresias" className="h1 max-w-[18ch]" data-revelar="lineas">{membresias.titulo}</h2>
-        <p className="mt-6 max-w-[48ch] text-corteza" data-revelar>{membresias.aclaracion}</p>
+        <div className="md:grid md:grid-cols-12 md:items-end md:gap-8">
+          <div className="md:col-span-7">
+            <p className="dato mb-5 text-magenta-hondo" data-revelar>{membresias.antetitulo}</p>
+            <h2 id="t-membresias" className="h1" data-revelar="lineas">{membresias.titulo}</h2>
+          </div>
+          <div className="mt-8 md:col-span-4 md:col-start-9 md:mt-0" data-revelar>
+            <p className="titulo text-[1.35rem]">{membresias.garantia.titulo}</p>
+            <p className="mt-1 text-corteza">{membresias.garantia.texto}</p>
+          </div>
+        </div>
 
-        <ul className="mt-14 grid gap-px overflow-clip rounded-2xl bg-corteza/20 md:mt-20 md:grid-cols-4" aria-label="Packs mensuales">
+        <ul className="mt-14 grid gap-px overflow-clip rounded-2xl bg-corteza/15 md:mt-20 md:grid-cols-4" aria-label="Packs mensuales">
           {membresias.packs.map((p, i) => (
-            <li key={p.id} className={`relative flex flex-col bg-arena p-6 md:p-7 ${p.destacado ? "md:bg-[#d3bfa9]" : ""}`} data-revelar data-retraso={String(i * 0.08)}>
-              {p.destacado && p.etiqueta && (
-                <span className="dato absolute right-5 top-5 rounded-full bg-corteza px-3 py-1 text-arena">{p.etiqueta}</span>
-              )}
+            <li key={p.id} className={`relative flex flex-col p-6 md:p-7 ${p.recomendado ? "bg-noche text-hueso" : "bg-lino"}`} data-revelar data-retraso={String(i * 0.08)}>
+              {p.recomendado && <span className="dato absolute right-5 top-5 rounded-full bg-naranja px-3 py-1 text-noche">Recomendado</span>}
               <h3 className="h3">{p.nombre}</h3>
-              <p className="mt-1 text-corteza">{p.frecuencia}</p>
-              {/* TODO(cliente): precio. Mientras es null, se ve el placeholder. */}
-              <p className="titulo mt-8 text-[1.75rem] leading-none" aria-label={`Precio: ${precioTexto(p.precio)}`}>
-                {p.precio === null ? (
-                  <span className="inline-block rounded-md border border-dashed border-corteza/60 px-3 py-2 text-[1rem] font-semibold text-corteza">
-                    {precioTexto(p.precio)}
-                  </span>
-                ) : (
-                  precioTexto(p.precio)
-                )}
+              <p className={p.recomendado ? "mt-1 text-hueso/75" : "mt-1 text-corteza"}>{p.frecuencia}</p>
+              <p className="titulo mt-8 text-[clamp(2.5rem,4vw,3.25rem)] leading-none">
+                {precio(p.precio)}
+                <span className={`dato ml-2 align-middle ${p.recomendado ? "text-hueso/60" : "text-corteza"}`}>/ mes</span>
               </p>
-              <p className="mt-6 flex-1 text-[0.95rem] text-corteza">{p.beneficio}</p>
+              <p className={`mt-6 flex-1 text-[0.95rem] ${p.recomendado ? "text-hueso/85" : "text-corteza"}`}>{p.beneficio}</p>
               <a
-                href={linkWhatsApp(`Hola, quiero consultar por el ${p.nombre} (${p.frecuencia}) en Fosque Reformer.`)}
+                href={linkWhatsApp(`Hola, quiero el ${p.nombre} (${p.frecuencia}) en Fosque Reformer.`)}
                 target="_blank"
                 rel="noopener"
-                className={`boton mt-8 justify-center ${p.destacado ? "boton-primario" : "boton-secundario"}`}
-                aria-label={`${cta.corto} ${p.nombre} por WhatsApp`}
+                className={`boton mt-8 justify-center ${p.recomendado ? "boton-primario" : "boton-secundario"}`}
               >
-                Consultar
+                Quiero el {p.nombre}
               </a>
             </li>
           ))}

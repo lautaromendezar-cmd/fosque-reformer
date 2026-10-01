@@ -1,10 +1,10 @@
 "use client";
 
-// Los 4 niveles (brief §3). Selector informativo: muestra, no evalúa.
-// Tabs accesibles (flechas, Home/End). En mobile los nombres van en una fila que scrollea.
+// Niveles & Evolución. Tabs accesibles (flechas, Home/End). En mobile los nombres van en una
+// fila que scrollea. Selector informativo: muestra, no evalúa.
 
 import { useId, useRef, useState } from "react";
-import { niveles } from "@/content/niveles";
+import { niveles } from "@/content/metodo";
 
 export default function Niveles() {
   const [activo, setActivo] = useState(0);
@@ -26,13 +26,13 @@ export default function Niveles() {
   };
 
   return (
-    <section id="niveles" className="escena relative" data-luz="tibio" aria-labelledby="t-niveles">
+    <section id="niveles" className="escena relative scroll-mt-20 bg-[#5a4030] text-hueso" data-luz="tibio" aria-labelledby="t-niveles">
       <div className="contenedor py-[16vh] md:py-[20vh]">
         <div className="md:grid md:grid-cols-12 md:gap-8">
           <div className="md:col-span-5">
             <p className="dato mb-5 text-manteca" data-revelar>{niveles.antetitulo}</p>
             <h2 id="t-niveles" className="h1 max-w-[14ch]" data-revelar="lineas">{niveles.titulo}</h2>
-            <p className="mt-6 max-w-[36ch] text-hueso/80" data-revelar>{niveles.aclaracion}</p>
+            <p className="mt-6 max-w-[38ch] text-hueso/80" data-revelar>{niveles.cita}</p>
           </div>
 
           <div className="mt-12 md:col-span-7 md:mt-0" data-revelar>
@@ -62,23 +62,14 @@ export default function Niveles() {
               })}
             </div>
 
-            <div
-              role="tabpanel"
-              id={`${id}-panel`}
-              aria-labelledby={`${id}-tab-${activo}`}
-              className="mt-8 border-t border-hueso/25 pt-8"
-            >
-              <p className="titulo text-[clamp(5rem,14vw,10rem)] leading-[0.8] text-manteca/15" aria-hidden="true">
-                0{n.numero}
-              </p>
-              <h3 className="h2 -mt-3 md:-mt-4">{n.nombre}</h3>
+            <div role="tabpanel" id={`${id}-panel`} aria-labelledby={`${id}-tab-${activo}`} className="mt-8 border-t border-hueso/25 pt-8">
+              <p className="titulo text-[clamp(5rem,14vw,10rem)] leading-[0.8] text-naranja/20" aria-hidden="true">0{n.numero}</p>
+              <h3 className="h2 -mt-3 md:-mt-4">
+                Nivel {n.numero} · {n.nombre}
+                {"sello" in n && n.sello && <span className="dato ml-3 align-middle text-manteca">{n.sello}</span>}
+              </h3>
               <p className="mt-3 text-[1.15rem] font-semibold text-manteca">{n.foco}</p>
               <p className="mt-4 max-w-[52ch] text-hueso/85">{n.texto}</p>
-              <ul className="mt-6 flex flex-wrap gap-2" aria-label="Palabras clave">
-                {n.palabras.map((p) => (
-                  <li key={p} className="dato rounded-full border border-hueso/30 px-3 py-1.5 !tracking-[0.1em]">{p}</li>
-                ))}
-              </ul>
             </div>
           </div>
         </div>

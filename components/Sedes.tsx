@@ -12,7 +12,7 @@ import Curvas from "./Curvas";
 
 const normalizar = (s: string) => s.normalize("NFD").replace(/[̀-ͯ]/g, "").toLowerCase();
 
-export default function Sedes() {
+export default function Sedes({ conMapa = false }: { conMapa?: boolean }) {
   const [q, setQ] = useState("");
   const resultados = useMemo(() => {
     const n = normalizar(q.trim());
@@ -21,7 +21,7 @@ export default function Sedes() {
   }, [q]);
 
   return (
-    <section id="sedes" className="escena relative overflow-clip" data-luz="marron" aria-labelledby="t-sedes">
+    <section id="sedes" className="escena relative overflow-clip bg-marron text-hueso" data-luz="marron" aria-labelledby="t-sedes">
       <Curvas className="text-hueso" />
       <div className="contenedor relative z-10 py-[16vh] md:py-[20vh]">
         <div className="md:grid md:grid-cols-12 md:gap-8">
@@ -85,6 +85,19 @@ export default function Sedes() {
             )}
           </div>
         </div>
+
+        {conMapa && (
+          <div className="mt-16 overflow-clip rounded-2xl border border-hueso/20 md:mt-24" data-revelar>
+            {/* Embed sin API key; se carga recién al acercarse. TODO(cliente): reemplazar por sedes[].mapa cuando esté */}
+            <iframe
+              title={`Mapa: ${sedes[0].nombre}`}
+              src={`https://www.google.com/maps?q=${encodeURIComponent(`${sedes[0].direccion}, ${sedes[0].barrio}, ${sedes[0].ciudad}`)}&output=embed`}
+              className="block h-[60svh] min-h-[22rem] w-full grayscale-[0.35]"
+              loading="lazy"
+              referrerPolicy="no-referrer-when-downgrade"
+            />
+          </div>
+        )}
       </div>
     </section>
   );

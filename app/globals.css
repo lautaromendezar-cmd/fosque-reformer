@@ -20,6 +20,16 @@
   --color-dia: #243033;
   --color-agua: #2f3f3d;
 
+  /* PDF definitivo (30-sep): fondos lino y el tricolor de la fachada para CTA e interacciones.
+     Sobre el tricolor el texto va en noche (naranja 8,4 · coral 5,7 · magenta 4,8).
+     Sobre lino: corteza 10,8; magenta 3,3 sólo en display; magenta-hondo 4,9 para texto chico. */
+  --color-lino: #f4eee6;
+  --color-lino-hondo: #e9e0d4;
+  --color-magenta: #e83e8c;
+  --color-magenta-hondo: #b8326f;
+  --color-coral: #f35d55;
+  --color-naranja: #f89b1c;
+
   --font-titulo: var(--font-baloo), "Baloo Bhaijaan 2", system-ui, sans-serif;
   --font-cuerpo: var(--font-figtree), "Figtree", system-ui, sans-serif;
 
@@ -43,8 +53,13 @@
   --luz-fondo: #243033;
   --luz-tinta: #efe7dd;
   --luz-halo: 0; /* 0..1, intensidad del halo del sol */
-  color-scheme: dark;
 }
+
+/* Bloques claros: pintan su propio fondo para que el texto oscuro nunca quede sobre oscuro
+   (sin JS o antes del primer scroll). Además declaran data-luz="lino" para el header. */
+.claro { background: var(--color-lino); color: var(--color-noche); }
+.claro :focus-visible { outline-color: var(--color-corteza); }
+.suave { opacity: 0.82; }
 
 html {
   background: var(--luz-fondo);
@@ -136,8 +151,8 @@ html.motor-listo [data-revelar] .linea { display: block; overflow: clip; }
   transition: transform 0.25s var(--ease-salida), background-color 0.25s, color 0.25s, box-shadow 0.25s;
 }
 .boton:active { transform: scale(0.97); }
-.boton-primario { background: var(--color-terracota); color: var(--color-noche); }
-.boton-primario:hover { background: var(--color-manteca); }
+.boton-primario { background: var(--color-naranja); color: var(--color-noche); }
+.boton-primario:hover { background: var(--color-coral); }
 .boton-secundario { background: transparent; color: currentColor; box-shadow: inset 0 0 0 1.5px currentColor; }
 .boton-secundario:hover { background: color-mix(in srgb, currentColor 10%, transparent); }
 

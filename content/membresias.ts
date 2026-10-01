@@ -1,48 +1,46 @@
-// Sección "Membresías" (brief §5). Cuatro packs mensuales.
-//
-// TODO(cliente): precios y moneda. El cliente no definió si van en pesos o en dólares.
-// Mientras `precio` sea null, el componente muestra el placeholder visible de abajo.
+// /membresias (PDF §8): Smart Pricing, en dólares, bajo la Garantía de Disponibilidad.
+// El PDF los llama "valor sugerido". TODO(cliente): confirmar que son los precios a publicar.
 
 export const membresias = {
-  antetitulo: "Membresías",
-  titulo: "Elegís cuántas veces por semana. El resto lo ponemos nosotros.",
-  aclaracion: "Todos los packs son mensuales y se renuevan solos. Podés cambiar de pack cuando quieras.",
-  // TODO(cliente): texto del placeholder mientras no haya precios.
-  placeholderPrecio: "Precio a confirmar",
-  moneda: null as null | "ARS" | "USD", // TODO(cliente): moneda
+  antetitulo: "Membresías F",
+  titulo: "Inversión Transparente",
+  garantia: {
+    titulo: "Garantía de Disponibilidad",
+    texto: "Tus clases nunca se pierden dentro del mes.",
+  },
+  moneda: "USD" as const,
   packs: [
     {
       id: "pack-4",
       nombre: "Pack 4",
       frecuencia: "1 vez por semana",
-      beneficio: "Las clases se recuperan dentro del mes.",
-      precio: null as null | number, // TODO(cliente)
-      destacado: true,
-      etiqueta: "El más elegido",
+      precio: 40,
+      beneficio: "Ideal para iniciar. Administrás tus sesiones en el mes con flexibilidad total.",
+      recomendado: false,
     },
     {
       id: "pack-8",
       nombre: "Pack 8",
       frecuencia: "2 veces por semana",
-      beneficio: "10% de ahorro por clase.",
-      precio: null as null | number, // TODO(cliente)
-      destacado: false,
+      precio: 72,
+      beneficio: "Constancia ideal para sostener tu bienestar durante todo el año.",
+      recomendado: true,
     },
     {
       id: "pack-12",
       nombre: "Pack 12",
       frecuencia: "3 veces por semana",
-      beneficio: "20% de ahorro por clase.",
-      precio: null as null | number, // TODO(cliente)
-      destacado: false,
+      precio: 99,
+      beneficio: "Disciplina y transformación rápida. Disfrutá de semanas plenas de energía.",
+      recomendado: false,
     },
     {
       id: "pack-16",
       nombre: "Pack 16",
-      frecuencia: "Pase intensivo",
-      beneficio: "Máximo rendimiento, para quienes ya entrenan en serio.",
-      precio: null as null | number, // TODO(cliente)
-      destacado: false,
+      frecuencia: "Pase Intensivo",
+      precio: 119,
+      beneficio: "Un estilo de vida. Para quienes buscan resultados óptimos y máximo rendimiento.",
+      recomendado: false,
     },
   ],
 };

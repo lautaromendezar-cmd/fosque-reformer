@@ -1,60 +1,45 @@
-// Sección "La diferencia Fosque" (brief §2) y "El método" (brief §4).
+// /experiencia (PDF §4) y /profesionales (PDF §5).
 
-export const diferencia = {
-  antetitulo: "La diferencia Fosque",
-  titulo: "Tres cosas que se sienten desde la primera clase.",
-  argumentos: [
+export const experiencia = {
+  antetitulo: "Experiencia F",
+  titulo: "Los 3 Pilares de la Experiencia Fosque",
+  pilares: [
     {
       numero: "01",
-      titulo: "Lugar en tu horario",
-      // Fuente: "Disponibilidad real. Salas con 20 Reformers pensadas para que siempre haya
-      // lugar en el horario que la persona elija."
-      // PROMESA: se evita "garantizada" y "siempre". Revisar con el cliente.
-      texto:
-        "Salas con 20 Reformers, pensadas para que haya lugar en el horario que elegís. Sin listas de espera eternas ni clases a las corridas.",
+      titulo: "Atención y Calidez Humana",
+      texto: "Te recibimos siempre con una sonrisa y te brindamos una atención cercana y amable en cada punto de contacto.",
+      imagen: "recepcion-cafe-molinetes",
+      alt: "Recepción con barra de café de madera, banquetas verdes, el isotipo de Fosque en la pared y molinetes bajo arcos de luz",
     },
     {
       numero: "02",
-      titulo: "Un entorno que baja el ruido",
-      // Fuente: "Luz cálida a 2700K, aromaterapia propia y acústica Hi-Fi."
-      texto:
-        "Luz cálida a 2700K, aromaterapia propia y acústica Hi-Fi. Entrás con el estrés del día encima y salís con otra energía.",
+      titulo: "Sesiones Coreografiadas como Obras de Arte",
+      texto: "Profesores Fosque altamente capacitados diseñan cada sesión para despertar tu fuerza física e interior.",
+      imagen: "salon-sol-reformers-negros",
+      alt: "Sala con dos filas de Reformers negros Fosque, cielorraso que refleja la luz como agua y un gran disco de luz al fondo",
     },
     {
       numero: "03",
-      titulo: "El esfuerzo justo",
-      // Fuente: "Metodología progresiva de 4 niveles que adapta cada sesión al estado físico
-      // y a la energía de cada persona." El original decía "sin riesgo de lesiones".
-      // PROMESA: "sin riesgo de lesiones" → "una progresión cuidada, acompañada". Revisar con el cliente.
-      texto:
-        "Cuatro niveles progresivos que adaptan cada sesión a cómo llegás ese día. Una progresión cuidada, acompañada, que no te pide ni de más ni de menos.",
+      titulo: "Gestión y Motivación Semanal",
+      texto: "Tu Ejecutiva y Coordinadora Fosque te asesoran y acompañan semana a semana para que sostener el hábito sea un proceso simple, fluido y natural.",
+      imagen: "lounge-lockers-sillones",
+      alt: "Lounge con sillones rosados, un mural de colores y una pared de lockers iluminados",
     },
   ],
 };
 
-export const metodo = {
-  antetitulo: "El método",
-  titulo: "Un Reformer diseñado acá, para entrenar así.",
-  parrafos: [
-    "Los Reformers de Fosque no se compran hechos: los diseña Gerardo Fosque, con 24 años de trayectoria en diseño industrial. Cada medida, cada resorte y cada apoyo están pensados para el método que se practica en la sala.",
-    "Por eso la clase se arma al revés de lo habitual. No es la persona la que se adapta a la máquina: es la máquina la que fue hecha para acompañar una progresión de cuatro niveles, de la corrección postural a la potencia.",
+export const profesionales = {
+  antetitulo: "Profesionales Fosque",
+  titulo: "Cultura de Amabilidad",
+  cita: "Un equipo de verdaderos profesionales enfocado en acompañarte en cada movimiento y motivarte a incorporar el hábito del ejercicio para lograr tu mejor versión y disfrutar plenamente lo más importante de tu vida.",
+  roles: [
+    {
+      titulo: "Profes Fosque",
+      texto: "Instructores certificados y entrenados bajo los exigentes estándares de Fosque Academy. Cada sesión es una experiencia técnica y humana pensada para conducirte a nuevos niveles de energía y vitalidad.",
+    },
+    {
+      titulo: "Coordinadoras y Ejecutivas F",
+      texto: "Tus aliadas desde el primer momento en que elegís transformar tu vida. Asesoran la gestión de tus horarios, responden tus dudas y te motivan semanalmente para que jamás pierdas la constancia.",
+    },
   ],
-  datos: [
-    { valor: "24", etiqueta: "años de diseño industrial" },
-    { valor: "20", etiqueta: "Reformers por sala" },
-    { valor: "4", etiqueta: "niveles progresivos" },
-  ],
-  materiales: {
-    antetitulo: "Lo que se toca",
-    titulo: "Madera clara, piedra y agua.",
-    texto:
-      "El estudio está pensado por Artagaveytia-Mantel como un lugar donde el tiempo se desacelera. Cielorrasos que devuelven la luz como agua, madera tallada, piedra clara y un vestuario que huele a calma.",
-    // Detalles chicos, desplazados: los "planos cercanos" que pide el manual de marca.
-    detalles: [
-      { imagen: "estanteria-arbol-tallado", alt: "Estantería tallada en madera clara con forma de árbol, con accesorios de pilates ordenados" },
-      { imagen: "vestuario-duchas-mural-agua", alt: "Vestuario con paredes de piedra clara y mural con vetas verde agua" },
-      { imagen: "salon-reformer-cielorraso-organico-a", alt: "Sala de Reformers con un cielorraso de formas orgánicas en tonos pastel" },
-      { imagen: "estanteria-discos-madera", alt: "Estantería de discos de madera con toallas y accesorios" },
-    ],
-  },
 };

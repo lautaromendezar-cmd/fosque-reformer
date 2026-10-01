@@ -4,7 +4,7 @@
 #
 # Para cada clip:
 #   - MP4 H.264 + WebM VP9, sin audio, 1080p máximo, apuntando a 2-3 MB
-#   - para entrada y hacia-el-sol, además una versión con keyframe por fotograma (-g 1)
+#   - para entrada, hacia-el-sol y reformer-giro, además una versión con keyframe por fotograma (-g 1)
 #     para el scrub por scroll: <nombre>-scrub.mp4
 #   - primer fotograma como póster WebP (<nombre>-poster.webp)
 #   - último fotograma como fotograma de empalme (<nombre>-final.webp)
@@ -59,9 +59,9 @@ procesar() {
     -c:v libwebp -quality 80 "$OUT/$nombre-final.webp"
 }
 
-for clip in entrada hacia-el-sol sol-loop reformer-loop materiales-loop; do
+for clip in entrada hacia-el-sol sol-loop materiales-loop reformer-giro; do
   [ -f "$RAW/$clip.mp4" ] || { echo "· falta $RAW/$clip.mp4, salteado"; continue; }
-  case $clip in entrada|hacia-el-sol) procesar "$clip" "$RAW/$clip.mp4" scrub ;; *) procesar "$clip" "$RAW/$clip.mp4" ;; esac
+  case $clip in entrada|hacia-el-sol|reformer-giro) procesar "$clip" "$RAW/$clip.mp4" scrub ;; *) procesar "$clip" "$RAW/$clip.mp4" ;; esac
   # Las versiones mobile no se scrubbean: se reproducen solas (ver Pelicula.tsx)
   [ -f "$RAW/$clip-mobile.mp4" ] && procesar "$clip-mobile" "$RAW/$clip-mobile.mp4"
 done

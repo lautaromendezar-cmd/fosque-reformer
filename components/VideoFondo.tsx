@@ -10,7 +10,7 @@ import Imagen from "./Imagen";
 import type { NombreImagen } from "@/lib/imagenes";
 
 type Props = {
-  clip: "sol-loop" | "reformer-loop" | "materiales-loop";
+  clip: "sol-loop" | "materiales-loop";
   poster: NombreImagen;
   alt: string;
   className?: string;

@@ -14,6 +14,8 @@ next-env.d.ts
 # material del cliente: NO va al repo (PDFs y todo lo extraído de ellos)
 *.pdf
 assets/source/
+fotos-nuevas/
+video-raw/pruebas/
 
 # sistema
 .DS_Store

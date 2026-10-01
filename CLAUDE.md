@@ -1,53 +1,70 @@
-# Fosque Reformer — index
+# Fosque Reformer — sitio B2C
 
-Sitio de Fosque Reformer (pilates Reformer boutique, Núñez). Next.js 16 App Router +
-TypeScript + Tailwind v4 + GSAP (ScrollTrigger, SplitText) + Lenis. Deploy en Vercel.
-Alcance: sólo el index y dos páginas legales vacías. **Fuera:** franquicias, portal, reservas,
-pagos, bot, test de nivelación, inglés (`brief-index-fosque-reformer.md`).
+Sitio de Fosque Reformer (Pilates Moderno sobre el Reformer de Autor, Núñez). Next.js 16 App
+Router + TypeScript + Tailwind v4 + GSAP (ScrollTrigger, SplitText) + Lenis. Deploy en Vercel.
 
-Documentos hermanos: `DIRECCION-DE-ARTE.md` (la lectura del material y el plan aprobado),
-`DECISIONES.md` (lo que decidí solo y por qué, con el gasto de Higgsfield), `PENDIENTES.md`
-(cada dato del cliente que falta y dónde va).
+**Fuente de verdad del contenido (desde el 30-sep-2026): el PDF "ARCHITECTURE & COPYWRITING WEB
+B2C"** (en `fotos-nuevas/nuevo-pdf-30092026/`, fuera del repo). Todo el copy está tal cual en
+`content/`. **Fuera de esta etapa:** selector de país e idioma, Iniciar Sesión (no hay portal),
+reservas, pagos, bot.
 
-## Dirección de arte en tres líneas
+Documentos hermanos: `DIRECCION-DE-ARTE.md` (la lectura original del material), `DECISIONES.md`
+(lo que decidí solo y por qué, con el gasto de Higgsfield), `PENDIENTES.md` (cada dato del
+cliente que falta y dónde va).
 
-- **El suelo es el marrón de la tapa del manual (`#71564b`)**; los diez pasteles del manual son
-  acentos. La paleta completa y sus contrastes medidos están en `app/globals.css` (`@theme`) y
-  en `DECISIONES.md`. El gris del manual (`#696866`) **no** sirve para texto sobre arena.
-- **Tipografía:** Baloo Bhaijaan 2 (700/800) sólo en titulares y display; Figtree (400/600)
-  en cuerpo, datos e interfaz. Escala fluida en `globals.css`.
-- **Los renders son los protagonistas** (Artagaveytia-Mantel). Nada de stock. El logo sale de
-  los vectores del manual (`public/*.svg` → `lib/marca.generado.ts`), no se redibuja.
+## Dirección de arte en cuatro líneas
 
-## La película (guion de escenas)
+- **La película del inicio no se toca** (la aprobaron): fachada → pasillo de arcos → el sol,
+  sobre oscuros cálidos.
+- **Páginas internas sobre lino (`#f4eee6`)** y el **tricolor de la fachada** (magenta, coral,
+  naranja) en CTA e interacciones. CTA naranja con texto noche. Contrastes en `globals.css`.
+- **Tipografía:** Baloo Bhaijaan 2 (700/800) en titulares; Figtree (400/600) en el resto. El PDF
+  pide "Serif"; el manual no tiene: no se usa.
+- **Ornamento único:** la ola tricolor de la fachada (`components/Ola.tsx`) entre la portada de
+  cada página y lo que sigue.
 
-El scroll es el tiempo de una toma. Una sola variable de fondo (`--luz-fondo`) recorre el
-sitio; cada `.escena[data-luz]` declara su luz y `components/Motor.tsx` interpola entre
-escenas consecutivas leyendo el progreso de cada una (una única función `pintar`: **no** un
-tween por escena, se pisan). Las luces viven en `lib/luz.ts`.
+## Páginas
 
-| # | Sección (brief) | Componente | Luz | Qué pasa |
-|---|---|---|---|---|
-| 1 | Portada + recorrido + **el sol** | `Pelicula` | `dia` → dorado | Un solo plano continuo. Escritorio: 400vh pineados, los clips `entrada` y `hacia-el-sol` se scrubbean; el titular de la portada vive sobre el arranque y el del sol entra al final con halo y oscurecimiento. Mobile: 100svh, los clips se reproducen solos y se pausan tocando. Sin video: los pósters hacen lo mismo con transformaciones. |
-| 2 | La diferencia Fosque | `Diferencia` | `ambar` | Tres argumentos, editorial puro, `sol-loop` detrás oscurecido. |
-| 3 | Los 4 niveles | `Niveles` | `tibio` | Tabs accesibles, informativas, sin imagen. |
-| 4 | El método | `Metodo` | `marron` | Reformer de autor + Gerardo Fosque, `reformer-loop` detrás. |
-| 4b | Lo que se toca | `Materiales` | `agua` | Tira de materiales (cierra "El método"), `materiales-loop` detrás. Único giro de temperatura. |
-| 5 | Membresías | `Membresias` | `arena` (clara) | El único bloque claro. Tiene `bg-arena` propio para que el texto oscuro nunca quede sobre fondo oscuro. |
-| 6 | Sucursales | `Sedes` | `marron` | Buscador + tarjetas desde `content/sedes.ts`, curvas de nivel de fondo. |
-| 7 | Contacto | `Contacto` | `noche` | Formulario que arma un mensaje y abre WhatsApp. Sin backend. |
-| 8 | Footer | `Footer` | `noche` | Lockup completo (única vez), legales, link discreto a `/franquicias`. |
+| Ruta | Contenido (PDF) | Secciones |
+|---|---|---|
+| `/` | Hero + adelantos | `Pelicula` (H1 "¿Qué es lo más importante de tu vida?"), `Intro`, `ReformerGiro`, `MetodoTexto adelanto`, `Pilares`, `Membresias`, `Sedes`, `Contacto` |
+| `/metodo` | §3 Método, Niveles & Evolución, Fosque Niños | `Portada`, `MetodoTexto`, `Niveles` (#niveles), `Ninos`, `Cierre` |
+| `/experiencia` | §4 Los 3 Pilares | `Portada`, `Pilares`, `Cierre` |
+| `/profesionales` | §5 Cultura de Amabilidad | `Portada`, `Profesionales`, `Cierre` |
+| `/equipamiento` | §6 Reformer de Autor y espacios | `Portada`, `ReformerGiro`, `Puntos`, `Galeria`, `Cierre` |
+| `/sucursales` | §7 Encontrá tu Sucursal F | `Portada`, `Sedes conMapa`, `Cierre` |
+| `/membresias` | §8 Smart Pricing (USD) | `Portada`, `Membresias`, `Cierre` |
+| `/academia` | §9 Academia F | `Portada`, `Academia`, `Cierre` |
+| `/franquicias` | §10 Landing pre-franquicias B2B | `Portada`, `Franquicias` (sin Cierre B2C) |
 
-**El momento memorable es uno solo: el sol.** Todo lo que viene después baja el volumen.
+Header: isotipo, música (sólo si hay tema), CTA y botón **Menú** a pantalla completa con los
+nueve destinos (`content/sitio.ts` → `navegacion`).
+
+## El arco de luz
+
+Una sola variable de fondo (`--luz-fondo`) y una de tinta recorren cada página; cada
+`.escena[data-luz]` declara su luz (`lib/luz.ts`) y `components/Motor.tsx` interpola leyendo el
+progreso de cada escena. El Motor vive en el layout: Lenis se crea una vez y el arco, los reveals
+y el parallax se rearman **en cada ruta** dentro de un `gsap.context` (nunca
+`ScrollTrigger.getAll().kill()`: mataría los triggers de la película o del giro).
+
+**Regla:** las secciones claras (`.claro`, lino) y las oscuras que siguen a una clara pintan su
+propio fondo y tinta; el arco interpola sólo entre oscuras. Entre lino y oscuro la mezcla pasa
+por un gris barroso con el texto apagado.
+
+**El momento memorable es uno solo: el sol.** El segundo, más chico, es el Reformer que gira.
 
 ## Estructura
 
 ```
 app/            layout (fuentes, header, WhatsApp fijo, Motor), page (las escenas), globals.css,
                 terminos/, privacidad/, icon.svg
-components/     una escena por archivo + Motor (Lenis/GSAP/arco de luz/reveals),
-                Header, BotonWhatsApp, Imagen (picture AVIF/WebP + blur), VideoFondo, Curvas
-content/        TODO el copy y los datos: sitio, experiencia, niveles, membresias, sedes, contacto
+app/<ruta>/     una carpeta por página (metodo, experiencia, profesionales, equipamiento,
+                sucursales, membresias, academia, franquicias)
+components/     una sección por archivo + Motor (Lenis/GSAP/arco de luz/reveals), Header,
+                Musica, Portada, Ola, Cierre, BotonWhatsApp, Imagen, VideoFondo, Curvas
+content/        TODO el copy y los datos: sitio, metodo, experiencia, equipamiento,
+                membresias, academia (+ franquicias), sedes, contacto
 lib/            imagenes (srcset desde el manifiesto), luz, whatsapp, marca.generado, imagenes.generado.json
 scripts/        optimizar-imagenes.mjs, process-video.sh, capturas.mjs, generar-marca.py
 assets/source/  renders curados (renders/, texturas/, marca/) — lo demás está en .gitignore
@@ -79,8 +96,10 @@ script. `components/Imagen.tsx` los usa por nombre (`imagen("salon-reformer-sol-
 
 ## Videos
 
-Cinco clips generados con Seedance 2.0 en Higgsfield (proyecto "Fosque Reformer web"), en
-16:9 y 9:16. Referencias en `assets/refs/`, prompts y jobs en `DECISIONES.md`.
+Clips generados con Seedance 2.0 en Higgsfield (proyecto "Fosque Reformer web"): `entrada` y
+`hacia-el-sol` (rehechos el 1-oct con la fachada nueva), `sol-loop`, `materiales-loop` (sin uso
+hoy) y `reformer-giro` (3,85 s, fondo llevado a blanco con `colorlevels` para que se funda con
+el lino por multiply). Referencias en `assets/refs/`, prompts y jobs en `DECISIONES.md`.
 
 `npm run video` (`scripts/process-video.sh`) toma `video-raw/<clip>.mp4` y `<clip>-mobile.mp4` y deja en `public/video/`:
 `<clip>.mp4` (H.264, ≤1080p, ~2-3 MB), `<clip>.webm` (VP9), `<clip>-poster.webp`, `<clip>-final.webp`
@@ -90,7 +109,7 @@ de `hacia-el-sol`: el empalme de escritorio da 14/255 (bien); el mobile da 35/25
 por un fundido de 300 ms (`.en-sol-capa` en `Pelicula.tsx`).
 
 **Para regenerar o reemplazar un clip:** dejar el nuevo archivo en `video-raw/` con el mismo
-nombre (`entrada`, `hacia-el-sol`, `sol-loop`, `reformer-loop`, `materiales-loop`, más `-mobile`)
+nombre (`entrada`, `hacia-el-sol`, `sol-loop`, `materiales-loop`, `reformer-giro`, más `-mobile`)
 y correr `npm run video`. Los componentes ya apuntan a esas rutas; no hay que tocarlos. Si un
 archivo falta, el sitio muestra el póster y se ve terminado igual.
 
@@ -107,7 +126,7 @@ progreso); los pósters ya cubren el caso sin video.
 - Nada depende de hover. Foco visible con `outline` manteca (o corteza sobre claro).
 - Los `-scrub` (≈6 MB cada uno) se piden recién después de `load`, y los loops tienen
   `preload="none"` y se pausan fuera de pantalla.
-- El LCP es la fachada: `preload` con `imagesrcset` desde `app/page.tsx`.
+- El LCP es la fachada (`fachada-nunez-atardecer`): `preload` con `imagesrcset` desde `app/page.tsx`.
 - Lighthouse: `reports/lighthouse-mobile-*.report.html` y `-desktop`. Capturas: `node scripts/capturas.mjs`
   (necesita `puppeteer-core` resoluble; `PUPPETEER_DIR=<ruta a node_modules/puppeteer-core>`).
 
@@ -128,5 +147,7 @@ vercel deploy      # (--prod para producción); .vercelignore no hace falta, .gi
 - Si una animación rompe el performance, se recorta la animación, no el performance.
 - Cero dependencias que no se usen. Lo que se puede hacer con CSS, no va a GSAP.
 - No abusar del logo: isotipo en el header, lockup una sola vez en el footer.
+- Texto chico de acento: sobre lino `magenta-hondo`, sobre marrón `manteca`. El naranja y el
+  magenta puros sólo en tamaños grandes o como fondo de botón (contrastes en `globals.css`).
 - Los renders son de Artagaveytia-Mantel y el estudio no está construido: no publicar sin la
   autorización del cliente (ver `PENDIENTES.md`).

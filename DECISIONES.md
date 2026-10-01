@@ -100,3 +100,46 @@ Cada línea: qué decidí y por qué. Fecha de arranque: 27-sep-2026.
   clase en una bajada continua, contra 6 antes.
 - **Header siempre visible (28-sep, pedido de Lautaro):** se saca el esconder/mostrar por
   dirección de scroll; queda fijo y toma fondo pasados los 40 px.
+
+## 30-sep / 1-oct — material nuevo, PDF definitivo y sitio en páginas
+
+Pedido de Lautaro: regenerar la intro con la fachada nueva sin quemar créditos, sumar el
+Reformer negro, pasar a secciones según el PDF "ARCHITECTURE & COPYWRITING WEB B2C" (que se
+toma como verdad), aplicar su paleta y dejar afuera los idiomas.
+
+### Videos (balance de arranque 1.344,41)
+
+- **Fachada horizontal:** el render nuevo es vertical (723×1031). Outpaint de Higgsfield a 16:9
+  (2 créditos) y borrado del escudo verde con texto ilegible (gpt_image_2_5, 0,25): la edición
+  volvió en 1344 px, así que sólo pegué el parche del escudo sobre la versión de 2752 px.
+  El 9:16 sale recortado de esa misma imagen.
+- **Un clip por vez y primero el vertical** (720p, 45) para validar el movimiento antes de
+  gastar en el 16:9 de 1080p (90).
+- **Seedance 2.0 no respeta siempre el start_image:** `hacia-el-sol-mobile` arrancó con un busto
+  y otro encuadre (empalme 34/255, cubierto por el fundido de 300 ms que ya existía). Para el
+  16:9, el `hacia-el-sol` arranca desde **el último cuadro real de `entrada`**, no desde el
+  render, para que el empalme del scrub sea exacto.
+- **Reformer que gira:** prueba única a 720p (36; el primer intento falló sin cobrar). Los
+  primeros 3,9 s giran limpio de tres cuartos a perfil; después hay un corte y la torre se
+  deforma. Uso sólo ese tramo (`video-raw/reformer-giro.mp4`), sin reintentos.
+- `reformer-loop` sale del sitio (era el clip más flojo y la sección que lo usaba ya no existe).
+
+### Sitio
+
+- **Paleta:** la película queda como estaba (la aprobaron). El tricolor de la fachada (magenta,
+  coral, naranja) pasa a CTA e interacciones y las páginas internas van sobre lino. CTA en
+  naranja con texto noche (8,4); magenta sobre lino da 3,3, así que el texto chico de acento
+  usa `magenta-hondo` (4,9).
+- **Sin serif:** el PDF pide "detalles en Serif"; el manual de marca no tiene serif. Sigue
+  Baloo + Figtree.
+- **Ornamento único:** la ola tricolor de la fachada como borde entre la portada de cada página
+  y el lino. Sale de la arquitectura, no es decoración genérica.
+- **Menú a pantalla completa en todos los tamaños:** nueve destinos no entran en una barra.
+- **Motor por ruta:** con navegación del lado del cliente el Motor (en el layout) rearma arco de
+  luz y reveals en cada ruta dentro de un `gsap.context`; antes hacía
+  `ScrollTrigger.getAll().kill()`, que en multi-página mataba los triggers de la película.
+- **Música:** Higgsfield sólo genera voz para uso general, no música. El reproductor está
+  hecho (apagado al entrar, fundido de 0,9 s, sigue sonando al cambiar de página); falta el
+  tema con licencia, y sin él el botón no aparece.
+- **No puse:** Iniciar Sesión (no hay portal), selector de país/idioma (fuera de etapa), texto
+  inventado para Fosque Niños.

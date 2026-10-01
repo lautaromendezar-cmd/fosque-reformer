@@ -18,8 +18,8 @@ export type Sede = {
 };
 
 export const sedesTexto = {
-  antetitulo: "Sucursales",
-  titulo: "Arrancamos en Núñez.",
+  antetitulo: "Sucursales F",
+  titulo: "Encontrá tu Sucursal F",
   texto: "La primera sede abre en Núñez, Buenos Aires. Las que siguen van a aparecer acá.",
   buscador: {
     etiqueta: "Buscá por barrio o ciudad",
