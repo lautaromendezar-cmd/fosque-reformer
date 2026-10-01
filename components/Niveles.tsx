@@ -5,6 +5,7 @@
 
 import { useId, useRef, useState } from "react";
 import { niveles } from "@/content/metodo";
+import VideoFondo from "./VideoFondo";
 
 export default function Niveles() {
   const [activo, setActivo] = useState(0);
@@ -26,8 +27,9 @@ export default function Niveles() {
   };
 
   return (
-    <section id="niveles" className="escena relative scroll-mt-20 text-hueso" data-luz="tibio" aria-labelledby="t-niveles">
-      <div className="contenedor py-[16vh] md:py-[20vh]">
+    <section id="niveles" className="escena grano relative scroll-mt-20 overflow-clip text-hueso" data-luz="tibio" aria-labelledby="t-niveles">
+      <VideoFondo clip="sol-loop" poster="salon-sol-reformers-negros" alt="" oscurecer={0.72} />
+      <div className="contenedor relative z-10 py-[16vh] md:py-[20vh]">
         <div className="md:grid md:grid-cols-12 md:gap-8">
           <div className="md:col-span-5">
             <p className="dato mb-5 text-manteca" data-revelar>{niveles.antetitulo}</p>

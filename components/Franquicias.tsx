@@ -2,6 +2,7 @@
 
 import { franquicias } from "@/content/academia";
 import { linkWhatsApp } from "@/lib/whatsapp";
+import ImagenViva from "./ImagenViva";
 
 export default function Franquicias() {
   const href = franquicias.ctaHref ?? linkWhatsApp(franquicias.mensaje);
@@ -18,7 +19,8 @@ export default function Franquicias() {
             </li>
           ))}
         </ol>
-        <p className="mt-16 md:mt-24" data-revelar>
+        <ImagenViva nombre="fachada-nunez-atardecer" alt="Fachada de la primera sede, en Núñez, con las franjas onduladas magenta, coral y naranja" className="mt-16 aspect-[16/9] md:mt-24 md:aspect-[21/9]" posicion="50% 40%" />
+        <p className="mt-12 md:mt-16" data-revelar>
           <a href={href} target="_blank" rel="noopener" className="boton boton-primario">{franquicias.cta}</a>
         </p>
       </div>

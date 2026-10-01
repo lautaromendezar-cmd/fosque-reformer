@@ -155,3 +155,29 @@ toma como verdad), aplicar su paleta y dejar afuera los idiomas.
   El dato chico ahí es corteza (6,5): magenta-hondo sobre rosa da 2,9.
 - El Motor ya no corta la cadena del arco en la primera escena sin progreso (`continue`, no
   `break`): una clara más corta que la pantalla hacía ignorar la oscura que le sigue.
+
+### 1-oct (noche) — preloader, cache y fondos con movimiento
+
+- **Cache rota (encontrado al armar el preloader):** `/video` e `/img` se sirven `immutable` por
+  un año (next.config.ts) con nombres fijos. Quien había visto la demo podía seguir viendo la
+  película con la fachada vieja. Ahora cada URL lleva `?v=<hash del archivo>`: imágenes desde
+  `lib/imagenes.generado.json` (campo `v`), videos desde `lib/videos.generado.json` (lo escribe
+  `npm run video`). El Open Graph va con `?v=2` porque WhatsApp cachea la vista previa por URL.
+- **Preloader que carga de verdad** (pedido: "tiene que cumplir la función de dejar que cargue
+  todo el contenido"). Blanco, lockup negro, línea tricolor con el avance real de bytes. Baja
+  los clips de la página a memoria (blob) y la película los usa desde ahí: el scrub ya no depende
+  de la red. Medido con red emulada y contexto limpio:
+  - esperar los tres clips de escritorio (12 MB) daba 13 s con 4G: demasiado. Ahora frena sólo
+    lo que se ve al subir el telón (fuentes, fachada, primer clip) y el resto baja detrás, en
+    orden; con 4G sube a los 5,3 s (escritorio) y 6 s (mobile).
+  - los -scrub pasaron de 1440/crf 27 (6 MB) a 1280/crf 31 (3,2 MB): comparados recortes al
+    100 %, sin diferencia visible detrás del oscurecimiento.
+  - tope de 8 s; con 3G sube igual y los videos se piden por red. Sin JS no aparece; si el JS
+    falla, el script inline del <head> lo saca a los 15 s y `precargaLista` se resuelve a los 16.
+  - el LCP sigue siendo el titular (120–490 ms con red normal o 4G): el preloader tapa, no
+    oculta con opacity. El titular de la portada se pausa debajo y entra al subir el telón.
+- **Fondos con movimiento:** vuelve `materiales-loop` (Contacto del inicio), `sol-loop` detrás de
+  Niveles, clip nuevo `fachada-noche` en el Cierre de todas las páginas (outpaint + escudo
+  borrado igual que la de día; mismo cuadro de inicio y fin para que el loop no salte), y en las
+  claras una banda de foto con acercamiento lento en CSS (`ImagenViva`), porque un video oscuro
+  de fondo no deja leer texto oscuro.

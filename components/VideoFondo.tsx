@@ -8,9 +8,10 @@
 import { useEffect, useRef, useState } from "react";
 import Imagen from "./Imagen";
 import type { NombreImagen } from "@/lib/imagenes";
+import { video } from "@/lib/video";
 
 type Props = {
-  clip: "sol-loop" | "materiales-loop";
+  clip: "sol-loop" | "materiales-loop" | "fachada-noche";
   poster: NombreImagen;
   alt: string;
   className?: string;
@@ -49,7 +50,7 @@ export default function VideoFondo({ clip, poster, alt, className = "", oscurece
     return () => { io.disconnect(); v.removeEventListener("canplay", onCanPlay); v.removeEventListener("error", onError, true); };
   }, [mobile]);
 
-  const base = `/video/${clip}${mobile ? "-mobile" : ""}`;
+  const base = `${clip}${mobile ? "-mobile" : ""}`;
 
   return (
     <div className={`fondo-imagen ${className}`} aria-hidden="true">
@@ -65,8 +66,8 @@ export default function VideoFondo({ clip, poster, alt, className = "", oscurece
           className={`transition-opacity duration-700 ${listo ? "opacity-100" : "opacity-0"}`}
           tabIndex={-1}
         >
-          <source src={`${base}.webm`} type="video/webm" />
-          <source src={`${base}.mp4`} type="video/mp4" />
+          <source src={video(`${base}.webm`)} type="video/webm" />
+          <source src={video(`${base}.mp4`)} type="video/mp4" />
         </video>
       )}
       <div className="absolute inset-0" style={{ background: `linear-gradient(180deg, rgba(28,19,16,${oscurecer * 0.7}) 0%, rgba(28,19,16,${oscurecer}) 60%, rgba(28,19,16,${Math.min(1, oscurecer + 0.25)}) 100%)` }} />

@@ -21,6 +21,7 @@ import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { SplitText } from "gsap/SplitText";
 import Lenis from "lenis";
 import { luces, type Luz, type NombreLuz } from "@/lib/luz";
+import { precargaLista } from "@/lib/video";
 
 gsap.registerPlugin(ScrollTrigger, SplitText);
 
@@ -34,6 +35,11 @@ export default function Motor() {
     if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
     lenis = new Lenis({ lerp: 0.1, wheelMultiplier: 0.95, anchors: { offset: 0, duration: 1.4 } });
     lenis.on("scroll", ScrollTrigger.update);
+    // Quieto mientras el preloader tapa la página
+    if (document.documentElement.classList.contains("precargando")) {
+      lenis.stop();
+      precargaLista.then(() => lenis?.start());
+    }
     const tick = (t: number) => lenis?.raf(t * 1000);
     gsap.ticker.add(tick);
     gsap.ticker.lagSmoothing(0);
@@ -45,9 +51,14 @@ export default function Motor() {
     const html = document.documentElement;
     const reducido = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
 
-    const destino = window.location.hash && document.getElementById(window.location.hash.slice(1));
-    if (destino) lenis ? lenis.scrollTo(destino, { immediate: true }) : destino.scrollIntoView();
-    else lenis ? lenis.scrollTo(0, { immediate: true }) : window.scrollTo(0, 0);
+    const irAlComienzo = () => {
+      const destino = window.location.hash && document.getElementById(window.location.hash.slice(1));
+      if (destino) lenis ? lenis.scrollTo(destino, { immediate: true, force: true }) : destino.scrollIntoView();
+      else lenis ? lenis.scrollTo(0, { immediate: true, force: true }) : window.scrollTo(0, 0);
+    };
+    // Con el preloader arriba el scroll está bloqueado: el salto al ancla espera a que suba
+    if (html.classList.contains("precargando")) precargaLista.then(() => requestAnimationFrame(irAlComienzo));
+    else irAlComienzo();
 
     const splits: SplitText[] = [];
     const ctx = gsap.context(() => {

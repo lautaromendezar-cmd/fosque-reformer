@@ -122,6 +122,17 @@ probó en esta máquina (Windows). Si diera tirones, la alternativa anotada es u
 fotogramas WebP dibujada en un `<canvas>` (extraer con `ffmpeg -vf fps=12` y `drawImage` por
 progreso); los pósters ya cubren el caso sin video.
 
+## Preloader y cache
+
+- **`components/Precarga.tsx`**: blanco, lockup negro, línea tricolor con el avance real. Frena
+  hasta tener fuentes, la imagen de portada y el clip que se ve al subir el telón; los demás
+  clips de la página siguen bajando detrás (`clipsDe` en `lib/video.ts`). Todos quedan en
+  memoria como blob y `Pelicula`/`ReformerGiro` los esperan con `esperarBlob`. Tope 8 s.
+  Sólo en la carga completa; navegar dentro del sitio no lo muestra. Respaldo en el `<head>`.
+- **Toda URL de `/video` e `/img` lleva `?v=<hash>`**: se sirven immutable por un año. Nunca
+  escribir una ruta a mano: `video("archivo.mp4")` (lib/video.ts) e `imagen("nombre")`.
+  `npm run video` y `npm run imagenes` regeneran los hashes.
+
 ## Rendimiento y accesibilidad
 
 - Mobile primero. Las animaciones se simplifican (sin pin, sin scrub) y no se apagan.

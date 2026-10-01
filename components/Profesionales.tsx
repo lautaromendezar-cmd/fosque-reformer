@@ -2,6 +2,7 @@
 
 import Link from "next/link";
 import { profesionales } from "@/content/experiencia";
+import ImagenViva from "./ImagenViva";
 
 export default function Profesionales() {
   return (
@@ -9,6 +10,8 @@ export default function Profesionales() {
       <div className="contenedor py-[16vh] md:py-[20vh]">
         <p className="dato mb-5 text-magenta-hondo" data-revelar>{profesionales.titulo}</p>
         <h2 id="t-profesionales" className="h2 max-w-[34ch] !leading-[1.2]" data-revelar="lineas">{profesionales.cita}</h2>
+
+        <ImagenViva nombre="recepcion-cafe-molinetes" alt="Recepción con barra de café, el isotipo de Fosque en la pared y molinetes bajo arcos de luz" className="mt-14 aspect-[16/9] md:mt-20 md:aspect-[21/9]" posicion="50% 45%" />
 
         <ul className="mt-16 grid gap-12 md:mt-24 md:grid-cols-2 md:gap-8">
           {profesionales.roles.map((r, i) => (

@@ -5,6 +5,7 @@ import { marca } from "@/content/sitio";
 import Header from "@/components/Header";
 import BotonWhatsApp from "@/components/BotonWhatsApp";
 import Motor from "@/components/Motor";
+import Precarga from "@/components/Precarga";
 
 // Baloo Bhaijaan 2 es la tipografía del manual de marca: sólo titulares y display.
 const baloo = Baloo_Bhaijaan_2({
@@ -33,9 +34,9 @@ export const metadata: Metadata = {
     description: marca.descripcion,
     locale: "es_AR",
     type: "website",
-    images: [{ url: "/og.jpg", width: 1200, height: 630, type: "image/jpeg", alt: "Fosque Reformer: sala de Reformers con el sol al fondo" }],
+    images: [{ url: "/og.jpg?v=2", width: 1200, height: 630, type: "image/jpeg", alt: "Fosque Reformer: sala con dos filas de Reformers negros y el sol al fondo" }],
   },
-  twitter: { card: "summary_large_image", title: marca.nombre, description: marca.descripcion, images: ["/og.jpg"] },
+  twitter: { card: "summary_large_image", title: marca.nombre, description: marca.descripcion, images: ["/og.jpg?v=2"] }, // ?v=: WhatsApp guarda la vista previa por URL
   // El dominio no está definido y el sitio todavía no se publica: no indexar hasta el go-live.
   robots: { index: false, follow: false }, // TODO(cliente): sacar al publicar en el dominio final
 };
@@ -49,8 +50,19 @@ export const viewport: Viewport = {
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
-    <html lang="es-AR" className={`${baloo.variable} ${figtree.variable}`}>
+    <html lang="es-AR" className={`${baloo.variable} ${figtree.variable}`} suppressHydrationWarning>
+      <head>
+        {/* Activa el preloader antes del primer pintado. El respaldo lo saca solo a los 15 s si el
+            JS no corre; Precarga.tsx lo cancela. Inline y sin type=module: siempre corre. */}
+        <script
+          dangerouslySetInnerHTML={{
+            __html:
+              "document.documentElement.classList.add('precargando');window.__precargaRespaldo=setTimeout(function(){document.documentElement.classList.remove('precargando')},15000);",
+          }}
+        />
+      </head>
       <body>
+        <Precarga />
         <a href="#contenido" className="salto">Ir al contenido</a>
         <Header />
         <main id="contenido">{children}</main>

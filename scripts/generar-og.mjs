@@ -28,7 +28,7 @@ const capa = Buffer.from(`
   <g transform="translate(${x} ${y}) scale(${esc}) translate(${-vx} ${-vy})" fill="#efe7dd">${paths}</g>
 </svg>`);
 
-await sharp("assets/source/renders/salon-reformer-sol-frontal.jpeg")
+await sharp("assets/source/renders/salon-sol-reformers-negros.jpg")
   .resize(W, H, { fit: "cover", position: "centre" })
   .modulate({ brightness: 0.96 })
   .composite([{ input: capa }])

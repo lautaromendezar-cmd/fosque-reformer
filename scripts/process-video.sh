@@ -44,10 +44,12 @@ procesar() {
     "$OUT/$nombre.webm"
 
   if [ "$scrub" = "scrub" ]; then
-    # GOP de 3 fotogramas: cada seek decodifica como mucho 2 cuadros y pesa un tercio que con keyframe por fotograma (16 MB vs 6 MB a 1440 px). Sólo la bajada de escritorio.
+    # GOP de 3 fotogramas: cada seek decodifica como mucho 2 cuadros. 1280 px y crf 31 (~3 MB por
+    # 10 s): el preloader los baja enteros, y 1440/crf 27 eran 6 MB sin diferencia visible
+    # detrás del oscurecimiento de la película (comparado el 1-oct).
     ffmpeg -v error -y -i "$entrada" -an \
-      -vf "scale='min(1440,iw)':-2" \
-      -c:v libx264 -preset slow -crf 27 -g 3 -keyint_min 1 -sc_threshold 0 \
+      -vf "scale='min(1280,iw)':-2" \
+      -c:v libx264 -preset slow -crf 31 -g 3 -keyint_min 1 -sc_threshold 0 \
       -pix_fmt yuv420p -movflags +faststart \
       "$OUT/$nombre-scrub.mp4"
   fi
@@ -59,7 +61,7 @@ procesar() {
     -c:v libwebp -quality 80 "$OUT/$nombre-final.webp"
 }
 
-for clip in entrada hacia-el-sol sol-loop materiales-loop reformer-giro; do
+for clip in entrada hacia-el-sol sol-loop materiales-loop reformer-giro fachada-noche; do
   [ -f "$RAW/$clip.mp4" ] || { echo "· falta $RAW/$clip.mp4, salteado"; continue; }
   case $clip in entrada|hacia-el-sol|reformer-giro) procesar "$clip" "$RAW/$clip.mp4" scrub ;; *) procesar "$clip" "$RAW/$clip.mp4" ;; esac
   # Las versiones mobile no se scrubbean: se reproducen solas (ver Pelicula.tsx)
@@ -78,6 +80,16 @@ d=ImageStat.Stat(ImageChops.difference(a,b)).mean[0]
 print(f"  {sys.argv[1].split('/')[-1]} ↔ {sys.argv[2].split('/')[-1]}: {d:.1f}/255", "(bien)" if d<25 else "(cubrir con fundido)")
 PY
 done
+
+# Hashes de cada archivo para la URL (?v=): /video se sirve immutable por un año y los nombres
+# no cambian. lib/video.ts los agrega; sin esto quien ya entró sigue viendo el clip viejo.
+PYTHONIOENCODING=utf-8 python - "$OUT" <<'PY'
+import sys, os, json, hashlib
+d=sys.argv[1]
+h={f: hashlib.md5(open(os.path.join(d,f),'rb').read()).hexdigest()[:8] for f in sorted(os.listdir(d))}
+json.dump(h, open('lib/videos.generado.json','w'), indent=2)
+print(f"{len(h)} hashes → lib/videos.generado.json")
+PY
 
 echo
 du -sh "$OUT"/* | sort -k2

@@ -6,6 +6,7 @@
 import { useState } from "react";
 import { contactoTexto } from "@/content/contacto";
 import { linkWhatsApp } from "@/lib/whatsapp";
+import VideoFondo from "./VideoFondo";
 
 export default function Contacto() {
   const [nombre, setNombre] = useState("");
@@ -22,8 +23,10 @@ export default function Contacto() {
   const campo = "mt-2 w-full rounded-xl border border-hueso/30 bg-hueso/5 px-4 py-3 text-hueso placeholder:text-hueso/40";
 
   return (
-    <section id="contacto" className="escena relative text-hueso" data-luz="noche" aria-labelledby="t-contacto">
-      <div className="contenedor py-[16vh] md:py-[20vh]">
+    <section id="contacto" className="escena relative overflow-clip text-hueso" data-luz="noche" aria-labelledby="t-contacto">
+      {/* El vestuario con el mural de agua respira detrás, bien oscuro: el formulario se lee primero */}
+      <VideoFondo clip="materiales-loop" poster="vestuario-bachas-mural-agua" alt="" oscurecer={0.8} />
+      <div className="contenedor relative z-10 py-[16vh] md:py-[20vh]">
         <div className="md:grid md:grid-cols-12 md:gap-8">
           <div className="md:col-span-5">
             <p className="dato mb-5 text-manteca" data-revelar>{contactoTexto.antetitulo}</p>

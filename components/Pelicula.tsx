@@ -21,12 +21,13 @@ import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { portada, sol, cta } from "@/content/sitio";
 import { linkWhatsApp } from "@/lib/whatsapp";
 import Imagen from "./Imagen";
+import { video, esperarBlob, precargaLista } from "@/lib/video";
 
 gsap.registerPlugin(ScrollTrigger);
 
 const VIDEO = {
-  entrada: "/video/entrada",
-  sol: "/video/hacia-el-sol",
+  entrada: { scrub: video("entrada-scrub.mp4"), webm: video("entrada-mobile.webm"), mp4: video("entrada-mobile.mp4") },
+  sol: { scrub: video("hacia-el-sol-scrub.mp4"), webm: video("hacia-el-sol-mobile.webm"), mp4: video("hacia-el-sol-mobile.mp4") },
 };
 
 export default function Pelicula() {
@@ -37,6 +38,9 @@ export default function Pelicula() {
   const [videoOk, setVideoOk] = useState({ entrada: false, sol: false });
   const [pausado, setPausado] = useState(false);
   const [enSol, setEnSol] = useState(false);
+  const [telonArriba, setTelonArriba] = useState(false);
+
+  useEffect(() => { precargaLista.then(() => setTelonArriba(true)); }, []);
 
   // Elegir modo en el cliente (evita desajustes de hidratación)
   useEffect(() => {
@@ -54,12 +58,18 @@ export default function Pelicula() {
       const mal = () => setVideoOk((s) => ({ ...s, [clave]: false }));
       v.addEventListener("loadeddata", ok);
       v.addEventListener("error", mal, true);
-      // En escritorio los -scrub pesan ~6 MB: se piden recién después del load, para no
-      // competir con el póster (LCP) ni con las fuentes. En mobile alcanza con metadata.
-      let timer = 0;
-      const cargar = () => { timer = window.setTimeout(() => { v.preload = "auto"; v.load(); }, modo === "scrub" ? 800 : 0); };
-      if (document.readyState === "complete") cargar(); else window.addEventListener("load", cargar, { once: true });
-      return () => { window.clearTimeout(timer); window.removeEventListener("load", cargar); v.removeEventListener("loadeddata", ok); v.removeEventListener("error", mal, true); };
+      // El preloader baja los clips a memoria: si están, el video usa el blob (el atributo src
+      // gana sobre los <source>) y el scrub no espera red. Si no llegaron (tope de tiempo), se
+      // piden como siempre.
+      let vivo = true;
+      precargaLista.then(async () => {
+        const blob = await esperarBlob(modo === "scrub" ? VIDEO[clave].scrub : VIDEO[clave].mp4);
+        if (!vivo) return;
+        if (blob) v.src = blob;
+        v.preload = "auto";
+        v.load();
+      });
+      return () => { vivo = false; v.removeEventListener("loadeddata", ok); v.removeEventListener("error", mal, true); };
     };
     const a = marcar("entrada", vEntrada.current);
     const b = marcar("sol", vSol.current);
@@ -130,7 +140,7 @@ export default function Pelicula() {
 
   // ---- MOBILE: se reproduce sola al entrar, tocar pausa ----------------------------
   useEffect(() => {
-    if (modo !== "auto" || !seccion.current) return;
+    if (modo !== "auto" || !seccion.current || !telonArriba) return;
     const e = vEntrada.current, so = vSol.current;
     if (!e || !so) return;
     const alTerminarEntrada = () => {
@@ -149,15 +159,15 @@ export default function Pelicula() {
     );
     io.observe(seccion.current);
     return () => { io.disconnect(); e.removeEventListener("ended", alTerminarEntrada); so.removeEventListener("ended", alTerminarSol); };
-  }, [modo, pausado]);
+  }, [modo, pausado, telonArriba]);
 
   // Sin video en mobile: mostrar el sol después de unos segundos igual (el póster hace la película)
   useEffect(() => {
-    if (modo !== "auto") return;
+    if (modo !== "auto" || !telonArriba) return;
     if (videoOk.entrada || videoOk.sol) return;
     const t = setTimeout(() => { seccion.current?.classList.add("en-sol-capa"); setEnSol(true); }, 3500);
     return () => clearTimeout(t);
-  }, [modo, videoOk]);
+  }, [modo, videoOk, telonArriba]);
 
   const alternarPausa = () => {
     if (modo !== "auto") return;
@@ -193,11 +203,11 @@ export default function Pelicula() {
             <video ref={vEntrada} muted playsInline preload={scrub ? "none" : "metadata"} disablePictureInPicture tabIndex={-1}
               className={`transition-opacity duration-500 ${videoOk.entrada ? "opacity-100" : "opacity-0"}`}>
               {scrub ? (
-                <source src={`${VIDEO.entrada}-scrub.mp4`} type="video/mp4" />
+                <source src={VIDEO.entrada.scrub} type="video/mp4" />
               ) : (
                 <>
-                  <source src={`${VIDEO.entrada}-mobile.webm`} type="video/webm" />
-                  <source src={`${VIDEO.entrada}-mobile.mp4`} type="video/mp4" />
+                  <source src={VIDEO.entrada.webm} type="video/webm" />
+                  <source src={VIDEO.entrada.mp4} type="video/mp4" />
                 </>
               )}
             </video>
@@ -213,11 +223,11 @@ export default function Pelicula() {
             <video ref={vSol} muted playsInline preload={scrub ? "none" : "metadata"} disablePictureInPicture tabIndex={-1}
               className={`transition-opacity duration-500 ${videoOk.sol ? "opacity-100" : "opacity-0"}`}>
               {scrub ? (
-                <source src={`${VIDEO.sol}-scrub.mp4`} type="video/mp4" />
+                <source src={VIDEO.sol.scrub} type="video/mp4" />
               ) : (
                 <>
-                  <source src={`${VIDEO.sol}-mobile.webm`} type="video/webm" />
-                  <source src={`${VIDEO.sol}-mobile.mp4`} type="video/mp4" />
+                  <source src={VIDEO.sol.webm} type="video/webm" />
+                  <source src={VIDEO.sol.mp4} type="video/mp4" />
                 </>
               )}
             </video>

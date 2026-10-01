@@ -14,10 +14,11 @@ import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { equipamiento } from "@/content/equipamiento";
 import Imagen from "./Imagen";
+import { video as urlVideo, esperarBlob, precargaLista } from "@/lib/video";
 
 gsap.registerPlugin(ScrollTrigger);
 
-const CLIP = "/video/reformer-giro";
+const CLIP = { scrub: urlVideo("reformer-giro-scrub.mp4"), mp4: urlVideo("reformer-giro.mp4"), webm: urlVideo("reformer-giro.webm") };
 
 export default function ReformerGiro({ conEnlace = false }: { conEnlace?: boolean }) {
   const seccion = useRef<HTMLElement>(null);
@@ -35,9 +36,16 @@ export default function ReformerGiro({ conEnlace = false }: { conEnlace?: boolea
     if (!v || !modo || modo === "estatico") return;
     const ok = () => setListo(true);
     v.addEventListener("loadeddata", ok);
-    v.preload = "auto";
-    v.load();
-    return () => v.removeEventListener("loadeddata", ok);
+    let vivo = true;
+    // Si el preloader lo bajó, el blob (el atributo src gana sobre los <source>)
+    precargaLista.then(async () => {
+      const blob = await esperarBlob(modo === "scrub" ? CLIP.scrub : CLIP.mp4);
+      if (!vivo) return;
+      if (blob) v.src = blob;
+      v.preload = "auto";
+      v.load();
+    });
+    return () => { vivo = false; v.removeEventListener("loadeddata", ok); };
   }, [modo]);
 
   // Escritorio: scrub + palabras por tramos
@@ -73,7 +81,7 @@ export default function ReformerGiro({ conEnlace = false }: { conEnlace?: boolea
     const v = video.current;
     if (!v) return;
     const io = new IntersectionObserver(([e]) => { if (e.isIntersecting) { v.play().catch(() => {}); io.disconnect(); } }, { threshold: 0.5 });
-    io.observe(seccion.current);
+    precargaLista.then(() => seccion.current && io.observe(seccion.current));
     return () => io.disconnect();
   }, [modo]);
 
@@ -118,11 +126,11 @@ export default function ReformerGiro({ conEnlace = false }: { conEnlace?: boolea
                 className={`transition-opacity duration-500 ${listo ? "opacity-100" : "opacity-0"}`}
               >
                 {scrub ? (
-                  <source src={`${CLIP}-scrub.mp4`} type="video/mp4" />
+                  <source src={CLIP.scrub} type="video/mp4" />
                 ) : (
                   <>
-                    <source src={`${CLIP}.webm`} type="video/webm" />
-                    <source src={`${CLIP}.mp4`} type="video/mp4" />
+                    <source src={CLIP.webm} type="video/webm" />
+                    <source src={CLIP.mp4} type="video/mp4" />
                   </>
                 )}
               </video>

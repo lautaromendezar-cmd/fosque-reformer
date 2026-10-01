@@ -6,6 +6,8 @@
 // Volver a correr cuando lleguen los renders originales: pisa todo.
 
 import sharp from "sharp";
+import { createHash } from "node:crypto";
+import { readFile } from "node:fs/promises";
 import { readdir, mkdir, writeFile } from "node:fs/promises";
 import path from "node:path";
 
@@ -38,6 +40,9 @@ for (const archivo of archivos) {
     height: meta.height,
     anchos: unicos,
     blur: `data:image/webp;base64,${blur.toString("base64")}`,
+    // Hash del render de origen: va en la URL (?v=) porque /img se sirve con cache immutable
+    // de un año y los nombres no cambian. Sin esto, quien ya entró ve la imagen vieja.
+    v: createHash("md5").update(await readFile(path.join(ORIGEN, archivo))).digest("hex").slice(0, 8),
   };
   console.log(`✓ ${nombre} ${meta.width}×${meta.height} → ${unicos.join(", ")}`);
 }

@@ -1,6 +1,7 @@
 // Academia F (Excelencia Técnica): el texto y los dos programas.
 
 import { academia } from "@/content/academia";
+import ImagenViva from "./ImagenViva";
 
 export default function Academia() {
   return (
@@ -10,6 +11,8 @@ export default function Academia() {
           <h2 id="t-academia" className="h1 md:col-span-6" data-revelar="lineas">{academia.titulo}</h2>
           <p className="mt-8 max-w-[44ch] text-corteza md:col-span-5 md:col-start-8 md:mt-3" data-revelar>{academia.texto}</p>
         </div>
+
+        <ImagenViva nombre="salon-reformer-cielorraso-organico-a" alt="Sala de Reformers con un cielorraso de formas orgánicas en tonos pastel" className="mt-14 aspect-[16/9] md:mt-20 md:aspect-[21/9]" posicion="50% 60%" />
 
         <ul className="mt-16 grid gap-6 md:mt-24 md:grid-cols-2">
           {academia.programas.map((p, i) => (

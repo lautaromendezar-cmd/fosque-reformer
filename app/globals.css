@@ -216,3 +216,50 @@ html.motor-listo [data-revelar] .linea { display: block; overflow: clip; }
   position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px;
   overflow: hidden; clip: rect(0, 0, 0, 0); white-space: nowrap; border: 0;
 }
+
+/* ------------------------------------------------------------------
+   Preloader (components/Precarga.tsx). Sólo existe mientras html tiene
+   .precargando, que pone el script inline del <head>: sin JS no aparece.
+------------------------------------------------------------------- */
+.precarga { display: none; }
+html.precargando { overflow: hidden; }
+html.precargando .precarga {
+  display: grid; place-items: center;
+  position: fixed; inset: 0; z-index: 100;
+  background: #ffffff; color: var(--color-noche);
+  transition: transform 0.9s cubic-bezier(0.76, 0, 0.24, 1);
+}
+html.precarga-sale .precarga { transform: translateY(-100%); }
+.precarga-centro { display: grid; justify-items: center; gap: 1.6rem; width: min(78vw, 22rem); }
+.precarga-logo {
+  width: 100%; height: auto;
+  animation: precarga-logo 1.1s cubic-bezier(0.22, 1, 0.36, 1) both;
+}
+@keyframes precarga-logo {
+  from { clip-path: inset(0 100% 0 0); transform: translateY(0.4rem); }
+  to { clip-path: inset(0 0 0 0); transform: none; }
+}
+html.precarga-sale .precarga-logo, html.precarga-sale .precarga-linea, html.precarga-sale .precarga-cifra {
+  opacity: 0; transform: translateY(-1rem); transition: opacity 0.35s, transform 0.5s var(--ease-salida);
+}
+.precarga-linea { width: 100%; height: 3px; background: #efe9e2; overflow: hidden; border-radius: 3px; }
+.precarga-linea span {
+  display: block; height: 100%; transform-origin: left;
+  background: linear-gradient(90deg, var(--color-magenta), var(--color-coral), var(--color-naranja));
+  transition: transform 0.3s linear;
+}
+.precarga-cifra { color: #8a817a; font-variant-numeric: tabular-nums; min-width: 3ch; text-align: center; }
+/* El titular de la portada entra cuando se levanta el telón, no detrás */
+html.precargando .entrada-suave { animation-play-state: paused; }
+@media (prefers-reduced-motion: reduce) {
+  .precarga-logo { animation: none; }
+  html.precargando .precarga { transition: opacity 0.2s; }
+  html.precarga-sale .precarga { transform: none; opacity: 0; }
+}
+
+/* Foto que respira (components/ImagenViva.tsx): acercamiento y deriva lentos, sólo transform */
+@keyframes respirar {
+  from { transform: scale(1.04) translate3d(-1%, 0.5%, 0); }
+  to { transform: scale(1.14) translate3d(1.5%, -1%, 0); }
+}
+.imagen-viva-lienzo { animation: respirar 22s ease-in-out infinite alternate; will-change: transform; }
