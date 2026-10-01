@@ -9,6 +9,7 @@ export const experiencia = {
       titulo: "Atención y Calidez Humana",
       texto: "Te recibimos siempre con una sonrisa y te brindamos una atención cercana y amable en cada punto de contacto.",
       imagen: "recepcion-cafe-molinetes",
+      luz: "oliva",
       alt: "Recepción con barra de café de madera, banquetas verdes, el isotipo de Fosque en la pared y molinetes bajo arcos de luz",
     },
     {
@@ -16,6 +17,7 @@ export const experiencia = {
       titulo: "Sesiones Coreografiadas como Obras de Arte",
       texto: "Profesores Fosque altamente capacitados diseñan cada sesión para despertar tu fuerza física e interior.",
       imagen: "salon-sol-reformers-negros",
+      luz: "sol",
       alt: "Sala con dos filas de Reformers negros Fosque, cielorraso que refleja la luz como agua y un gran disco de luz al fondo",
     },
     {
@@ -23,6 +25,7 @@ export const experiencia = {
       titulo: "Gestión y Motivación Semanal",
       texto: "Tu Ejecutiva y Coordinadora Fosque te asesoran y acompañan semana a semana para que sostener el hábito sea un proceso simple, fluido y natural.",
       imagen: "lounge-lockers-sillones",
+      luz: "rosado",
       alt: "Lounge con sillones rosados, un mural de colores y una pared de lockers iluminados",
     },
   ],

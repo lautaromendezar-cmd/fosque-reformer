@@ -16,7 +16,7 @@ cliente que falta y dónde va).
 
 - **La película del inicio no se toca** (la aprobaron): fachada → pasillo de arcos → el sol,
   sobre oscuros cálidos.
-- **Páginas internas sobre lino (`#f4eee6`)** y el **tricolor de la fachada** (magenta, coral,
+- **Páginas internas sobre lino (`#f4eee6`)**, el Método en el rosa del manual (`#d0b5b2`), y el **tricolor de la fachada** (magenta, coral,
   naranja) en CTA e interacciones. CTA naranja con texto noche. Contrastes en `globals.css`.
 - **Tipografía:** Baloo Bhaijaan 2 (700/800) en titulares; Figtree (400/600) en el resto. El PDF
   pide "Serif"; el manual no tiene: no se usa.
@@ -48,9 +48,12 @@ progreso de cada escena. El Motor vive en el layout: Lenis se crea una vez y el 
 y el parallax se rearman **en cada ruta** dentro de un `gsap.context` (nunca
 `ScrollTrigger.getAll().kill()`: mataría los triggers de la película o del giro).
 
-**Regla:** las secciones claras (`.claro`, lino) y las oscuras que siguen a una clara pintan su
-propio fondo y tinta; el arco interpola sólo entre oscuras. Entre lino y oscuro la mezcla pasa
-por un gris barroso con el texto apagado.
+**Regla:** el arco pinta las escenas **oscuras** (ahí está el cambio suave que gusta: los tres
+pilares van oliva → ámbar → rosado, y antes del footer marrón → noche). Las **claras** (`.claro`:
+lino, y rosa en el Método) pintan siempre su propio fondo. Los tiempos dependen del sentido del
+cruce (`Motor.tsx`): entre oscuras, lento (top 85% → 35%); hacia una clara, recién cuando la
+clara llega arriba; desde una clara hacia una oscura, apenas asoma. Si el arco cruzara de oscuro
+a claro con la oscura todavía en pantalla, el fondo pasa por un gris donde no se lee nada.
 
 **El momento memorable es uno solo: el sol.** El segundo, más chico, es el Reformer que gira.
 

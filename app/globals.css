@@ -57,8 +57,18 @@
 
 /* Bloques claros: pintan su propio fondo para que el texto oscuro nunca quede sobre oscuro
    (sin JS o antes del primer scroll). Además declaran data-luz="lino" para el header. */
-.claro { background: var(--color-lino); color: var(--color-noche); }
+.claro { color: var(--color-noche); }
 .claro :focus-visible { outline-color: var(--color-corteza); }
+
+/* Las escenas oscuras toman el fondo del arco de luz (Motor.tsx): ahí está el cambio suave de
+   color. Las claras pintan siempre el suyo: si el arco cruzara de oscuro a claro, a mitad de
+   camino la pantalla entera queda en un gris donde ni la tinta clara ni la oscura se leen.
+   Sin Motor (sin JS o antes de hidratar) cada escena pinta su luz. */
+.claro[data-luz="lino"] { background: var(--color-lino); }
+.claro[data-luz="rosa"] { background: #d0b5b2; }
+html:not(.motor-listo) .escena[data-luz="marron"] { background: var(--color-marron); }
+html:not(.motor-listo) .escena[data-luz="tibio"] { background: #5a4030; }
+html:not(.motor-listo) .escena[data-luz="noche"] { background: var(--color-noche); }
 .suave { opacity: 0.82; }
 
 html {

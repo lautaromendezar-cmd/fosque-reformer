@@ -12,11 +12,11 @@ type Props = {
   alt: string;
   bajada?: string;
   posicion?: string; // object-position del render
-  siguienteOscura?: boolean; // la sección que sigue no es lino
+  relleno?: string; // fondo de la sección que sigue: lino (por defecto), un color, o "arco" si es oscura
   children?: React.ReactNode;
 };
 
-export default function Portada({ antetitulo, titulo, imagen, alt, bajada, posicion = "center", siguienteOscura = false, children }: Props) {
+export default function Portada({ antetitulo, titulo, imagen, alt, bajada, posicion = "center", relleno, children }: Props) {
   return (
     <section className="escena relative isolate flex min-h-[88svh] items-end overflow-clip" data-luz="noche" aria-labelledby="t-portada">
       <div className="absolute inset-0 -z-10 [&_img]:h-full [&_img]:w-full [&_img]:object-cover" style={{ ["--pos" as string]: posicion }}>
@@ -31,7 +31,7 @@ export default function Portada({ antetitulo, titulo, imagen, alt, bajada, posic
         {children}
       </div>
 
-      <Ola className="absolute inset-x-0 -bottom-px" relleno={siguienteOscura ? "var(--luz-fondo)" : undefined} />
+      <Ola className="absolute inset-x-0 -bottom-px" relleno={relleno === "arco" ? "var(--luz-fondo)" : relleno} />
     </section>
   );
 }

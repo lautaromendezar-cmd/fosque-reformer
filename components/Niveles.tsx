@@ -26,7 +26,7 @@ export default function Niveles() {
   };
 
   return (
-    <section id="niveles" className="escena relative scroll-mt-20 bg-[#5a4030] text-hueso" data-luz="tibio" aria-labelledby="t-niveles">
+    <section id="niveles" className="escena relative scroll-mt-20 text-hueso" data-luz="tibio" aria-labelledby="t-niveles">
       <div className="contenedor py-[16vh] md:py-[20vh]">
         <div className="md:grid md:grid-cols-12 md:gap-8">
           <div className="md:col-span-5">

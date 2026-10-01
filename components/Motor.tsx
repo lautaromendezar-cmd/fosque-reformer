@@ -20,7 +20,7 @@ import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { SplitText } from "gsap/SplitText";
 import Lenis from "lenis";
-import { luces, type NombreLuz } from "@/lib/luz";
+import { luces, type Luz, type NombreLuz } from "@/lib/luz";
 
 gsap.registerPlugin(ScrollTrigger, SplitText);
 
@@ -54,7 +54,7 @@ export default function Motor() {
       // Arco de luz: UNA función pinta :root leyendo el progreso de cada escena. Nada de un
       // tween por escena sobre la misma variable: con saltos de scroll se pisan entre sí.
       const cadena = Array.from(document.querySelectorAll<HTMLElement>(".escena[data-luz]"))
-        .map((el) => ({ el, luz: luces[el.dataset.luz as NombreLuz] }))
+        .map((el) => ({ el, luz: luces[el.dataset.luz as NombreLuz] as Luz }))
         .filter((x) => x.luz);
       const progresos = new Array(cadena.length).fill(0);
       const mezclar = (a: string, b: string, p: number) => gsap.utils.interpolate(a, b, p) as string;
@@ -63,7 +63,7 @@ export default function Motor() {
         let fondo = cadena[0].luz.fondo, tinta = cadena[0].luz.tinta;
         for (let i = 1; i < cadena.length; i++) {
           const p = progresos[i];
-          if (p <= 0) break;
+          if (p <= 0) continue; // una clara corta puede no haber llegado arriba y la oscura siguiente sí
           fondo = mezclar(fondo, cadena[i].luz.fondo, p);
           tinta = mezclar(tinta, cadena[i].luz.tinta, p);
         }
@@ -72,10 +72,17 @@ export default function Motor() {
       };
       cadena.forEach((x, i) => {
         if (i === 0) return;
+        // Entre dos oscuras la mezcla es lenta: es el efecto. Las claras pintan su propio fondo,
+        // así que al cruzar el arco sólo tiene que estar listo para lo que se ve debajo:
+        // - hacia una clara: cambia cuando la clara llega arriba (la oscura que sale ya no se ve;
+        //   antes, su texto claro quedaba sobre el gris de la mezcla).
+        // - desde una clara hacia una oscura: cambia apenas asoma, la oscura entra con su color.
+        const desdeClara = !!cadena[i - 1].luz.clara, haciaClara = !!x.luz.clara;
+        const [start, end] = haciaClara ? ["top 12%", "top top"] : desdeClara ? ["top bottom", "top 85%"] : ["top 85%", "top 35%"];
         ScrollTrigger.create({
           trigger: x.el,
-          start: "top 85%",
-          end: "top 35%",
+          start,
+          end,
           onUpdate: (self) => { progresos[i] = self.progress; pintar(); },
           onRefresh: (self) => { progresos[i] = self.progress; pintar(); },
         });

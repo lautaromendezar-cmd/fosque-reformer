@@ -86,7 +86,7 @@ export default function ReformerGiro({ conEnlace = false }: { conEnlace?: boolea
       data-luz="lino"
       aria-labelledby="t-giro"
     >
-      {/* El lino va en el contenedor pegado: sticky crea su propio contexto de apilamiento y el
+      {/* El fondo va en el contenedor pegado: sticky crea su propio contexto de apilamiento y el
           multiply del video se mezcla contra ese fondo, no contra el de la sección. */}
       <div className={`${scrub ? "sticky top-0 flex h-[100svh] items-center" : "py-[14vh]"} bg-lino`}>
       <div className="contenedor flex w-full flex-col justify-center lg:grid lg:grid-cols-12 lg:items-center lg:gap-8">

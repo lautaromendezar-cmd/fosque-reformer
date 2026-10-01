@@ -13,7 +13,7 @@ export const metadata: Metadata = {
 export default function PaginaExperiencia() {
   return (
     <>
-      <Portada antetitulo={experiencia.antetitulo} titulo="Te recibimos siempre con una sonrisa." imagen="recepcion-cafe-vegetacion" alt="Recepción con barra de café de madera, banquetas verdes y un mural de vegetación translúcida" siguienteOscura />
+      <Portada antetitulo={experiencia.antetitulo} titulo="Te recibimos siempre con una sonrisa." imagen="recepcion-cafe-vegetacion" alt="Recepción con barra de café de madera, banquetas verdes y un mural de vegetación translúcida" relleno="arco" />
       <Pilares />
       <Cierre />
       <Footer />

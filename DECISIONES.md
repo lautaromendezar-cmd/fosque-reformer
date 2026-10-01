@@ -143,3 +143,15 @@ toma como verdad), aplicar su paleta y dejar afuera los idiomas.
   tema con licencia, y sin él el botón no aparece.
 - **No puse:** Iniciar Sesión (no hay portal), selector de país/idioma (fuera de etapa), texto
   inventado para Fosque Niños.
+
+### 1-oct (tarde) — devolución de Lautaro sobre la preview
+
+- **Volvió el cambio suave de fondo** (lo había cortado al darles fondo propio a las oscuras
+  para que no hubiera gris a mitad de camino). Ahora el arco pinta las oscuras y las claras
+  pintan el suyo; los tiempos del arco dependen del sentido del cruce (ver CLAUDE.md).
+- **Los 3 Pilares:** cada pilar es una escena con el tono de su render (oliva #3d3b22, ámbar
+  #4a3214, rosado #5a3438; hueso ≥ 8,6 sobre los tres).
+- **El Método va en rosa del manual (#d0b5b2)** para no repetir el blanco del Reformer que gira.
+  El dato chico ahí es corteza (6,5): magenta-hondo sobre rosa da 2,9.
+- El Motor ya no corta la cadena del arco en la primera escena sin progreso (`continue`, no
+  `break`): una clara más corta que la pantalla hacía ignorar la oscura que le sigue.

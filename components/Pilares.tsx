@@ -1,5 +1,6 @@
 // Los 3 Pilares de la Experiencia Fosque. Editorial: cada pilar con su render, alternando
-// lado, la foto grande y el texto chico solapado. En el inicio, con enlace a /experiencia.
+// lado, la foto grande y el texto chico solapado. Cada pilar es una escena con el tono de su
+// render: el fondo se desliza de uno a otro al bajar. En el inicio, con enlace a /experiencia.
 
 import Link from "next/link";
 import { experiencia } from "@/content/experiencia";
@@ -8,7 +9,7 @@ import type { NombreImagen } from "@/lib/imagenes";
 
 export default function Pilares({ conEnlace = false }: { conEnlace?: boolean }) {
   return (
-    <section className="escena grano relative bg-marron text-hueso" data-luz="marron" aria-labelledby="t-pilares">
+    <section className="escena grano relative text-hueso" data-luz="marron" aria-labelledby="t-pilares">
       <div className="contenedor py-[16vh] md:py-[20vh]">
         <p className="dato mb-5 text-manteca" data-revelar>{experiencia.antetitulo}</p>
         <h2 id="t-pilares" className="h1 max-w-[16ch]" data-revelar="lineas">{experiencia.titulo}</h2>
@@ -17,7 +18,7 @@ export default function Pilares({ conEnlace = false }: { conEnlace?: boolean }) 
           {experiencia.pilares.map((p, i) => {
             const derecha = i % 2 === 1;
             return (
-              <li key={p.numero} className="md:grid md:grid-cols-12 md:items-end md:gap-8">
+              <li key={p.numero} className="escena md:grid md:grid-cols-12 md:items-end md:gap-8" data-luz={p.luz}>
                 <div className={`relative aspect-[3/2] overflow-clip md:col-span-8 ${derecha ? "md:order-2 md:col-start-5" : ""}`} data-revelar>
                   <Imagen nombre={p.imagen as NombreImagen} alt={p.alt} sizes="(min-width: 768px) 66vw, 100vw" className="fondo-imagen scale-[1.12]" parallax={8} />
                 </div>

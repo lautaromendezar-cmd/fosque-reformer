@@ -21,7 +21,7 @@ export default function Sedes({ conMapa = false }: { conMapa?: boolean }) {
   }, [q]);
 
   return (
-    <section id="sedes" className="escena relative overflow-clip bg-marron text-hueso" data-luz="marron" aria-labelledby="t-sedes">
+    <section id="sedes" className="escena relative overflow-clip text-hueso" data-luz="marron" aria-labelledby="t-sedes">
       <Curvas className="text-hueso" />
       <div className="contenedor relative z-10 py-[16vh] md:py-[20vh]">
         <div className="md:grid md:grid-cols-12 md:gap-8">

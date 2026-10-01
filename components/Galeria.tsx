@@ -14,7 +14,7 @@ const posiciones = [
 
 export default function Galeria() {
   return (
-    <section className="escena grano relative bg-marron text-hueso" data-luz="marron" aria-label="Los espacios">
+    <section className="escena grano relative text-hueso" data-luz="marron" aria-label="Los espacios">
       <div className="contenedor py-[14vh] md:py-[18vh]">
         <ul className="grid gap-6 md:grid-cols-12 md:gap-y-12">
           {equipamiento.galeria.map((g, i) => (
