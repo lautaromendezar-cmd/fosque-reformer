@@ -2,13 +2,18 @@
 
 // La película: portada, recorrido y sol son un solo plano continuo.
 //
-// ESCRITORIO (≥1024px, sin reduced-motion): sección de 400vh con la pantalla pegada
-// (sticky). El scroll scrubbea los clips `entrada` y `hacia-el-sol` (versión -scrub, con
-// GOP corto). El titular de la portada vive sobre el arranque del clip 1; el
-// titular del sol entra cuando el clip 2 llega al final, con el halo y el oscurecimiento.
+// Antes del clip 1, la calle se hace de noche y la fachada se enciende: tres fotos
+// alineadas al píxel (día, noche con la fachada apagada, noche encendida). Anochece por
+// opacidad; los LEDs se prenden de arriba hacia abajo con una máscara (`--enc`). El clip
+// `entrada` arranca en el mismo cuadro que la noche encendida.
 //
-// MOBILE: sección de 100svh. La bajada no se scrubbea: se reproduce sola al entrar en
-// pantalla (clip 1 → clip 2), y se puede pausar tocando. Al terminar aparece el sol.
+// ESCRITORIO (≥1024px, sin reduced-motion): sección de 500vh con la pantalla pegada
+// (sticky). El scroll hace anochecer, enciende y scrubbea los clips `entrada` y
+// `hacia-el-sol` (versión -scrub, con GOP corto). El titular del sol entra cuando el
+// clip 2 llega al final, con el halo y el oscurecimiento.
+//
+// MOBILE: sección de 100svh. Anochece y se enciende sola; después la bajada se reproduce
+// (clip 1 → clip 2) y se puede pausar tocando. Al terminar aparece el sol.
 //
 // SIN VIDEO / REDUCED MOTION: los pósters (renders) hacen lo mismo con transformaciones:
 // la fachada escala, se cruza al salón y el sol sube. El sitio se ve terminado sin un
@@ -22,6 +27,7 @@ import { portada, sol, cta } from "@/content/sitio";
 import { linkWhatsApp } from "@/lib/whatsapp";
 import Imagen from "./Imagen";
 import { video, esperarBlob, precargaLista } from "@/lib/video";
+import { SIZES_PANTALLA_16_9 } from "@/lib/imagenes";
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -39,6 +45,9 @@ export default function Pelicula() {
   const [pausado, setPausado] = useState(false);
   const [enSol, setEnSol] = useState(false);
   const [telonArriba, setTelonArriba] = useState(false);
+  // Mobile: la calle pasa de día a noche y se enciende antes del clip 1
+  const [fase, setFase] = useState<"dia" | "anochece" | "encendida">("dia");
+  const [rueda, setRueda] = useState(false);
 
   useEffect(() => { precargaLista.then(() => setTelonArriba(true)); }, []);
 
@@ -85,6 +94,9 @@ export default function Pelicula() {
     const capaSol = q<HTMLElement>(".capa-sol")[0];
     const posterEntrada = q<HTMLElement>(".capa-entrada .poster-anim")[0];
     const posterSol = q<HTMLElement>(".capa-sol .poster-anim")[0];
+    const anochecer = q<HTMLElement>(".capa-anochecer")[0];
+    const encendida = q<HTMLElement>(".capa-encendida")[0];
+    const videoEntrada = vEntrada.current;
     const oscuro = q<HTMLElement>(".oscuro")[0];
     const halo = q<HTMLElement>(".halo")[0];
     const tPortada = q<HTMLElement>(".titulo-portada")[0];
@@ -94,6 +106,9 @@ export default function Pelicula() {
     // Estado inicial explícito (un timeline con scrub renderiza en 0 en cada refresh)
     gsap.set(capaSol, { opacity: 0 });
     gsap.set(posterEntrada, { scale: 1 });
+    gsap.set(anochecer, { opacity: 0 });
+    gsap.set(encendida, { "--enc": "-15%" } as gsap.TweenVars);
+    if (videoEntrada && videoOk.entrada) gsap.set(videoEntrada, { opacity: 0 });
     gsap.set(posterSol, { scale: 1.25, yPercent: 9 });
     gsap.set(oscuro, { opacity: 0 });
     gsap.set(halo, { "--luz-halo": 0 } as gsap.TweenVars);
@@ -105,15 +120,20 @@ export default function Pelicula() {
       scrollTrigger: { trigger: s, start: "top top", end: "bottom bottom", scrub: 0.6, invalidateOnRefresh: true },
     });
 
-    // 0 → 0.44: entrada. 0.44 → 0.86: hacia el sol. 0.86 → 1: el pico.
-    tl.to(posterEntrada, { scale: 1.16, duration: 0.44 }, 0)
-      .to(tPortada, { opacity: 0, yPercent: -12, duration: 0.1 }, 0.12)
-      .to(capaEntrada, { opacity: 0, duration: 0.04 }, 0.42)
-      .to(capaSol, { opacity: 1, duration: 0.04 }, 0.42)
-      .to(posterSol, { scale: 1, yPercent: 0, duration: 0.44 }, 0.44)
-      .to(oscuro, { opacity: 0.55, duration: 0.14 }, 0.86)
-      .to(halo, { "--luz-halo": 1, duration: 0.14 } as gsap.TweenVars, 0.86)
-      .to(palabras, { yPercent: 0, opacity: 1, duration: 0.1, stagger: 0.012 }, 0.88);
+    // 0.04 → 0.14: anochece. 0.14 → 0.24: se enciende la fachada. 0.24 → 0.5: entrada.
+    // 0.5 → 0.88: hacia el sol. 0.88 → 1: el pico.
+    tl.to(anochecer, { opacity: 1, duration: 0.1 }, 0.04)
+      .to(tPortada, { opacity: 0, yPercent: -12, duration: 0.08 }, 0.12)
+      .to(encendida, { "--enc": "100%", duration: 0.1 } as gsap.TweenVars, 0.14)
+      .to(posterEntrada, { scale: 1.16, duration: 0.26 }, 0.24)
+      .to(capaEntrada, { opacity: 0, duration: 0.03 }, 0.48)
+      .to(capaSol, { opacity: 1, duration: 0.03 }, 0.48)
+      .to(posterSol, { scale: 1, yPercent: 0, duration: 0.38 }, 0.5)
+      .to(oscuro, { opacity: 0.55, duration: 0.12 }, 0.88)
+      .to(halo, { "--luz-halo": 1, duration: 0.12 } as gsap.TweenVars, 0.88)
+      .to(palabras, { yPercent: 0, opacity: 1, duration: 0.09, stagger: 0.01 }, 0.9);
+    // El clip arranca en el cuadro de la noche encendida: aparece cuando terminó de encenderse
+    if (videoEntrada && videoOk.entrada) tl.to(videoEntrada, { opacity: 1, duration: 0.025 }, 0.225);
 
     // Scrub de los videos: currentTime sigue al progreso. Con GOP de 3 cada seek decodifica 2 cuadros como mucho.
     let ultimoE = -1, ultimoS = -1;
@@ -125,11 +145,11 @@ export default function Pelicula() {
         const p = self.progress;
         const e = vEntrada.current, so = vSol.current;
         if (e && e.duration && videoOk.entrada) {
-          const t = Math.min(1, p / 0.44) * (e.duration - 0.05);
+          const t = Math.min(1, Math.max(0, (p - 0.24) / 0.26)) * (e.duration - 0.05);
           if (Math.abs(t - ultimoE) > 0.02) { e.currentTime = t; ultimoE = t; }
         }
         if (so && so.duration && videoOk.sol) {
-          const t = Math.min(1, Math.max(0, (p - 0.44) / 0.42)) * (so.duration - 0.05);
+          const t = Math.min(1, Math.max(0, (p - 0.5) / 0.38)) * (so.duration - 0.05);
           if (Math.abs(t - ultimoS) > 0.02) { so.currentTime = t; ultimoS = t; }
         }
       },
@@ -138,9 +158,17 @@ export default function Pelicula() {
     return () => { tl.kill(); st.kill(); };
   }, [modo, videoOk.entrada, videoOk.sol]);
 
-  // ---- MOBILE: se reproduce sola al entrar, tocar pausa ----------------------------
+  // ---- MOBILE: anochece y se enciende sola al subir el telón ----------------------
   useEffect(() => {
-    if (modo !== "auto" || !seccion.current || !telonArriba) return;
+    if (modo !== "auto" || !telonArriba) return;
+    const t1 = setTimeout(() => setFase("anochece"), 1400);
+    const t2 = setTimeout(() => setFase("encendida"), 1400 + 1700);
+    return () => { clearTimeout(t1); clearTimeout(t2); };
+  }, [modo, telonArriba]);
+
+  // ---- MOBILE: después del encendido se reproduce sola, tocar pausa ----------------
+  useEffect(() => {
+    if (modo !== "auto" || !seccion.current || fase !== "encendida") return;
     const e = vEntrada.current, so = vSol.current;
     if (!e || !so) return;
     const alTerminarEntrada = () => {
@@ -150,24 +178,31 @@ export default function Pelicula() {
     const alTerminarSol = () => setEnSol(true);
     e.addEventListener("ended", alTerminarEntrada);
     so.addEventListener("ended", alTerminarSol);
-    const io = new IntersectionObserver(
-      ([x]) => {
-        if (x.isIntersecting && !pausado) { if (!seccion.current?.classList.contains("en-sol-capa")) e.play().catch(() => {}); else so.play().catch(() => {}); }
-        else { e.pause(); so.pause(); }
-      },
-      { threshold: 0.3 },
-    );
-    io.observe(seccion.current);
-    return () => { io.disconnect(); e.removeEventListener("ended", alTerminarEntrada); so.removeEventListener("ended", alTerminarSol); };
-  }, [modo, pausado, telonArriba]);
+    // El clip espera a que la fachada termine de encenderse (la transición dura 1,8 s)
+    let io: IntersectionObserver | null = null;
+    const arranque = setTimeout(() => {
+      const sec = seccion.current;
+      if (!sec) return;
+      setRueda(true);
+      io = new IntersectionObserver(
+        ([x]) => {
+          if (x.isIntersecting && !pausado) { if (!sec.classList.contains("en-sol-capa")) e.play().catch(() => {}); else so.play().catch(() => {}); }
+          else { e.pause(); so.pause(); }
+        },
+        { threshold: 0.3 },
+      );
+      io.observe(sec);
+    }, 1900);
+    return () => { clearTimeout(arranque); io?.disconnect(); e.removeEventListener("ended", alTerminarEntrada); so.removeEventListener("ended", alTerminarSol); };
+  }, [modo, pausado, fase]);
 
   // Sin video en mobile: mostrar el sol después de unos segundos igual (el póster hace la película)
   useEffect(() => {
-    if (modo !== "auto" || !telonArriba) return;
+    if (modo !== "auto" || fase !== "encendida") return;
     if (videoOk.entrada || videoOk.sol) return;
     const t = setTimeout(() => { seccion.current?.classList.add("en-sol-capa"); setEnSol(true); }, 3500);
     return () => clearTimeout(t);
-  }, [modo, videoOk, telonArriba]);
+  }, [modo, videoOk, fase]);
 
   const alternarPausa = () => {
     if (modo !== "auto") return;
@@ -187,8 +222,12 @@ export default function Pelicula() {
       id="inicio"
       className={[
         "escena pelicula grano",
-        scrub ? "h-[400vh]" : "min-h-[100svh]",
+        scrub ? "h-[500vh]" : "min-h-[100svh]",
         estatico || (mobile && enSol) ? "en-sol" : "",
+        mobile ? "modo-auto" : "",
+        mobile && rueda ? "rueda" : "",
+        mobile && fase !== "dia" ? "anochece" : "",
+        mobile && fase === "encendida" ? "enciende" : "",
       ].join(" ")}
       data-luz="dia"
       aria-label="Portada"
@@ -197,7 +236,14 @@ export default function Pelicula() {
         {/* Capa 1: la calle y el corredor */}
         <div className="capa capa-entrada fondo-imagen">
           <div className="poster-anim absolute inset-0 origin-center">
-            <Imagen nombre="fachada-nunez-atardecer" alt="Fachada blanca de Fosque Reformer en Núñez, con franjas onduladas magenta, coral y naranja, entrada en arco iluminada y árboles de vereda" prioridad sizes="100vw" />
+            <Imagen nombre="fachada-nunez-atardecer" alt="Fachada blanca de Fosque Reformer en Núñez, entre edificios de departamentos y locales a la calle, con franjas onduladas roja, dorada y naranja y la entrada en arco" prioridad sizes={SIZES_PANTALLA_16_9} />
+            {/* La misma calle de noche: primero con la fachada apagada, después encendida */}
+            <div className="capa-anochecer absolute inset-0" aria-hidden="true">
+              <Imagen nombre="fachada-calle-noche-apagada" alt="" sizes={SIZES_PANTALLA_16_9} />
+            </div>
+            <div className="capa-encendida absolute inset-0" aria-hidden="true">
+              <Imagen nombre="fachada-calle-noche" alt="" sizes={SIZES_PANTALLA_16_9} />
+            </div>
           </div>
           {modo && !estatico && (
             <video ref={vEntrada} muted playsInline preload={scrub ? "none" : "metadata"} disablePictureInPicture tabIndex={-1}
@@ -285,6 +331,17 @@ export default function Pelicula() {
         .pelicula .capa-sol { opacity: 0; }
         .pelicula .titulo-sol .palabra { opacity: 0; transform: translateY(60%); }
         .pelicula .oscuro { opacity: 0; }
+        @property --enc { syntax: "<percentage>"; inherits: false; initial-value: -15%; }
+        .pelicula .capa-anochecer { opacity: 0; }
+        .pelicula .capa-encendida {
+          --enc: -15%;
+          -webkit-mask-image: linear-gradient(180deg, #000 var(--enc), transparent calc(var(--enc) + 15%));
+          mask-image: linear-gradient(180deg, #000 var(--enc), transparent calc(var(--enc) + 15%));
+        }
+        /* Mobile: el clip queda oculto hasta que la fachada termina de encenderse */
+        .pelicula.modo-auto:not(.rueda) .capa-entrada video { opacity: 0 !important; }
+        .pelicula.anochece .capa-anochecer { opacity: 1; transition: opacity 1.6s ease-in-out; }
+        .pelicula.enciende .capa-encendida { --enc: 100%; transition: --enc 1.8s cubic-bezier(.45,0,.25,1); }
         /* Estado final (mobile al terminar, reduced motion, sin JS): el sol */
         .pelicula.en-sol .capa-entrada { opacity: 0; }
         .pelicula.en-sol .capa-sol { opacity: 1; }

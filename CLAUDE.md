@@ -14,8 +14,16 @@ cliente que falta y dónde va).
 
 ## Dirección de arte en cuatro líneas
 
-- **La película del inicio no se toca** (la aprobaron): fachada → pasillo de arcos → el sol,
-  sobre oscuros cálidos.
+- **La película del inicio:** calle de día → anochece → la fachada se enciende → ingreso por el
+  arco hasta los molinetes → pasillo de arcos → el sol, sobre oscuros cálidos. El tramo de la
+  calle se rehizo el 3-oct-2026 (pedido del cliente: el castillo del outpaint "se notaba IA",
+  quería una cuadra comercial y que "cambie de color" al entrar). **El interior lo va a cambiar
+  él después:** no tocar `hacia-el-sol` hasta que mande el material.
+- **La calle son tres fotos alineadas al píxel** (`fachada-nunez-atardecer` de día,
+  `fachada-calle-noche-apagada`, `fachada-calle-noche`). Edificio redibujado por IA en vista
+  frontal con el **logo real del manual compuesto encima** (no es texto de la IA). Fuentes,
+  máscara y scripts (`componer_logo.py`, `alinear.py`) en `fotos-nuevas/calle-nueva/`, fuera
+  del repo. Si se regenera una, hay que realinear la noche contra el día.
 - **Páginas internas sobre lino (`#f4eee6`)**, el Método en el rosa del manual (`#d0b5b2`), y el **tricolor de la fachada** (magenta, coral,
   naranja) en CTA e interacciones. CTA naranja con texto noche. Contrastes en `globals.css`.
 - **Tipografía:** Baloo Bhaijaan 2 en 600 en titulares y `.display` (pedido del cliente el

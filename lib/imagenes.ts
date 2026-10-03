@@ -27,3 +27,8 @@ export function imagen(nombre: NombreImagen) {
     poster: `/img/${nombre}-${mayor}.webp${q}`,
   };
 }
+
+// `sizes` de una foto 16:9 a pantalla completa con object-fit: cover. En una pantalla más
+// angosta que la foto (cualquier celular) la foto se recorta y ocupa 1,79 veces el alto
+// de ancho: con "100vw" el navegador bajaba la de 480 px y la estiraba al triple.
+export const SIZES_PANTALLA_16_9 = "(max-aspect-ratio: 43/24) 180vh, 100vw";
