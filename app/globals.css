@@ -32,6 +32,9 @@
 
   --font-titulo: var(--font-baloo), "Baloo Bhaijaan 2", system-ui, sans-serif;
   --font-cuerpo: var(--font-figtree), "Figtree", system-ui, sans-serif;
+  /* Peso único de los titulares: la línea intermedia de la lámina tipográfica del manual
+     (pedido del cliente, 3-oct-2026). Antes: 700 en títulos y 800 en display. */
+  --peso-titulo: 600;
 
   /* Escala fluida. Base 17px → 19px. */
   --text-display: clamp(3rem, 1.2rem + 8vw, 8.25rem);
@@ -98,14 +101,14 @@ html.lenis, html.lenis body { height: auto; }
 .lenis.lenis-stopped { overflow: hidden; }
 
 /* Tipografía */
-h1, h2, h3, .titulo {
+h1, h2, h3, .titulo, .display {
   font-family: var(--font-titulo);
-  font-weight: 700;
+  font-weight: var(--peso-titulo);
   line-height: 1.02;
   letter-spacing: -0.015em;
   text-wrap: balance;
 }
-.display { font-size: var(--text-display); font-weight: 800; line-height: 0.95; letter-spacing: -0.02em; }
+.display { font-size: var(--text-display); line-height: 0.95; letter-spacing: -0.02em; }
 .h1 { font-size: var(--text-h1); }
 .h2 { font-size: var(--text-h2); }
 .h3 { font-size: var(--text-h3); }

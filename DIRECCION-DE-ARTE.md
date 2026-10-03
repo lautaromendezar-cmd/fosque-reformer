@@ -185,8 +185,8 @@ Fluida con `clamp()`, base 17px, medida de 62 caracteres.
 
 | nivel | mobile → desktop | peso |
 |---|---|---|
-| Display (sólo el sol) | 48 → 132 px | 800 |
-| H1 de escena | 34 → 76 px | 700 |
+| Display (sólo el sol) | 48 → 132 px | 600 (antes 800) |
+| H1 de escena | 34 → 76 px | 600 (antes 700) |
 | H2 | 26 → 40 px | 600 |
 | Cuerpo | 17 → 19 px | 400, interlínea 1,7 |
 | Dato / etiqueta | 12 → 13 px | 600, tracking +0.14em, versalitas |

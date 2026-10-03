@@ -18,7 +18,9 @@ cliente que falta y dónde va).
   sobre oscuros cálidos.
 - **Páginas internas sobre lino (`#f4eee6`)**, el Método en el rosa del manual (`#d0b5b2`), y el **tricolor de la fachada** (magenta, coral,
   naranja) en CTA e interacciones. CTA naranja con texto noche. Contrastes en `globals.css`.
-- **Tipografía:** Baloo Bhaijaan 2 (700/800) en titulares; Figtree (400/600) en el resto. El PDF
+- **Tipografía:** Baloo Bhaijaan 2 en 600 en titulares y `.display` (pedido del cliente el
+  3-oct-2026: "la opción intermedia" de la lámina del manual; antes 700/800). El peso vive en
+  `--peso-titulo` de `globals.css`. Figtree (400/600) en el resto. El PDF
   pide "Serif"; el manual no tiene: no se usa.
 - **Ornamento único:** la ola tricolor de la fachada (`components/Ola.tsx`) entre la portada de
   cada página y lo que sigue.
@@ -165,3 +167,13 @@ vercel deploy      # (--prod para producción); .vercelignore no hace falta, .gi
   magenta puros sólo en tamaños grandes o como fondo de botón (contrastes en `globals.css`).
 - Los renders son de Artagaveytia-Mantel y el estudio no está construido: no publicar sin la
   autorización del cliente (ver `PENDIENTES.md`).
+
+<!-- BEGIN:nextjs-agent-rules -->
+
+# This is NOT the Next.js you know
+
+This version has breaking changes — APIs, conventions, and file structure may all differ from your training data. Read the relevant guide in `node_modules/next/dist/docs/` (resolved from this file's directory; in monorepos the `next` package may not be visible from the repo root) before writing any code. Heed deprecation notices.
+
+This block is written and re-added by `next dev` — verify at `node_modules/next/dist/server/lib/generate-agent-files.js`. Removing it from a diff only re-creates the uncommitted change; committing it with your work keeps the tree clean.
+
+<!-- END:nextjs-agent-rules -->

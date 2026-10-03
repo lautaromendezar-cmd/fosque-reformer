@@ -10,7 +10,7 @@ import Precarga from "@/components/Precarga";
 // Baloo Bhaijaan 2 es la tipografía del manual de marca: sólo titulares y display.
 const baloo = Baloo_Bhaijaan_2({
   subsets: ["latin"],
-  weight: ["700", "800"],
+  weight: ["600"],
   variable: "--font-baloo",
   display: "swap",
 });
