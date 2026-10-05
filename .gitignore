@@ -20,3 +20,7 @@ video-raw/pruebas/
 # sistema
 .DS_Store
 Thumbs.db
+
+# Material del cliente (fotos crudas), fuera del repo
+equipo-reformer/
+personas-para-IA/
