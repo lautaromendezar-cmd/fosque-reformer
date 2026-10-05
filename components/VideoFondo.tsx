@@ -4,6 +4,8 @@
 // Siempre tiene un póster (render) debajo: si el archivo no existe o falla, se ve el póster
 // y el sitio se ve terminado igual. En mobile carga la versión -mobile (9:16) si existe.
 // Con prefers-reduced-motion no se reproduce nada.
+// Sin `clip`, el póster respira solo (acercamiento lento en CSS): para fondos que tienen que
+// coincidir con un render y no hay clip que lo muestre.
 
 import { useEffect, useRef, useState } from "react";
 import Imagen from "./Imagen";
@@ -11,14 +13,15 @@ import type { NombreImagen } from "@/lib/imagenes";
 import { video } from "@/lib/video";
 
 type Props = {
-  clip: "sol-loop" | "materiales-loop" | "fachada-noche";
+  clip?: "sol-loop" | "materiales-loop" | "fachada-noche";
   poster: NombreImagen;
   alt: string;
   className?: string;
   oscurecer?: number; // 0..1, capa oscura encima para que el texto se lea
+  imgClassName?: string;
 };
 
-export default function VideoFondo({ clip, poster, alt, className = "", oscurecer = 0.45 }: Props) {
+export default function VideoFondo({ clip, poster, alt, className = "", oscurecer = 0.45, imgClassName = "" }: Props) {
   const ref = useRef<HTMLVideoElement>(null);
   const [listo, setListo] = useState(false);
   const [mobile, setMobile] = useState<boolean | null>(null);
@@ -29,7 +32,7 @@ export default function VideoFondo({ clip, poster, alt, className = "", oscurece
 
   useEffect(() => {
     const v = ref.current;
-    if (!v || mobile === null) return;
+    if (!v || mobile === null || !clip) return;
     if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
 
     const onCanPlay = () => setListo(true);
@@ -48,14 +51,20 @@ export default function VideoFondo({ clip, poster, alt, className = "", oscurece
     io.observe(v);
     v.load();
     return () => { io.disconnect(); v.removeEventListener("canplay", onCanPlay); v.removeEventListener("error", onError, true); };
-  }, [mobile]);
+  }, [mobile, clip]);
 
   const base = `${clip}${mobile ? "-mobile" : ""}`;
 
   return (
     <div className={`fondo-imagen ${className}`} aria-hidden="true">
-      <Imagen nombre={poster} alt={alt} sizes="100vw" />
-      {mobile !== null && (
+      {clip ? (
+        <Imagen nombre={poster} alt={alt} sizes="100vw" imgClassName={imgClassName} />
+      ) : (
+        <div className="imagen-viva-lienzo absolute inset-0">
+          <Imagen nombre={poster} alt={alt} sizes="100vw" imgClassName={imgClassName} />
+        </div>
+      )}
+      {clip && mobile !== null && (
         <video
           ref={ref}
           muted
