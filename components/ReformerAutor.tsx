@@ -32,8 +32,9 @@ export default function ReformerAutor({ conEnlace = false }: { conEnlace?: boole
     if (!pegado || !seccion.current) return;
     const s = seccion.current;
     const fotos = gsap.utils.toArray<HTMLElement>(".autor-foto", s);
+    const fondos = gsap.utils.toArray<HTMLElement>(".autor-fondo-capa", s);
     const palabras = gsap.utils.toArray<HTMLElement>(".autor-palabra", s);
-    gsap.set(fotos.slice(1), { opacity: 0 });
+    gsap.set([...fotos.slice(1), ...fondos.slice(1)], { opacity: 0 });
     gsap.set(palabras, { opacity: 0.18 });
     const tl = gsap.timeline({
       defaults: { ease: "none" },
@@ -43,7 +44,7 @@ export default function ReformerAutor({ conEnlace = false }: { conEnlace?: boole
     const n = fotos.length;
     fotos.forEach((f, i) => {
       tl.fromTo(f.querySelector("img"), { scale: 1.06 }, { scale: 1, duration: 1 / n, immediateRender: false }, i / n);
-      if (i > 0) tl.to(f, { opacity: 1, duration: 0.12 }, i / n - 0.06);
+      if (i > 0) tl.to([f, fondos[i]], { opacity: 1, duration: 0.12 }, i / n - 0.06);
     });
     palabras.forEach((p, i) => tl.to(p, { opacity: 1, duration: 0.08 }, 0.08 + i * (0.84 / palabras.length)));
     return () => { tl.scrollTrigger?.kill(); tl.kill(); };
@@ -56,8 +57,18 @@ export default function ReformerAutor({ conEnlace = false }: { conEnlace?: boole
       data-luz="lino"
       aria-labelledby="t-autor"
     >
-      <div className={`${pegado ? "sticky top-0 flex h-[100svh] items-center" : "py-[14vh]"} bg-lino`}>
-        <div className="contenedor flex w-full flex-col justify-center lg:grid lg:grid-cols-12 lg:items-center lg:gap-10">
+      <div className={`${pegado ? "sticky top-0 flex h-[100svh] items-center" : "py-[14vh]"} relative overflow-clip bg-lino`}>
+        {/* Fondo: la misma sala muy desenfocada, con un velo de lino para que el texto oscuro se lea.
+            Pedido del cliente: que no quede el fondo liso. Basta la imagen chica (el blur la disuelve). */}
+        <div className="autor-fondo pointer-events-none absolute inset-0" aria-hidden="true">
+          {(pegado ? equipamiento.fotos : equipamiento.fotos.slice(0, 1)).map((f) => (
+            <div key={f.imagen} className="autor-fondo-capa absolute inset-0">
+              <Imagen nombre={f.imagen} alt="" sizes="480px" className="fondo-imagen" />
+            </div>
+          ))}
+          <div className="absolute inset-0 bg-[linear-gradient(90deg,rgba(244,238,230,0.7)_0%,rgba(244,238,230,0.5)_40%,rgba(244,238,230,0.28)_100%)]" />
+        </div>
+        <div className="contenedor relative flex w-full flex-col justify-center lg:grid lg:grid-cols-12 lg:items-center lg:gap-10">
           <div className="lg:col-span-4">
             <p className="dato mb-4 text-magenta-hondo" data-revelar>{equipamiento.antetitulo}</p>
             <h2 id="t-autor" className="h2" data-revelar>
@@ -104,6 +115,7 @@ export default function ReformerAutor({ conEnlace = false }: { conEnlace?: boole
       </div>
 
       <style>{`
+        .autor-fondo-capa img { filter: blur(48px) saturate(1.1); transform: scale(1.25); }
         .firma { font-family: var(--font-firma), "Mrs Saint Delafield", cursive; font-weight: 400;
           font-size: clamp(3rem, 2rem + 3.6vw, 5.25rem); line-height: 1.05; letter-spacing: 0; }
       `}</style>
