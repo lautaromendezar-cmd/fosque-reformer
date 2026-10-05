@@ -100,6 +100,7 @@ export default function Pelicula() {
     const oscuro = q<HTMLElement>(".oscuro")[0];
     const halo = q<HTMLElement>(".halo")[0];
     const tPortada = q<HTMLElement>(".titulo-portada")[0];
+    const velo = q<HTMLElement>(".velo-portada")[0];
     const tSol = q<HTMLElement>(".titulo-sol")[0];
     const palabras = q<HTMLElement>(".titulo-sol .palabra");
 
@@ -124,6 +125,7 @@ export default function Pelicula() {
     // 0.5 → 0.88: hacia el sol. 0.88 → 1: el pico.
     tl.to(anochecer, { opacity: 1, duration: 0.1 }, 0.04)
       .to(tPortada, { opacity: 0, yPercent: -12, duration: 0.08 }, 0.12)
+      .to(velo, { opacity: 0, duration: 0.08 }, 0.12)
       .to(encendida, { "--enc": "100%", duration: 0.1 } as gsap.TweenVars, 0.14)
       .to(posterEntrada, { scale: 1.16, duration: 0.26 }, 0.24)
       .to(capaEntrada, { opacity: 0, duration: 0.03 }, 0.48)
@@ -287,6 +289,9 @@ export default function Pelicula() {
         {/* Legibilidad del titular sobre la fachada */}
         <div className="absolute inset-0 bg-[linear-gradient(180deg,rgba(28,19,16,0.35)_0%,rgba(28,19,16,0)_35%,rgba(28,19,16,0.55)_100%)]" />
 
+        {/* Velo detrás del titular: se va con él (en escritorio a la izquierda, en mobile de arriba abajo) */}
+        <div className="velo-portada absolute inset-0" aria-hidden="true" />
+
         {/* Titular de la portada */}
         <div className="titulo-portada contenedor absolute inset-x-0 bottom-[10svh] z-10 md:bottom-[12svh]">
           <p className="dato entrada-suave mb-4 text-hueso/90">{portada.antetitulo}</p>
@@ -331,6 +336,15 @@ export default function Pelicula() {
         .pelicula .capa-sol { opacity: 0; }
         .pelicula .titulo-sol .palabra { opacity: 0; transform: translateY(60%); }
         .pelicula .oscuro { opacity: 0; }
+        .pelicula .velo-portada {
+          background: linear-gradient(180deg, rgba(28,19,16,0.12) 0%, rgba(28,19,16,0.42) 45%, rgba(28,19,16,0.5) 100%);
+        }
+        @media (min-width: 768px) {
+          .pelicula .velo-portada {
+            background: linear-gradient(90deg, rgba(28,19,16,0.55) 0%, rgba(28,19,16,0.38) 38%, rgba(28,19,16,0.08) 62%, rgba(28,19,16,0) 75%);
+          }
+        }
+        .pelicula.en-sol .velo-portada { opacity: 0; }
         @property --enc { syntax: "<percentage>"; inherits: false; initial-value: -15%; }
         .pelicula .capa-anochecer { opacity: 0; }
         .pelicula .capa-encendida {
