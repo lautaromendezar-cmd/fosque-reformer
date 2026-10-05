@@ -1,4 +1,17 @@
 {
+  "cierre-clase-sonrisas": {
+    "width": 2752,
+    "height": 1536,
+    "anchos": [
+      480,
+      960,
+      1440,
+      1920,
+      2752
+    ],
+    "blur": "data:image/webp;base64,UklGRr4AAABXRUJQVlA4ILIAAABwBACdASoYAA0APu1iqU2ppaOiMAgBMB2JbACdMoR3AB6hEGpeL05fc8F5AAD9wIX1Y84ZIwxN6Obz9WAtBd1n5jSGo54YeaT/pE/mfArzXM3sriRfE/RGhMkdKx4n0Jf7TPDwZroBuK2n0BX2d4m87H60dP32sGtPKUyEhv7LFCTN/j3UdcQzxGM/u4Hoh8ijWoetoaMIE8W+3FP0awfIu8lbMDdGaQyrOrRAFmGqcAAA",
+    "v": "f501b798"
+  },
   "corredor-arcos-arbol": {
     "width": 960,
     "height": 480,
