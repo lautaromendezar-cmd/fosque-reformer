@@ -5,7 +5,7 @@
 //
 // El preloader (components/Precarga.tsx) baja los clips de la página a memoria. Los que se ven
 // al empezar lo frenan; el resto sigue bajando con el telón arriba. Cada clip queda registrado
-// como una promesa de blob: Pelicula y ReformerGiro la esperan y, si falla, piden por red.
+// como una promesa de blob: Pelicula la espera y, si falla, piden por red.
 
 import hashes from "./videos.generado.json";
 
@@ -36,12 +36,10 @@ export function marcarPrecargaLista() { terminar(); }
  * `despues`: siguen bajando detrás, en orden; se usan más abajo o más tarde.
  */
 export function clipsDe(ruta: string, escritorio: boolean): { antes: string[]; despues: string[] } {
-  const giro = video(escritorio ? "reformer-giro-scrub.mp4" : "reformer-giro.mp4");
   if (ruta === "/") {
     return escritorio
-      ? { antes: [video("entrada-scrub.mp4")], despues: [video("hacia-el-sol-scrub.mp4"), giro] }
-      : { antes: [video("entrada-mobile.mp4")], despues: [video("hacia-el-sol-mobile.mp4"), giro] };
+      ? { antes: [video("entrada-scrub.mp4")], despues: [video("hacia-el-sol-scrub.mp4")] }
+      : { antes: [video("entrada-mobile.mp4")], despues: [video("hacia-el-sol-mobile.mp4")] };
   }
-  if (ruta === "/equipamiento") return { antes: [giro], despues: [] };
   return { antes: [], despues: [] };
 }

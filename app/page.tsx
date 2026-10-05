@@ -1,6 +1,6 @@
 import Pelicula from "@/components/Pelicula";
 import Intro from "@/components/Intro";
-import ReformerGiro from "@/components/ReformerGiro";
+import ReformerAutor from "@/components/ReformerAutor";
 import MetodoTexto from "@/components/MetodoTexto";
 import Pilares from "@/components/Pilares";
 import Membresias from "@/components/Membresias";
@@ -19,7 +19,7 @@ export default function Inicio() {
     <>
       <Pelicula />
       <Intro />
-      <ReformerGiro conEnlace />
+      <ReformerAutor conEnlace />
       <MetodoTexto adelanto />
       <Pilares conEnlace />
       <Membresias />

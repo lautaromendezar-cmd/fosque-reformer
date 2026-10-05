@@ -37,11 +37,11 @@ cliente que falta y dónde va).
 
 | Ruta | Contenido (PDF) | Secciones |
 |---|---|---|
-| `/` | Hero + adelantos | `Pelicula` (H1 "¿Qué es lo más importante de tu vida?"), `Intro`, `ReformerGiro`, `MetodoTexto adelanto`, `Pilares`, `Membresias`, `Sedes`, `Contacto` |
+| `/` | Hero + adelantos | `Pelicula` (H1 "¿Qué es lo más importante de tu vida?"), `Intro`, `ReformerAutor`, `MetodoTexto adelanto`, `Pilares`, `Membresias`, `Sedes`, `Contacto` |
 | `/metodo` | §3 Método, Niveles & Evolución, Fosque Niños | `Portada`, `MetodoTexto`, `Niveles` (#niveles), `Ninos`, `Cierre` |
 | `/experiencia` | §4 Los 3 Pilares | `Portada`, `Pilares`, `Cierre` |
 | `/profesionales` | §5 Cultura de Amabilidad | `Portada`, `Profesionales`, `Cierre` |
-| `/equipamiento` | §6 Reformer de Autor y espacios | `Portada`, `ReformerGiro`, `Puntos`, `Galeria`, `Cierre` |
+| `/equipamiento` | §6 Reformer de Autor y espacios | `Portada`, `ReformerAutor`, `Puntos`, `Galeria`, `Cierre` |
 | `/sucursales` | §7 Encontrá tu Sucursal F | `Portada`, `Sedes conMapa`, `Cierre` |
 | `/membresias` | §8 Smart Pricing (USD) | `Portada`, `Membresias`, `Cierre` |
 | `/academia` | §9 Academia F | `Portada`, `Academia`, `Cierre` |
@@ -65,7 +65,7 @@ cruce (`Motor.tsx`): entre oscuras, lento (top 85% → 35%); hacia una clara, re
 clara llega arriba; desde una clara hacia una oscura, apenas asoma. Si el arco cruzara de oscuro
 a claro con la oscura todavía en pantalla, el fondo pasa por un gris donde no se lee nada.
 
-**El momento memorable es uno solo: el sol.** El segundo, más chico, es el Reformer que gira.
+**El momento memorable es uno solo: el sol.** El Reformer de Autor ya no gira (4-oct-2026, pedido del cliente): tres fotos ambientadas con IA que se cruzan con el scroll; fuentes en `fotos-nuevas/reformer-ambientado/`.
 
 ## Estructura
 
@@ -137,7 +137,7 @@ progreso); los pósters ya cubren el caso sin video.
 - **`components/Precarga.tsx`**: blanco, lockup negro, línea tricolor con el avance real. Frena
   hasta tener fuentes, la imagen de portada y el clip que se ve al subir el telón; los demás
   clips de la página siguen bajando detrás (`clipsDe` en `lib/video.ts`). Todos quedan en
-  memoria como blob y `Pelicula`/`ReformerGiro` los esperan con `esperarBlob`. Tope 8 s.
+  memoria como blob y `Pelicula` los espera con `esperarBlob`. Tope 8 s.
   Sólo en la carga completa; navegar dentro del sitio no lo muestra. Respaldo en el `<head>`.
 - **Toda URL de `/video` e `/img` lleva `?v=<hash>`**: se sirven immutable por un año. Nunca
   escribir una ruta a mano: `video("archivo.mp4")` (lib/video.ts) e `imagen("nombre")`.

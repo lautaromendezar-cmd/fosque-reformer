@@ -244,6 +244,45 @@
     "blur": "data:image/webp;base64,UklGRooAAABXRUJQVlA4IH4AAADwAwCdASoYAA0APu1iqU2ppaOiMAgBMB2JaQAD5CIv/WqgEunUsc4AAP7rJli9+33jddqKf8whoxauAz+fyPiOU1zk8VbxLWOZrXBbeglFSRz6TEm52V1poLo9aIaJOp+N0L+qj8+YckYy33k1TkPR9W7osCABQxr9N+AAAAA=",
     "v": "1316e9f8"
   },
+  "reformer-sala-cajon": {
+    "width": 2752,
+    "height": 1536,
+    "anchos": [
+      480,
+      960,
+      1440,
+      1920,
+      2752
+    ],
+    "blur": "data:image/webp;base64,UklGRpYAAABXRUJQVlA4IIoAAAAwBACdASoYAA0APu1iqk2ppaQiMAgBMB2JQBOgA3DmSBe5LbjpHrg6cwAA+6JiWhopvZVVKQxT7bQ9cCZFEEWAMWXuzRML7vo9dk1WeL60rCh4jDR89VmncYpFDcuBH04DghjqxTKlzZluwSLFhAEhbSxnCzTR91Ot7kfgMy+XU+LYkXrVGY4KSAA=",
+    "v": "103e1cad"
+  },
+  "reformer-sala-detalle": {
+    "width": 2752,
+    "height": 1536,
+    "anchos": [
+      480,
+      960,
+      1440,
+      1920,
+      2752
+    ],
+    "blur": "data:image/webp;base64,UklGRq4AAABXRUJQVlA4IKIAAAAQBACdASoYAA0APu1iqU2ppaOiMAgBMB2JYgCdMoAlvAgP9CEf49wZQAD+3t1TlNX0RViK7jE2HGowdYqwHjMS6bxAhZ5fpEJuXjzkwhxvVkVezUduxKIsfGaso29YeWA+1cbkpNnX38E4Q2hSafukTO0uZSnNDm/M3ci+ZpacPM1yAoayJPNpduEFDC22qmx1tI+0iv/D+Ub9apIefS1EAAA=",
+    "v": "75cd64e8"
+  },
+  "reformer-sala-tres-cuartos": {
+    "width": 2752,
+    "height": 1536,
+    "anchos": [
+      480,
+      960,
+      1440,
+      1920,
+      2752
+    ],
+    "blur": "data:image/webp;base64,UklGRpwAAABXRUJQVlA4IJAAAABQBACdASoYAA0APu1iqk4ppaQiMAgBMB2JQBYdhHpadiv9vUKmUPyqXO3AAP7JWc2MqN8jqiddgn/68SfJ1Es9aNbcx972Sn1EK9dYr8JRbkXV6OLUlSZf8OjhsdyfkZ+GPsC/TEKuEMap57SSlUj/HSFX53sYHRdwAqJWTQ3FxPJS1wXXI0eNvBwaEQ7VgAA=",
+    "v": "a82e9b8a"
+  },
   "sala-kids-arbol-reformer": {
     "width": 1344,
     "height": 768,

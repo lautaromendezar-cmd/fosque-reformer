@@ -1,8 +1,18 @@
 // /equipamiento (PDF §6): el Reformer de Autor y los espacios.
 
+import type { NombreImagen } from "@/lib/imagenes";
+
 export const equipamiento = {
   antetitulo: "Equipamiento & Espacios",
-  titulo: "El Reformer de Autor Gerardo Fosque",
+  // El cliente lo quiere más chico y con "Gerardo Fosque" como una firma suya.
+  titulo: "Reformer de Autor",
+  firma: "Gerardo Fosque",
+  // Fotos reales del Reformer ambientadas con IA en una sala como la del manual de arquitectura.
+  fotos: [
+    { imagen: "reformer-sala-tres-cuartos", alt: "Reformer de Autor Fosque en negro en una sala con zócalo de madera ondulado, cielorraso de formas orgánicas en pasteles y plantas", posicion: "" },
+    { imagen: "reformer-sala-cajon", alt: "El Reformer de costado con el cajón de sentado, en la misma sala con madera, cortinas y plantas", posicion: "" },
+    { imagen: "reformer-sala-detalle", alt: "Detalle del carro tapizado, los apoyos de hombros y la barra de pies del Reformer, con la sala desenfocada detrás", posicion: "" },
+  ] as { imagen: NombreImagen; alt: string; posicion: string }[],
   puntos: [
     {
       titulo: "Espacios inmersivos de autor",

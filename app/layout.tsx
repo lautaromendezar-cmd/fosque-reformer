@@ -1,5 +1,5 @@
 import type { Metadata, Viewport } from "next";
-import { Baloo_Bhaijaan_2, Figtree } from "next/font/google";
+import { Baloo_Bhaijaan_2, Figtree, Mrs_Saint_Delafield } from "next/font/google";
 import "./globals.css";
 import { marca } from "@/content/sitio";
 import Header from "@/components/Header";
@@ -13,6 +13,16 @@ const baloo = Baloo_Bhaijaan_2({
   weight: ["600"],
   variable: "--font-baloo",
   display: "swap",
+});
+
+// Firma manuscrita de "Gerardo Fosque" en el Reformer de Autor (pedido del cliente, 4-oct-2026).
+// Sólo esa línea: no se precarga.
+const firma = Mrs_Saint_Delafield({
+  subsets: ["latin"],
+  weight: "400",
+  variable: "--font-firma",
+  display: "swap",
+  preload: false,
 });
 
 // Figtree en cuerpo, datos e interfaz (plan B aprobado: ver DIRECCION-DE-ARTE.md §2).
@@ -50,7 +60,7 @@ export const viewport: Viewport = {
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
-    <html lang="es-AR" className={`${baloo.variable} ${figtree.variable}`} suppressHydrationWarning>
+    <html lang="es-AR" className={`${baloo.variable} ${figtree.variable} ${firma.variable}`} suppressHydrationWarning>
       <head>
         {/* Activa el preloader antes del primer pintado. El respaldo lo saca solo a los 15 s si el
             JS no corre; Precarga.tsx lo cancela. Inline y sin type=module: siempre corre. */}
