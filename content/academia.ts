@@ -28,7 +28,7 @@ export const franquicias = {
   puntos: [
     { titulo: "Importación al Costo Directo", texto: "Equipamiento directo de fábrica sin sobreprecios de intermediarios." },
     { titulo: "Co-Propiedad del Staff (Vesting)", texto: "Retención del mejor talento técnico compartiendo hasta el 50% de participación." },
-    { titulo: "Salas Optimizadas de 20 Reformers", texto: "Alta rentabilidad por metro cuadrado en locales boutique de 160 a 220 m²." },
+    { titulo: "Salas de 10 a 25 Reformers", texto: "Alta rentabilidad por metro cuadrado en locales boutique de 150 a 350 m²." }, // Documento Maestro B2B (oct-2026)
   ],
   cta: "Conocer el modelo y solicitar dossier de inversión",
   // TODO(cliente): la "plataforma de expansión B2B" no existe todavía. Mientras tanto, WhatsApp.
