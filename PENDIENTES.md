@@ -23,6 +23,7 @@ requiere tocar componentes.
 | **Instagram** | `content/sitio.ts` → `contacto.instagram` | `instagram.com/fosquereformer` sin confirmar |
 | **Términos y Privacidad** | `app/terminos/page.tsx`, `app/privacidad/page.tsx` | Placeholder visible "Texto pendiente" |
 | **Autorización de los renders** | `content/sitio.ts` → `pie.credito` | El footer acredita a Artagaveytia-Mantel |
+| **Consentimiento de las profes** | — | Sabri, Flor y Valen (sede Núñez) aparecen compuestas con IA en `/experiencia` (portada y 3 pilares) y en el Cierre de todas las páginas. Confirmar que las tres aceptan, sobre todo si se usa en publicidad |
 | **Estado de la sede** | `content/sedes.ts` → `estado` | "Próximamente" |
 
 ## Lo que no es del cliente pero conviene saber
