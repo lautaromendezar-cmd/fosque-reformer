@@ -18,6 +18,8 @@ import Imagen from "./Imagen";
 
 gsap.registerPlugin(ScrollTrigger);
 
+const FOTOS_DE_SALA = equipamiento.fotos.filter((f) => !f.imagen.endsWith("detalle"));
+
 export default function ReformerAutor({ conEnlace = false }: { conEnlace?: boolean }) {
   const seccion = useRef<HTMLElement>(null);
   const [pegado, setPegado] = useState(false);
@@ -44,7 +46,7 @@ export default function ReformerAutor({ conEnlace = false }: { conEnlace?: boole
     const n = fotos.length;
     fotos.forEach((f, i) => {
       tl.fromTo(f.querySelector("img"), { scale: 1.06 }, { scale: 1, duration: 1 / n, immediateRender: false }, i / n);
-      if (i > 0) tl.to([f, fondos[i]], { opacity: 1, duration: 0.12 }, i / n - 0.06);
+      if (i > 0) tl.to(fondos[i] ? [f, fondos[i]] : f, { opacity: 1, duration: 0.12 }, i / n - 0.06);
     });
     palabras.forEach((p, i) => tl.to(p, { opacity: 1, duration: 0.08 }, 0.08 + i * (0.84 / palabras.length)));
     return () => { tl.scrollTrigger?.kill(); tl.kill(); };
@@ -61,7 +63,8 @@ export default function ReformerAutor({ conEnlace = false }: { conEnlace?: boole
         {/* Fondo: la misma sala muy desenfocada, con un velo de lino para que el texto oscuro se lea.
             Pedido del cliente: que no quede el fondo liso. Basta la imagen chica (el blur la disuelve). */}
         <div className="autor-fondo pointer-events-none absolute inset-0" aria-hidden="true">
-          {(pegado ? equipamiento.fotos : equipamiento.fotos.slice(0, 1)).map((f) => (
+          {/* Sólo las fotos de sala: el detalle es casi todo Reformer negro y desenfocado queda gris */}
+          {(pegado ? FOTOS_DE_SALA : FOTOS_DE_SALA.slice(0, 1)).map((f) => (
             <div key={f.imagen} className="autor-fondo-capa absolute inset-0">
               <Imagen nombre={f.imagen} alt="" sizes="480px" className="fondo-imagen" />
             </div>
@@ -115,6 +118,9 @@ export default function ReformerAutor({ conEnlace = false }: { conEnlace?: boole
       </div>
 
       <style>{`
+        /* el fondo se funde con el lino de las secciones vecinas: sin corte al entrar ni al salir */
+        .autor-fondo { -webkit-mask-image: linear-gradient(180deg, transparent 0%, #000 18%, #000 72%, transparent 100%);
+          mask-image: linear-gradient(180deg, transparent 0%, #000 18%, #000 72%, transparent 100%); }
         .autor-fondo-capa img { filter: blur(48px) saturate(1.1); transform: scale(1.25); }
         .firma { font-family: var(--font-firma), "Mrs Saint Delafield", cursive; font-weight: 400;
           font-size: clamp(3rem, 2rem + 3.6vw, 5.25rem); line-height: 1.05; letter-spacing: 0; }
