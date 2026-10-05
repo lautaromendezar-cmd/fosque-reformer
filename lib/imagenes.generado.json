@@ -188,6 +188,32 @@
     "blur": "data:image/webp;base64,UklGRpAAAABXRUJQVlA4IIQAAADwBACdASoYAAwAPu1iqU2ppaQiMAgBMB2JYgC7MoR4GCxIGg1s0afhhJBvFbMz4AAA/u3fDPDcl6nkvGATg/Jk7oXONrZ1V2gkKjqeF0pqqjxRV/JJpqdk/eb2o0SLf0v+KoL/cDa54h3ytBFDBIizwSAfV9UTIwdskpr25/4aO3k+AAA=",
     "v": "73d3a9b8"
   },
+  "recepcion-flor-bienvenida": {
+    "width": 2752,
+    "height": 1536,
+    "anchos": [
+      480,
+      960,
+      1440,
+      1920,
+      2752
+    ],
+    "blur": "data:image/webp;base64,UklGRqIAAABXRUJQVlA4IJYAAADwAwCdASoYAA0APu1iqU2ppaOiMAgBMB2JagCdABxLX6p3FtxMqPgAAP7oX7GHhJP2Vb2K97nfddXtVG3usqV5bU86tpeB2UoqJF4c1oIWHuoZUAqDnRZ6h4B8FE0W/w64ZTSSIjuB0tEpx4z2870qr16pN1vTihA+i90bojUgNZxCdrZT5RH5fmXrLt9HeyRQskiKAAA=",
+    "v": "f2082078"
+  },
+  "recepcion-sabri-sonrisa": {
+    "width": 2752,
+    "height": 1536,
+    "anchos": [
+      480,
+      960,
+      1440,
+      1920,
+      2752
+    ],
+    "blur": "data:image/webp;base64,UklGRqIAAABXRUJQVlA4IJYAAABwBACdASoYAA0APu1iqU2ppaOiMAgBMB2JZgC7MoADYksnhIY6022X/sYkwAD+7d4PcvIfSJ1KwLL/HPqdoFmDsTo82eIY4bbdfjD9go9c25pLp+V6glJbkHShxjdAFBL4pSsSSj2BDL6hK+GvGnaL91qwBT8/ZyaR1lc2vYK3bbE6HN2vg3RPQoPCckyNi/eh+vxgAAA=",
+    "v": "fa7697db"
+  },
   "recepcion-shop-cafetera": {
     "width": 1920,
     "height": 939,
@@ -304,6 +330,19 @@
     "blur": "data:image/webp;base64,UklGRnwAAABXRUJQVlA4IHAAAADwAwCdASoYABAAPu1iqU2ppaOiMAgBMB2JYwCw7BcmbDh6OlNx+XoAAPuOFfi47VTCxMofK5o86ZyuyOZXt9pHQBfOOxaHAK2rBktVAdtUO7YM2h5CLd5/dokoIzWuARa3IEgOB0dhcUibUOdB0AAA",
     "v": "ed8bfeb9"
   },
+  "sala-seguimiento-sabri": {
+    "width": 2752,
+    "height": 1536,
+    "anchos": [
+      480,
+      960,
+      1440,
+      1920,
+      2752
+    ],
+    "blur": "data:image/webp;base64,UklGRqAAAABXRUJQVlA4IJQAAAAQBACdASoYAA0APu1kqU2ppaOiMAgBMB2JYwCw7YyKx00+SLMiM0vwCAD+yVnHDonyaybtKpp2Gx5Nk6iQgmoErN+Nwcptbs7LLXzFpVeCRY5ryPnFLxzTDLWXwHcB39bNCoeixHVMXIABQMDBNVghBIAJMrQq4qi4/C0jT67NI8mQGiGBGilWncMO2E4CDzacKyAA",
+    "v": "b812ebec"
+  },
   "salon-palmeras-en-uso": {
     "width": 2752,
     "height": 1536,
@@ -393,6 +432,19 @@
     ],
     "blur": "data:image/webp;base64,UklGRqoAAABXRUJQVlA4IJ4AAABQBACdASoYAA0APu1iqU2ppaOiMAgBMB2JQBOgMY2QpmHDUAFhqeSvSg4AAP60GcAELmqBWcut3LI0UVZX162LoiJp9G3BusmrYP8Ov45qDIqhRF6AlvrqIHeOmBwMM0+xpEMP2uNT51AkBWFJSZScgJNEpoLJQZvPfY77go6rQ/hfntmfsR5hnH06ZXCAjr9iFR27ajJvEPonhQAAAA==",
     "v": "b1790a15"
+  },
+  "salon-sol-clase-valen": {
+    "width": 2752,
+    "height": 1536,
+    "anchos": [
+      480,
+      960,
+      1440,
+      1920,
+      2752
+    ],
+    "blur": "data:image/webp;base64,UklGRqYAAABXRUJQVlA4IJoAAACwAwCdASoYAA0APu1iqU2ppaOiMAgBMB2JagC06A23qYRHz9/xAAD+4XuTqJXxbaM+/zTYgEe7AAp4g8dTRpo8iy0erO7/yjFaL2E7ek6nArJEx4SRWJnK5muG2CdJeuxtG9mRnlM1M9kDQrvtlAoCQlLzH3YK5fWIiRraYS6XBnQdsOPz5gJgXNswL7WKZTwOdrzHX7N6AAAA",
+    "v": "86aae729"
   },
   "salon-sol-reformers-negros": {
     "width": 1920,
