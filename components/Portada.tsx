@@ -1,8 +1,7 @@
-// Portada de página interna: el render a sangre, titular sobredimensionado abajo a la izquierda
-// y la ola tricolor de la fachada como borde contra el lino que sigue.
+// Portada de página interna: el render a sangre y el titular sobredimensionado abajo a la izquierda.
+// Sin ola ni líneas onduladas: el cliente no las quiere en ninguna sección (5-oct-2026).
 
 import Imagen from "./Imagen";
-import Ola from "./Ola";
 import type { NombreImagen } from "@/lib/imagenes";
 
 type Props = {
@@ -12,11 +11,10 @@ type Props = {
   alt: string;
   bajada?: string;
   posicion?: string; // object-position del render
-  relleno?: string; // fondo de la sección que sigue: lino (por defecto), un color, o "arco" si es oscura
   children?: React.ReactNode;
 };
 
-export default function Portada({ antetitulo, titulo, imagen, alt, bajada, posicion = "center", relleno, children }: Props) {
+export default function Portada({ antetitulo, titulo, imagen, alt, bajada, posicion = "center", children }: Props) {
   return (
     <section className="escena relative isolate flex min-h-[88svh] items-end overflow-clip" data-luz="noche" aria-labelledby="t-portada">
       <div className="absolute inset-0 -z-10 [&_img]:h-full [&_img]:w-full [&_img]:object-cover" style={{ ["--pos" as string]: posicion }}>
@@ -30,8 +28,6 @@ export default function Portada({ antetitulo, titulo, imagen, alt, bajada, posic
         {bajada && <p className="entrada-suave mt-6 max-w-[46ch] text-hueso/90" style={{ animationDelay: "0.2s" }}>{bajada}</p>}
         {children}
       </div>
-
-      <Ola className="absolute inset-x-0 -bottom-px" relleno={relleno === "arco" ? "var(--luz-fondo)" : relleno} />
     </section>
   );
 }

@@ -8,7 +8,6 @@ import { useMemo, useState } from "react";
 import { sedes, sedesTexto } from "@/content/sedes";
 import { contacto } from "@/content/sitio";
 import { linkWhatsApp } from "@/lib/whatsapp";
-import Curvas from "./Curvas";
 
 const normalizar = (s: string) => s.normalize("NFD").replace(/[̀-ͯ]/g, "").toLowerCase();
 
@@ -22,7 +21,6 @@ export default function Sedes({ conMapa = false }: { conMapa?: boolean }) {
 
   return (
     <section id="sedes" className="escena relative overflow-clip text-hueso" data-luz="marron" aria-labelledby="t-sedes">
-      <Curvas className="text-hueso" />
       <div className="contenedor relative z-10 py-[16vh] md:py-[20vh]">
         <div className="md:grid md:grid-cols-12 md:gap-8">
           <div className="md:col-span-5">

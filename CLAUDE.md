@@ -30,8 +30,8 @@ cliente que falta y dónde va).
   3-oct-2026: "la opción intermedia" de la lámina del manual; antes 700/800). El peso vive en
   `--peso-titulo` de `globals.css`. Figtree (400/600) en el resto. El PDF
   pide "Serif"; el manual no tiene: no se usa.
-- **Ornamento único:** la ola tricolor de la fachada (`components/Ola.tsx`) entre la portada de
-  cada página y lo que sigue.
+- **Sin ornamentos ondulados:** ni la ola tricolor entre la portada y lo que sigue ni las curvas
+  de nivel. El cliente no las quiere en ninguna sección (5-oct-2026); se borraron los componentes.
 
 ## Páginas
 
@@ -75,7 +75,7 @@ app/            layout (fuentes, header, WhatsApp fijo, Motor), page (las escena
 app/<ruta>/     una carpeta por página (metodo, experiencia, profesionales, equipamiento,
                 sucursales, membresias, academia, franquicias)
 components/     una sección por archivo + Motor (Lenis/GSAP/arco de luz/reveals), Header,
-                Musica, Portada, Ola, Cierre, BotonWhatsApp, Imagen, VideoFondo, Curvas
+                Musica, Portada, Cierre, BotonWhatsApp, Imagen, VideoFondo
 content/        TODO el copy y los datos: sitio, metodo, experiencia, equipamiento,
                 membresias, academia (+ franquicias), sedes, contacto
 lib/            imagenes (srcset desde el manifiesto), luz, whatsapp, marca.generado, imagenes.generado.json

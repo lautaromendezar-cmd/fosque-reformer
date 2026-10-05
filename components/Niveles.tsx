@@ -38,7 +38,9 @@ export default function Niveles() {
           </div>
 
           <div className="mt-12 md:col-span-7 md:mt-0" data-revelar>
-            <div role="tablist" aria-label="Niveles" className="-mx-5 flex gap-1 overflow-x-auto px-5 pb-2 md:mx-0 md:px-0 [scrollbar-width:none]">
+            <div role="tablist" aria-label="Niveles" className="-mx-5 overflow-x-auto px-5 pb-2 md:mx-0 md:px-0 [scrollbar-width:none]">
+              {/* Cápsula oscura detrás: sobre el sol del fondo las pestañas sueltas no se leían (cliente, 5-oct) */}
+              <div className="inline-flex gap-1 rounded-full bg-noche/60 p-1.5 ring-1 ring-hueso/15 backdrop-blur-md">
               {niveles.items.map((item, i) => {
                 const sel = i === activo;
                 return (
@@ -54,7 +56,7 @@ export default function Niveles() {
                     onKeyDown={(e) => onKey(e, i)}
                     className={[
                       "titulo shrink-0 rounded-full px-5 py-3 text-[1.1rem] leading-none transition-colors duration-300",
-                      sel ? "bg-hueso text-noche" : "text-hueso/70 hover:text-hueso",
+                      sel ? "bg-hueso text-noche" : "text-hueso hover:bg-hueso/15",
                     ].join(" ")}
                   >
                     <span className="dato mr-2 opacity-70">{item.numero}</span>
@@ -62,6 +64,7 @@ export default function Niveles() {
                   </button>
                 );
               })}
+              </div>
             </div>
 
             <div role="tabpanel" id={`${id}-panel`} aria-labelledby={`${id}-tab-${activo}`} className="mt-8 border-t border-hueso/25 pt-8">

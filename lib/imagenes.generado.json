@@ -304,6 +304,19 @@
     "blur": "data:image/webp;base64,UklGRnwAAABXRUJQVlA4IHAAAADwAwCdASoYABAAPu1iqU2ppaOiMAgBMB2JYwCw7BcmbDh6OlNx+XoAAPuOFfi47VTCxMofK5o86ZyuyOZXt9pHQBfOOxaHAK2rBktVAdtUO7YM2h5CLd5/dokoIzWuARa3IEgOB0dhcUibUOdB0AAA",
     "v": "ed8bfeb9"
   },
+  "salon-palmeras-en-uso": {
+    "width": 2752,
+    "height": 1536,
+    "anchos": [
+      480,
+      960,
+      1440,
+      1920,
+      2752
+    ],
+    "blur": "data:image/webp;base64,UklGRrIAAABXRUJQVlA4IKYAAAAwBACdASoYAA0APu1iqU2ppaOiMAgBMB2JaACdMoR3AB6IpaW6ydgDfC4A/WfTpEwEeKX/MjM4FPRu0OxKyTLDJyr5zJpQKL9+6P9NQC/UlfOTBAGa3pmRO22eg25BLxb5keUPnuEEgzOmxp9j7Ey/OefwM4ZBMm4t/OeYkkTrWFACmN98MVvutr4O30SJkpDkj/PTMW9wuE9blhJNB+moc7WooAAA",
+    "v": "7e05c77e"
+  },
   "salon-reformer-cielorraso-organico-a": {
     "width": 922,
     "height": 922,

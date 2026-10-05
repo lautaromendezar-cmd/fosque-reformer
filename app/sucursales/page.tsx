@@ -13,7 +13,7 @@ export const metadata: Metadata = {
 export default function PaginaSucursales() {
   return (
     <>
-      <Portada antetitulo={sedesTexto.antetitulo} titulo="Núñez, Buenos Aires." imagen="fachada-nunez-atardecer" alt="Fachada blanca de Fosque Reformer en Núñez, con franjas onduladas magenta, coral y naranja y la entrada en arco iluminada" relleno="arco" />
+      <Portada antetitulo={sedesTexto.antetitulo} titulo="Núñez, Buenos Aires." imagen="fachada-nunez-atardecer" alt="Fachada blanca de Fosque Reformer en Núñez, con franjas onduladas magenta, coral y naranja y la entrada en arco iluminada" />
       <Sedes conMapa />
       <Cierre />
       <Footer />

@@ -50,8 +50,6 @@ export const ninos = {
   // con null se muestran sólo el título y las imágenes.
   texto: null as string | null,
   imagenes: [
-    { imagen: "sala-kids-arbol-reformer", alt: "Sala infantil con un árbol tallado en madera clara y un aparato de juego iluminado" },
-    { imagen: "sala-kids-escalada", alt: "Sala infantil con pared de escalada, tobogán y mesa baja en tonos suaves" },
     { imagen: "estanteria-arbol-tallado", alt: "Estantería de madera tallada con forma de árbol, con accesorios ordenados" },
   ],
 };
