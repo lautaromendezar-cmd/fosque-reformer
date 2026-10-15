@@ -26,6 +26,7 @@ import { precargaLista } from "@/lib/video";
 gsap.registerPlugin(ScrollTrigger, SplitText);
 
 let lenis: Lenis | null = null;
+let primeraRuta = true;
 
 export default function Motor() {
   const ruta = usePathname();
@@ -57,8 +58,36 @@ export default function Motor() {
       else lenis ? lenis.scrollTo(0, { immediate: true, force: true }) : window.scrollTo(0, 0);
     };
     // Con el preloader arriba el scroll está bloqueado: el salto al ancla espera a que suba
+    let soltar = 0;
+    let liberar = () => {};
     if (html.classList.contains("precargando")) precargaLista.then(() => requestAnimationFrame(irAlComienzo));
-    else irAlComienzo();
+    else if (primeraRuta) irAlComienzo();
+    else {
+      // Al llegar desde otra página: la inercia del trackpad (o del dedo) que venía de la página
+      // anterior seguía empujando la nueva, y /metodo abría en Fosque Niños (video del cliente,
+      // 15-oct). Se congela el scroll, se va arriba y se suelta recién cuando la rueda queda
+      // quieta 150 ms (la inercia manda eventos sin pausa; tope 2 s): esa cola se descarta.
+      const frenar = (e: Event) => { if (!lenis) e.preventDefault(); };
+      const alAmainar = () => { window.clearTimeout(soltar); soltar = window.setTimeout(fin, 150); };
+      const fin = () => { irAlComienzo(); liberar(); };
+      lenis?.stop();
+      window.addEventListener("wheel", alAmainar, { passive: true });
+      window.addEventListener("wheel", frenar, { passive: false });
+      window.addEventListener("touchmove", frenar, { passive: false });
+      irAlComienzo();
+      const tope = window.setTimeout(fin, 2000);
+      liberar = () => {
+        window.clearTimeout(soltar);
+        window.clearTimeout(tope);
+        window.removeEventListener("wheel", alAmainar);
+        window.removeEventListener("wheel", frenar);
+        window.removeEventListener("touchmove", frenar);
+        lenis?.start();
+        liberar = () => {};
+      };
+      soltar = window.setTimeout(fin, 300);
+    }
+    primeraRuta = false;
 
     const splits: SplitText[] = [];
     const ctx = gsap.context(() => {
@@ -152,6 +181,8 @@ export default function Motor() {
     ro.observe(document.body);
 
     return () => {
+      window.clearTimeout(soltar);
+      liberar();
       ro.disconnect();
       window.clearTimeout(timer);
       splits.forEach((s) => s.revert());
