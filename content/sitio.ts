@@ -50,8 +50,20 @@ export const portada = {
   bajada:
     "En Fosque Reformer nos dedicamos a que alcances tu mejor versión mientras disfrutás del movimiento, para que puedas cuidar y vivir plenamente lo que más valorás.",
   // Segundo párrafo del subtítulo del PDF: va en la primera sección después de la película.
-  bajada2:
-    "Combinamos el nuevo Pilates Moderno con un equipo de profesionales altamente formados y un equipamiento de diseño exclusivo para que vivas una experiencia profundamente motivadora. Cada uno de nuestros Profesionales F se dedica exclusivamente a vos, acompañándote y guiándote semana a semana para que incorporar el hábito del ejercicio sea un placer diario, agradable y divertido.",
+  // Partido en niveles para la Intro (pedido del cliente, 14-oct: "un párrafo sin magia"); las
+  // palabras son las del PDF, en el mismo orden.
+  bajada2: {
+    combinamos: "Combinamos",
+    ingredientes: [
+      "el nuevo Pilates Moderno",
+      "un equipo de profesionales altamente formados",
+      "y un equipamiento de diseño exclusivo",
+    ],
+    para: "para que vivas una experiencia profundamente motivadora.",
+    acompanamiento:
+      "Cada uno de nuestros Profesionales F se dedica exclusivamente a vos, acompañándote y guiándote semana a semana para que incorporar el hábito del ejercicio sea",
+    cierre: "un placer diario, agradable y divertido.",
+  },
 };
 
 // Música ambiente del header (nota técnica del PDF). Apagada por defecto: el botón la prende.

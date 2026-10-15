@@ -177,6 +177,19 @@
     "blur": "data:image/webp;base64,UklGRoIAAABXRUJQVlA4IHYAAAAQBACdASoYAAwAPu1iqU2ppaOiMAgBMB2JQBOgBAx4gNd0Eb1DdcyFIAD+3XbEnYIYwLt5rXqnaKpdkDk6BQiAaGkQQU88v9tZi+FIhBmDUdc9sh0d8EhU2+e4yK63T1W75ZFLQxG8F2ugam5OJgIBR+JZgAAA",
     "v": "97a636ca"
   },
+  "recepcion-alumnas-cafe": {
+    "width": 2400,
+    "height": 1340,
+    "anchos": [
+      480,
+      960,
+      1440,
+      1920,
+      2400
+    ],
+    "blur": "data:image/webp;base64,UklGRqoAAABXRUJQVlA4IJ4AAAAwBACdASoYAA0APu1iqU2ppaOiMAgBMB2JbACdMoR3ACkAWBNlA/Oqg4AA/uftyILCpESXbZ+hVzJGJala4sAg/jFl3lb+zv44hSZso+KGbakBfBPLUo1dvtt7NIfHt6a76xBZHKA+lCHSTn51nYY96Fzwijt3IrhxOTL4lZK7ldZ84qLKplJbE/d/KwFS6UJC+ZrGhYRdE/SnK4AAAA==",
+    "v": "48fd49a0"
+  },
   "recepcion-cafe-molinetes": {
     "width": 1920,
     "height": 960,
