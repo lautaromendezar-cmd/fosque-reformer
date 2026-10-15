@@ -15,7 +15,7 @@ export const metadata: Metadata = {
 export default function PaginaMetodo() {
   return (
     <>
-      <Portada antetitulo={metodo.antetitulo} titulo="Cada movimiento te da resultados." imagen="salon-palmeras-en-uso" alt="Tres alumnas entrenando en Reformers negros Fosque frente a un muro translúcido de palmeras iluminado, con paneles de madera calada y cielorraso de agua" posicion="50% 55%" />
+      <Portada antetitulo={metodo.antetitulo} titulo="Cada movimiento te da resultados." imagen="salon-palmeras-en-uso" alt="Tres alumnas entrenando en Reformers negros Fosque frente a un muro translúcido de palmeras iluminado, entre columnas de madera y bajo un cielorraso de agua" posicion="50% 55%" />
       <MetodoTexto />
       <Niveles />
       <Ninos />
