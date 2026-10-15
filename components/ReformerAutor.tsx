@@ -1,7 +1,7 @@
 "use client";
 
-// El Reformer de Autor, ambientado: el equipo en una sala como la del manual de arquitectura
-// (madera con la onda de luz, cielorraso orgánico en pasteles, plantas). Reemplaza al giro
+// El Reformer Exclusivo (antes "de Autor", cambio del cliente 14-oct), ambientado. Desde el 14-oct
+// en una sala de la familia del salón del sol (la anterior era la de Fosque Kids). Reemplaza al giro
 // sobre fondo blanco: el cliente lo quería ambientado y un giro no se puede ambientar.
 //
 // ESCRITORIO: sección de 240vh con la pantalla pegada; las fotos se cruzan con el scroll y las
@@ -93,7 +93,7 @@ export default function ReformerAutor({ conEnlace = false }: { conEnlace?: boole
             className={pegado
               ? "relative mt-10 aspect-[16/10] overflow-clip rounded-2xl lg:col-span-8 lg:mt-0"
               : "-mx-5 mt-10 flex snap-x snap-mandatory gap-3 overflow-x-auto px-5 md:-mx-10 md:px-10 pb-2 [scrollbar-width:none]"}
-            aria-label="El Reformer de Autor en la sala"
+            aria-label="El Reformer Exclusivo en la sala"
             role="group"
           >
             {equipamiento.fotos.map((f, i) => (

@@ -306,21 +306,21 @@
       1920,
       2752
     ],
-    "blur": "data:image/webp;base64,UklGRpYAAABXRUJQVlA4IIoAAAAwBACdASoYAA0APu1iqk2ppaQiMAgBMB2JQBOgA3DmSBe5LbjpHrg6cwAA+6JiWhopvZVVKQxT7bQ9cCZFEEWAMWXuzRML7vo9dk1WeL60rCh4jDR89VmncYpFDcuBH04DghjqxTKlzZluwSLFhAEhbSxnCzTR91Ot7kfgMy+XU+LYkXrVGY4KSAA=",
-    "v": "103e1cad"
+    "blur": "data:image/webp;base64,UklGRqgAAABXRUJQVlA4IJwAAABwBACdASoYAA0APu1iqU2ppaQiMAgBMB2JYgCdMoADUhjbrAK8m9SHn1cPAAD+1ihBnVg/MFWkctI+dN7DhDH5NgeG3goa/VfLKVQ+BDWu6HDopPFopVfifwZkqeQ40kT2pzR7DDBp4Lc/2pHve2GrrkmeOS07g26Xajq2XLtQeTh5B0AMAuEhpXEzNnG0O62UATc9Enoi7c+AAAA=",
+    "v": "225ebe56"
   },
   "reformer-sala-detalle": {
-    "width": 2752,
-    "height": 1536,
+    "width": 2528,
+    "height": 1696,
     "anchos": [
       480,
       960,
       1440,
       1920,
-      2752
+      2528
     ],
-    "blur": "data:image/webp;base64,UklGRq4AAABXRUJQVlA4IKIAAAAQBACdASoYAA0APu1iqU2ppaOiMAgBMB2JYgCdMoAlvAgP9CEf49wZQAD+3t1TlNX0RViK7jE2HGowdYqwHjMS6bxAhZ5fpEJuXjzkwhxvVkVezUduxKIsfGaso29YeWA+1cbkpNnX38E4Q2hSafukTO0uZSnNDm/M3ci+ZpacPM1yAoayJPNpduEFDC22qmx1tI+0iv/D+Ub9apIefS1EAAA=",
-    "v": "75cd64e8"
+    "blur": "data:image/webp;base64,UklGRrQAAABXRUJQVlA4IKgAAABwBACdASoYABAAPu1iqU2ppaOiMAgBMB2JZACdB3gAmGvTPuVV1oCeSWFHcAD+6GrnW0Tcz26OnMkQEn0pgqWlQQ5SeQEDzodY/KmQ+97XmNhRLE/l5OaIpRbhMZbwamWmkwMqYbElrOdlr7XdzzNVF2tjamZA9obq9GNFNWGdckIHIVCCd3Sy0cDdke7Ac0pGvr36U9aWtRBW3kXOb2CuixTmkQXAAAA=",
+    "v": "0b51f7a6"
   },
   "reformer-sala-tres-cuartos": {
     "width": 2752,
@@ -332,8 +332,8 @@
       1920,
       2752
     ],
-    "blur": "data:image/webp;base64,UklGRpwAAABXRUJQVlA4IJAAAABQBACdASoYAA0APu1iqk4ppaQiMAgBMB2JQBYdhHpadiv9vUKmUPyqXO3AAP7JWc2MqN8jqiddgn/68SfJ1Es9aNbcx972Sn1EK9dYr8JRbkXV6OLUlSZf8OjhsdyfkZ+GPsC/TEKuEMap57SSlUj/HSFX53sYHRdwAqJWTQ3FxPJS1wXXI0eNvBwaEQ7VgAA=",
-    "v": "a82e9b8a"
+    "blur": "data:image/webp;base64,UklGRqQAAABXRUJQVlA4IJgAAADwAwCdASoYAA0APu1iqk2ppaQiMAgBMB2JZACdMoADUhvx7cGpRfFQAP7HfqfZhoXRnnprUn416mL8LG/Nqo35wuuhx4x+H/WLB8nhFVPpTl0jqHpQuZpyMrDWQvjkgiKN95zPFN71qEVIgIKvC/l/0CQ8k+GIC4oRaRTz8Mfn+OoaBw3AzOKYI3EURiT5lLMrJl8kCkoAAA==",
+    "v": "40a02a26"
   },
   "sala-kids-arbol-reformer": {
     "width": 1344,

@@ -8,7 +8,7 @@
 export const marca = {
   nombre: "Fosque Reformer",
   descripcion:
-    "Pilates Moderno sobre el Reformer de Autor Gerardo Fosque. Profesionales que te acompañan semana a semana, en espacios inmersivos de luz cálida.",
+    "Pilates Moderno sobre el Reformer Exclusivo Gerardo Fosque. Profesionales que te acompañan semana a semana, en espacios inmersivos de luz cálida.",
   // El PDF nombra fosquereformer.com. TODO(cliente): confirmar el dominio comprado.
   dominio: "https://fosquereformer.com",
   // Base de las URLs absolutas (Open Graph) mientras no haya dominio.
@@ -45,7 +45,7 @@ export const cta = {
 };
 
 export const portada = {
-  antetitulo: "Pilates Moderno · Reformer de Autor",
+  antetitulo: "Pilates Moderno · Reformer Exclusivo",
   titulo: "¿Qué es lo más importante de tu vida?",
   bajada:
     "En Fosque Reformer nos dedicamos a que alcances tu mejor versión mientras disfrutás del movimiento, para que puedas cuidar y vivir plenamente lo que más valorás.",

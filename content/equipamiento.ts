@@ -5,12 +5,12 @@ import type { NombreImagen } from "@/lib/imagenes";
 export const equipamiento = {
   antetitulo: "Equipamiento & Espacios",
   // El cliente lo quiere más chico y con "Gerardo Fosque" como una firma suya.
-  titulo: "Reformer de Autor",
+  titulo: "Reformer Exclusivo",
   firma: "Gerardo Fosque",
   // Fotos reales del Reformer ambientadas con IA en una sala como la del manual de arquitectura.
   fotos: [
-    { imagen: "reformer-sala-tres-cuartos", alt: "Reformer de Autor Fosque en negro en una sala con zócalo de madera ondulado, cielorraso de formas orgánicas en pasteles y plantas", posicion: "" },
-    { imagen: "reformer-sala-cajon", alt: "El Reformer de costado con el cajón de sentado, en la misma sala con madera, cortinas y plantas", posicion: "" },
+    { imagen: "reformer-sala-tres-cuartos", alt: "Reformer Exclusivo Fosque en negro en una sala con un muro de vidrio esmerilado con palmeras, cielorraso que refleja la luz como agua y un disco de luz cálida en la pared", posicion: "" },
+    { imagen: "reformer-sala-cajon", alt: "El Reformer con el cajón de sentado y la tabla de salto, en la misma sala con palmeras y luz de atardecer", posicion: "" },
     { imagen: "reformer-sala-detalle", alt: "Detalle del carro tapizado, los apoyos de hombros y la barra de pies del Reformer, con la sala desenfocada detrás", posicion: "" },
   ] as { imagen: NombreImagen; alt: string; posicion: string }[],
   puntos: [
