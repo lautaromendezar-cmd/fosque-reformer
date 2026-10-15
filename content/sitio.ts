@@ -52,14 +52,18 @@ export const portada = {
   // Segundo párrafo del subtítulo del PDF: va en la primera sección después de la película.
   // Partido en niveles para la Intro (pedido del cliente, 14-oct: "un párrafo sin magia"); las
   // palabras son las del PDF, en el mismo orden.
+  // `clave`: lo que se enciende; el resto queda en tinta baja.
   bajada2: {
-    combinamos: "Combinamos",
-    ingredientes: [
-      "el nuevo Pilates Moderno",
-      "un equipo de profesionales altamente formados",
-      "y un equipamiento de diseño exclusivo",
+    frase: [
+      { t: "Combinamos el nuevo " },
+      { t: "Pilates Moderno", clave: true },
+      { t: " con un equipo de " },
+      { t: "profesionales altamente formados", clave: true },
+      { t: " y un " },
+      { t: "equipamiento de diseño exclusivo", clave: true },
+      { t: " para que vivas una " },
+      { t: "experiencia profundamente motivadora.", clave: true },
     ],
-    para: "para que vivas una experiencia profundamente motivadora.",
     acompanamiento:
       "Cada uno de nuestros Profesionales F se dedica exclusivamente a vos, acompañándote y guiándote semana a semana para que incorporar el hábito del ejercicio sea",
     cierre: "un placer diario, agradable y divertido.",
