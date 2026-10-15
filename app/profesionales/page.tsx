@@ -13,7 +13,7 @@ export const metadata: Metadata = {
 export default function PaginaProfesionales() {
   return (
     <>
-      <Portada antetitulo={profesionales.antetitulo} titulo="Un equipo enfocado en acompañarte." imagen="lounge-lockers-mural" alt="Lounge con sillones blancos, un mural de colores y una pared de lockers iluminados" />
+      <Portada antetitulo={profesionales.antetitulo} titulo="Un equipo enfocado en acompañarte." imagen="salon-sol-instructora-alumna" alt="Una instructora Fosque arrodillada junto a un Reformer se ríe con una alumna mientras la acompaña en el ejercicio, en la sala del sol" />
       <Profesionales />
       <Cierre />
       <Footer />

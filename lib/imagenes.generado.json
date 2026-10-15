@@ -1,4 +1,17 @@
 {
+  "academia-correccion-postura": {
+    "width": 3168,
+    "height": 1344,
+    "anchos": [
+      480,
+      960,
+      1440,
+      1920,
+      3168
+    ],
+    "blur": "data:image/webp;base64,UklGRpoAAABXRUJQVlA4II4AAADQAwCdASoYAAoAPu1iqU2ppaOiMAgBMB2JZgB3AAOAGbalBAwXKeAA9lgW7Vkg0LUcv/gs4pxifwzrqdN7Uj302LHvMavke8L+XsYU1guWwnOHpAt8/9UMWD/4v/5aw54gP5Avr37084E12na8kpBUJbYfrDfyUAvOfqaHcnZPwAy1fjj8+Gbv+DvL+gAA",
+    "v": "e00269e0"
+  },
   "cierre-clase-sonrisas": {
     "width": 2752,
     "height": 1536,
@@ -55,6 +68,18 @@
     ],
     "blur": "data:image/webp;base64,UklGRn4AAABXRUJQVlA4IHIAAAAQBACdASoYAAwAPu1iqU2ppaOiMAgBMB2JYwCdAB9g5ipZG2DBzWEdwAD+40pamt2eLSbTQwrnLlCC09KQYfwF37EGuRXf7K1dj3B6C8G1MyzXqZbWi3ZPawvqHldpWn4ymfYUmHL8j1Mfh5jLAfNIAAA=",
     "v": "abfa70a0"
+  },
+  "equipo-salon-palmeras": {
+    "width": 1792,
+    "height": 2400,
+    "anchos": [
+      480,
+      960,
+      1440,
+      1792
+    ],
+    "blur": "data:image/webp;base64,UklGRi4BAABXRUJQVlA4ICIBAADwBQCdASoYACAAPu1gqE2ppSOiMAgBMB2JZACdIQWwAQIAF+GM0kbSS3QGcr1CPQZQzZz5yrZazADLH+xMxJ5NMVaNFRxRjjGAWRZC6qEextC3gz+YKqIyT8OOVzkT/JSMpDAPo6gr/qKFxzHmT5AeDZIpzmAh9B+fR8fm24nz4WfnP9/bF8GaOSPGJhnDQubXCGvjhR82LEzx9gXN9kubqbRuyJBDaFrO7AQo9ggKFDLlCkR0vAKhV1yOTJM70xmtMfakQ6SxY7hwt7NBzO9DuArKXZc9s5wuEOdNqv1joIGOyhMapFQGYI+5hr5qsed4VqA4m7SQymlrKIfC940m7YGZ0lQvksXWEcBuKpv4DQDt24DUDR8jYFYM2XyBKsAAAA==",
+    "v": "0b053da6"
   },
   "estanteria-arbol-tallado": {
     "width": 1076,
@@ -459,6 +484,19 @@
     "blur": "data:image/webp;base64,UklGRqoAAABXRUJQVlA4IJ4AAABQBACdASoYAA0APu1iqU2ppaOiMAgBMB2JQBOgMY2QpmHDUAFhqeSvSg4AAP60GcAELmqBWcut3LI0UVZX162LoiJp9G3BusmrYP8Ov45qDIqhRF6AlvrqIHeOmBwMM0+xpEMP2uNT51AkBWFJSZScgJNEpoLJQZvPfY77go6rQ/hfntmfsR5hnH06ZXCAjr9iFR27ajJvEPonhQAAAA==",
     "v": "b1790a15"
   },
+  "salon-sol-clase-llena": {
+    "width": 2400,
+    "height": 1340,
+    "anchos": [
+      480,
+      960,
+      1440,
+      1920,
+      2400
+    ],
+    "blur": "data:image/webp;base64,UklGRq4AAABXRUJQVlA4IKIAAADQBACdASoYAA0APu1iqU2ppaQiMAgBMB2JaACdIE5/+HkQNtVlTiVSoM7N7DooAAD+51aTZfX0vHeNc9T6b3Yj+LbndYuwC5PQEFzDP610xu27nao4ouFJUdX7FSfPSX6YnBskhCcqthagsjG98LzFRT7a/5mJnoggIPDZjDmtivAy4xm7qeQoRr2KiqlmJ8ru8CvZ8/S0hFrceM+exUOIAAA=",
+    "v": "d1130fc1"
+  },
   "salon-sol-clase-valen": {
     "width": 2752,
     "height": 1536,
@@ -471,6 +509,19 @@
     ],
     "blur": "data:image/webp;base64,UklGRqYAAABXRUJQVlA4IJoAAACwAwCdASoYAA0APu1iqU2ppaOiMAgBMB2JagC06A23qYRHz9/xAAD+4XuTqJXxbaM+/zTYgEe7AAp4g8dTRpo8iy0erO7/yjFaL2E7ek6nArJEx4SRWJnK5muG2CdJeuxtG9mRnlM1M9kDQrvtlAoCQlLzH3YK5fWIiRraYS6XBnQdsOPz5gJgXNswL7WKZTwOdrzHX7N6AAAA",
     "v": "86aae729"
+  },
+  "salon-sol-instructora-alumna": {
+    "width": 2400,
+    "height": 1340,
+    "anchos": [
+      480,
+      960,
+      1440,
+      1920,
+      2400
+    ],
+    "blur": "data:image/webp;base64,UklGRrQAAABXRUJQVlA4IKgAAACQBACdASoYAA0APu1iqU2ppaOiMAgBMB2JbACdMoAltRlhwW8cqAFcoPcIu5gA/CBz00ttsNmtoAHhOBlHd/0vSQ2fxy4h8liUarTmW9OJsgwIiDJAeRxjT9mpUWdN9VPpruXjsfFkAqA0DlmWV50sxb6psTd7Xs82oI5sUWO4W14k8WmByk+x+6BqS4WGpWlmwA3ZhzE1jt6PIICAAt1AJId4gr/AAAA=",
+    "v": "ef4148e3"
   },
   "salon-sol-reformers-negros": {
     "width": 1920,

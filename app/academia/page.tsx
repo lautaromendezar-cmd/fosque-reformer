@@ -13,7 +13,7 @@ export const metadata: Metadata = {
 export default function PaginaAcademia() {
   return (
     <>
-      <Portada antetitulo={academia.antetitulo} titulo="Excelencia técnica en cada sucursal." imagen="salon-reformer-cielorraso-organico-b" alt="Sala de Reformers con un cielorraso de formas orgánicas en tonos pastel y paneles calados de madera" />
+      <Portada antetitulo={academia.antetitulo} titulo="Excelencia técnica en cada sucursal." imagen="equipo-salon-palmeras" alt="El equipo de instructores Fosque abrazado y sonriendo en la sala de palmeras, entre Reformers negros" posicion="50% 42%" />
       <Academia />
       <Cierre />
       <Footer />
