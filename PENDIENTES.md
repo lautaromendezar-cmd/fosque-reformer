@@ -1,5 +1,31 @@
 # Pendientes del cliente
 
+## Para retomar (estado al 15-oct-2026)
+
+Ronda de correcciones por videos del cliente: **todo hecho y en producción salvo una cosa.**
+
+- **FALTA: un agregado en el video de inicio del hero** (la película: clips `entrada` y
+  `hacia-el-sol`, `components/Pelicula.tsx`). Es lo último de la ronda y lo más pesado; Lautaro lo
+  trae con el detalle. Antes de generar nada: ver qué hay que agregar y en qué momento.
+  **Ojo: los crudos no están en git.** `video-raw/` (142 MB), `assets/source/` (151 MB) y
+  `fotos-nuevas/` (las fuentes de la calle, 156 MB en `calle-nueva/`) viven sólo en la PC de casa.
+  En otra PC: o se copian esas carpetas (Drive/pendrive), o el cambio del hero se hace en casa.
+  Tampoco correr `npm run imagenes` ni `npm run video` sin esas carpetas: regeneran todo desde las
+  fuentes y sin ellas el manifiesto queda incompleto. Las versiones optimizadas (`public/img`,
+  `public/video`) sí están en git, así que el sitio compila y se deploya igual.
+- **Pregunta abierta:** la galería "Los espacios" de `/equipamiento` todavía muestra la sala
+  Kids (`salon-reformer-cielorraso-organico-a` en `content/equipamiento.ts`). El cliente la
+  rechazó como fondo del Reformer; falta saber si la quiere fuera también de la galería.
+- **Isotipo en las remeras:** en Partners el cliente pidió el isotipo FR en las remeras de las
+  instructoras. En el B2C las fotos de Partners van sin isotipo: agregarlo sólo si lo pide.
+
+Hecho en esta ronda (14/15-oct), por si el cliente pregunta:
+Intro del home rehecha (una sección con la recepción de fondo), "Reformer Exclusivo" (antes "de
+Autor") con sus tres fotos en una sala nueva, la inercia del trackpad que abría `/metodo` en
+Fosque Niños, el salón de palmeras sin los paneles calados naranjas (CTA y portada del Método), y
+las cuatro fotos de Partners ubicadas (Intro, Niveles, portadas de Profesionales y Academia) más
+una nueva para la sección Academia.
+
 Fuente del contenido: **"ARCHITECTURE & COPYWRITING WEB B2C" (PDF del 30-sep-2026)**, tomado como
 definitivo. Cada dato que falta está marcado con `TODO(cliente)` en el código. Nada de esto
 requiere tocar componentes.
@@ -24,6 +50,7 @@ requiere tocar componentes.
 | **Términos y Privacidad** | `app/terminos/page.tsx`, `app/privacidad/page.tsx` | Placeholder visible "Texto pendiente" |
 | **Autorización de los renders** | `content/sitio.ts` → `pie.credito` | El footer acredita a Artagaveytia-Mantel |
 | **Consentimiento de las profes** | — | Sabri, Flor y Valen (sede Núñez) aparecen compuestas con IA en `/experiencia` (portada y 3 pilares) y en el Cierre de todas las páginas. Confirmar que las tres aceptan, sobre todo si se usa en publicidad |
+| **Gente que no existe** | — | Las fotos de Partners (Intro, Niveles, portadas de `/profesionales` y `/academia`, sección Academia) son personas generadas con IA. En `/profesionales` y `/academia` se leen como "el equipo": que el cliente lo tenga presente |
 | **Estado de la sede** | `content/sedes.ts` → `estado` | "Próximamente" |
 
 ## Lo que no es del cliente pero conviene saber

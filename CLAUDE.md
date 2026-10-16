@@ -37,7 +37,7 @@ cliente que falta y dónde va).
 
 | Ruta | Contenido (PDF) | Secciones |
 |---|---|---|
-| `/` | Hero + adelantos | `Pelicula` (H1 "¿Qué es lo más importante de tu vida?"), `Intro`, `ReformerAutor`, `MetodoTexto adelanto`, `Pilares`, `Membresias`, `Sedes`, `Contacto` |
+| `/` | Hero + adelantos | `Pelicula` (H1 "¿Qué es lo más importante de tu vida?"), `Intro` (recepción fija de fondo), `ReformerAutor`, `MetodoTexto adelanto`, `Pilares`, `Membresias`, `Sedes`, `Contacto` |
 | `/metodo` | §3 Método, Niveles & Evolución, Fosque Niños | `Portada`, `MetodoTexto`, `Niveles` (#niveles), `Ninos`, `Cierre` |
 | `/experiencia` | §4 Los 3 Pilares | `Portada`, `Pilares`, `Cierre` |
 | `/profesionales` | §5 Cultura de Amabilidad | `Portada`, `Profesionales`, `Cierre` |
@@ -65,7 +65,38 @@ cruce (`Motor.tsx`): entre oscuras, lento (top 85% → 35%); hacia una clara, re
 clara llega arriba; desde una clara hacia una oscura, apenas asoma. Si el arco cruzara de oscuro
 a claro con la oscura todavía en pantalla, el fondo pasa por un gris donde no se lee nada.
 
-**El momento memorable es uno solo: el sol.** El Reformer de Autor ya no gira (4-oct-2026, pedido del cliente): tres fotos ambientadas con IA que se cruzan con el scroll; fuentes en `fotos-nuevas/reformer-ambientado/`.
+**El momento memorable es uno solo: el sol.** El Reformer (desde el 14-oct se llama **"Reformer Exclusivo"**, no "de Autor") ya no gira (4-oct-2026, pedido del cliente): tres fotos ambientadas con IA que se cruzan con el scroll; fuentes en `fotos-nuevas/reformer-ambientado/sol-v1/`.
+
+## Lo que el cliente marcó en la ronda del 14/15-oct (no volver a caer)
+
+- **Nada de "Reformer de Autor":** es "Reformer Exclusivo" en todo el sitio. La firma "Gerardo
+  Fosque" debajo del título se queda.
+- **La sala Kids no es fondo de nada adulto:** cielorraso pastel ondulado, árboles, zócalo de
+  madera con la onda de luz. Era el fondo del Reformer y de Academia; ya no. Sólo queda en la
+  Galería de `/equipamiento` (pregunta abierta en `PENDIENTES.md`).
+- **El salón de palmeras no lleva los paneles calados naranjas a los costados** ("no son parte
+  de la estructura"): sólo el muro de vidrio verde entre columnas de madera.
+- **Después de la película no va el salón del sol:** la Intro lo repetía. Ahora es una sola
+  sección con la recepción fija de fondo (sticky) y un velo que oscurece arriba y abajo.
+- **Secciones editoriales, no "powerpoint":** nada de texto en una columna y foto en una caja al
+  lado. Foto grande o de fondo, tipografía con jerarquía (en la Intro: conectores en tinta baja,
+  palabras clave encendidas, remate display).
+- **El cliente revisa en Mac con trackpad.** La inercia del trackpad seguía empujando la página
+  nueva después de un clic (`/metodo` abría en Fosque Niños). `Motor.tsx` congela el scroll al
+  cambiar de ruta hasta que la rueda queda quieta 150 ms (tope 2 s). Probar con inercia simulada,
+  no sólo con mouse.
+
+## Imágenes con IA: cómo se hicieron las de esta ronda
+
+- **Producto real (el Reformer):** Nano Banana Pro con las fotos reales del equipo como
+  referencia y comparación pieza por pieza contra el original (torre, poleas, apoyos, barra,
+  patas, logo). En la vista con cajón hay que nombrar la tabla vertical o la IA la saca.
+- **Fotos con personas reales (las profes):** la edición directa les suaviza la piel y deforma
+  el logo de la remera. Se edita con IA y se **compone sólo el fondo** sobre el original:
+  `fotos-nuevas/sin-paneles-naranjas/componer.py` (alinea con ECC y toma de la edición sólo lo que
+  era naranja y quedó verde). Verificar con la diferencia de píxeles en la zona de las personas.
+- Las fuentes (`assets/source/`, `fotos-nuevas/`, `video-raw/`) están fuera de git: ver
+  `PENDIENTES.md` antes de trabajar en otra PC.
 
 ## Estructura
 
