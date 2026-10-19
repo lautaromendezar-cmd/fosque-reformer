@@ -5,7 +5,7 @@ import MetodoTexto from "@/components/MetodoTexto";
 import Pilares from "@/components/Pilares";
 import Membresias from "@/components/Membresias";
 import Sedes from "@/components/Sedes";
-import Contacto from "@/components/Contacto";
+import Cierre from "@/components/Cierre";
 import Footer from "@/components/Footer";
 import { preload } from "react-dom";
 import { imagen, SIZES_PANTALLA_16_9 } from "@/lib/imagenes";
@@ -24,7 +24,7 @@ export default function Inicio() {
       <Pilares conEnlace />
       <Membresias />
       <Sedes />
-      <Contacto />
+      <Cierre />
       <Footer />
     </>
   );

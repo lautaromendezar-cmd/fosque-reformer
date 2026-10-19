@@ -38,7 +38,7 @@ cliente que falta y dónde va).
 
 | Ruta | Contenido (PDF) | Secciones |
 |---|---|---|
-| `/` | Hero + adelantos | `Pelicula` (H1 "¿Qué es lo más importante de tu vida?"), `Intro` (recepción fija de fondo), `ReformerAutor`, `MetodoTexto adelanto`, `Pilares`, `Membresias`, `Sedes`, `Contacto` |
+| `/` | Hero + adelantos | `Pelicula` (H1 "¿Qué es lo más importante de tu vida?"), `Intro` (recepción fija de fondo), `ReformerAutor`, `MetodoTexto adelanto`, `Pilares`, `Membresias`, `Sedes`, `Cierre` (como todas; el formulario `Contacto` quedó sin usar el 19-oct) |
 | `/metodo` | §3 Método, Niveles & Evolución, Fosque Niños | `Portada`, `MetodoTexto`, `Niveles` (#niveles), `Ninos`, `Cierre` |
 | `/experiencia` | §4 Los 3 Pilares | `Portada`, `Pilares`, `Cierre` |
 | `/profesionales` | §5 Cultura de Amabilidad | `Portada`, `Profesionales`, `Cierre` |
