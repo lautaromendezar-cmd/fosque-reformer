@@ -7,7 +7,7 @@
 // opacidad; los LEDs se prenden de arriba hacia abajo con una máscara (`--enc`). El clip
 // `entrada` arranca en el mismo cuadro que la noche encendida.
 //
-// ESCRITORIO (≥1024px, sin reduced-motion): sección de 500vh con la pantalla pegada
+// ESCRITORIO (≥1024px, sin reduced-motion): sección de 580vh con la pantalla pegada
 // (sticky). El scroll hace anochecer, enciende y scrubbea los clips `entrada` y
 // `hacia-el-sol` (versión -scrub, con GOP corto). El titular del sol entra cuando el
 // clip 2 llega al final, con el halo y el oscurecimiento.
@@ -35,6 +35,12 @@ const VIDEO = {
   entrada: { scrub: video("entrada-scrub.mp4"), webm: video("entrada-mobile.webm"), mp4: video("entrada-mobile.mp4") },
   sol: { scrub: video("hacia-el-sol-scrub.mp4"), webm: video("hacia-el-sol-mobile.webm"), mp4: video("hacia-el-sol-mobile.mp4") },
 };
+
+// Escritorio: vh de scroll de la película (la sección mide esto + 100vh, ver h-[580vh]).
+// SOL es el tramo de `hacia-el-sol` (pasillo → recepción → sala, ~15 s): se alargó con la
+// recepción para que la cámara avance a la misma velocidad que en `entrada`.
+const RECORRIDO = 480;
+const SOL = 232;
 
 export default function Pelicula() {
   const seccion = useRef<HTMLElement>(null);
@@ -121,21 +127,23 @@ export default function Pelicula() {
       scrollTrigger: { trigger: s, start: "top top", end: "bottom bottom", scrub: 0.6, invalidateOnRefresh: true },
     });
 
-    // 0.04 → 0.14: anochece. 0.14 → 0.24: se enciende la fachada. 0.24 → 0.5: entrada.
-    // 0.5 → 0.88: hacia el sol. 0.88 → 1: el pico.
-    tl.to(anochecer, { opacity: 1, duration: 0.1 }, 0.04)
-      .to(tPortada, { opacity: 0, yPercent: -12, duration: 0.08 }, 0.12)
-      .to(velo, { opacity: 0, duration: 0.08 }, 0.12)
-      .to(encendida, { "--enc": "100%", duration: 0.1 } as gsap.TweenVars, 0.14)
-      .to(posterEntrada, { scale: 1.16, duration: 0.26 }, 0.24)
-      .to(capaEntrada, { opacity: 0, duration: 0.03 }, 0.48)
-      .to(capaSol, { opacity: 1, duration: 0.03 }, 0.48)
-      .to(posterSol, { scale: 1, yPercent: 0, duration: 0.38 }, 0.5)
-      .to(oscuro, { opacity: 0.55, duration: 0.12 }, 0.88)
-      .to(halo, { "--luz-halo": 1, duration: 0.12 } as gsap.TweenVars, 0.88)
-      .to(palabras, { yPercent: 0, opacity: 1, duration: 0.09, stagger: 0.01 }, 0.9);
+    // Posiciones en vh de scroll (la sección mide RECORRIDO + 100vh). 16 → 56: anochece.
+    // 56 → 96: se enciende la fachada. 96 → 200: entrada. 200 → 200 + SOL: pasillo,
+    // recepción y sala. Después, 48vh de pico.
+    const v = (vh: number) => vh / RECORRIDO;
+    tl.to(anochecer, { opacity: 1, duration: v(40) }, v(16))
+      .to(tPortada, { opacity: 0, yPercent: -12, duration: v(32) }, v(48))
+      .to(velo, { opacity: 0, duration: v(32) }, v(48))
+      .to(encendida, { "--enc": "100%", duration: v(40) } as gsap.TweenVars, v(56))
+      .to(posterEntrada, { scale: 1.16, duration: v(104) }, v(96))
+      .to(capaEntrada, { opacity: 0, duration: v(12) }, v(192))
+      .to(capaSol, { opacity: 1, duration: v(12) }, v(192))
+      .to(posterSol, { scale: 1, yPercent: 0, duration: v(SOL) }, v(200))
+      .to(oscuro, { opacity: 0.55, duration: v(48) }, v(200 + SOL))
+      .to(halo, { "--luz-halo": 1, duration: v(48) } as gsap.TweenVars, v(200 + SOL))
+      .to(palabras, { yPercent: 0, opacity: 1, duration: v(36), stagger: v(4) }, v(208 + SOL));
     // El clip arranca en el cuadro de la noche encendida: aparece cuando terminó de encenderse
-    if (videoEntrada && videoOk.entrada) tl.to(videoEntrada, { opacity: 1, duration: 0.025 }, 0.225);
+    if (videoEntrada && videoOk.entrada) tl.to(videoEntrada, { opacity: 1, duration: v(10) }, v(90));
 
     // Scrub de los videos: currentTime sigue al progreso. Con GOP de 3 cada seek decodifica 2 cuadros como mucho.
     let ultimoE = -1, ultimoS = -1;
@@ -147,11 +155,11 @@ export default function Pelicula() {
         const p = self.progress;
         const e = vEntrada.current, so = vSol.current;
         if (e && e.duration && videoOk.entrada) {
-          const t = Math.min(1, Math.max(0, (p - 0.24) / 0.26)) * (e.duration - 0.05);
+          const t = Math.min(1, Math.max(0, (p - v(96)) / v(104))) * (e.duration - 0.05);
           if (Math.abs(t - ultimoE) > 0.02) { e.currentTime = t; ultimoE = t; }
         }
         if (so && so.duration && videoOk.sol) {
-          const t = Math.min(1, Math.max(0, (p - 0.5) / 0.38)) * (so.duration - 0.05);
+          const t = Math.min(1, Math.max(0, (p - v(200)) / v(SOL))) * (so.duration - 0.05);
           if (Math.abs(t - ultimoS) > 0.02) { so.currentTime = t; ultimoS = t; }
         }
       },
@@ -224,7 +232,7 @@ export default function Pelicula() {
       id="inicio"
       className={[
         "escena pelicula grano",
-        scrub ? "h-[500vh]" : "min-h-[100svh]",
+        scrub ? "h-[580vh]" : "min-h-[100svh]",
         estatico || (mobile && enSol) ? "en-sol" : "",
         mobile ? "modo-auto" : "",
         mobile && rueda ? "rueda" : "",

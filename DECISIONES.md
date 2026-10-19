@@ -181,3 +181,25 @@ toma como verdad), aplicar su paleta y dejar afuera los idiomas.
   borrado igual que la de día; mismo cuadro de inicio y fin para que el loop no salte), y en las
   claras una banda de foto con acercamiento lento en CSS (`ImagenViva`), porque un video oscuro
   de fondo no deja leer texto oscuro.
+
+## 19-oct — la película suma el logo en el pasillo y la recepción
+
+Devolución del cliente: hasta la fachada "excelente"; en el pasillo del árbol "lo siente vacío"
+(pide un logo) y de los molinetes "aparecemos mágicamente en la sala": falta la recepción.
+Lautaro eligió la recepción con gente (`recepcion-alumnas-cafe`, la misma de la Intro).
+
+- **Logo del pasillo: no lo dibuja la IA.** Es `public/isotipo.svg` en acero (gradiente + bisel +
+  sombra) puesto en perspectiva sobre la pared izquierda y **seguido cuadro a cuadro** con flujo
+  óptico + homografía sobre el plano de la pared (`fotos-nuevas/pelicula-recepcion/logo_seguido.py`).
+  En escritorio el tramo de entrada es el clip original con el logo montado: no se regeneró.
+- **Tres tramos nuevos con Seedance 2.0 (start + end image):** A (sólo mobile: fachada → pasillo;
+  el primer intento cortó al pasar del túnel LED al revoque, el de 7 s salió continuo pero con
+  el logo apareciendo de golpe y la cámara quieta al final: se le montó el logo seguido con
+  fundido, se recortó la cola y se igualó el color de arranque, +8 %), B (pasillo → recepción),
+  C (recepción → molinetes → sala). Empalmes con `montar.py`: busca el cuadro que mejor sigue y
+  funde 5 cuadros. Diferencias finales 12–22/255.
+- `hacia-el-sol` pasa a 15,8 s (B + C + la sala original desde 2,75 s): la sección de escritorio
+  va de 500 a 580vh y el timeline de `Pelicula.tsx` se escribe en vh de scroll (`RECORRIDO`, `SOL`)
+  para que la cámara avance a la velocidad de antes. Mobile va por eventos: no cambió.
+- Gasto: **235,5 créditos** (883,1 → 647,6). Cuadros de inicio/fin, scripts y generaciones en
+  `fotos-nuevas/pelicula-recepcion/`.

@@ -15,10 +15,11 @@ cliente que falta y dónde va).
 ## Dirección de arte en cuatro líneas
 
 - **La película del inicio:** calle de día → anochece → la fachada se enciende → ingreso por el
-  arco hasta los molinetes → pasillo de arcos → el sol, sobre oscuros cálidos. El tramo de la
+  arco → pasillo de arcos con el isotipo FR en la pared → recepción con gente → molinetes → el
+  sol, sobre oscuros cálidos (pasillo y recepción sumados el 19-oct, ver DECISIONES.md). El tramo de la
   calle se rehizo el 3-oct-2026 (pedido del cliente: el castillo del outpaint "se notaba IA",
-  quería una cuadra comercial y que "cambie de color" al entrar). **El interior lo va a cambiar
-  él después:** no tocar `hacia-el-sol` hasta que mande el material.
+  quería una cuadra comercial y que "cambie de color" al entrar). El logo del pasillo es el SVG
+  real seguido sobre la pared (`fotos-nuevas/pelicula-recepcion/logo_seguido.py`), no IA.
 - **La calle son tres fotos alineadas al píxel** (`fachada-nunez-atardecer` de día,
   `fachada-calle-noche-apagada`, `fachada-calle-noche`). Edificio redibujado por IA en vista
   frontal con el **logo real del manual compuesto encima** (no es texto de la IA). Fuentes,

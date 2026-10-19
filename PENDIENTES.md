@@ -1,13 +1,12 @@
 # Pendientes del cliente
 
-## Para retomar (estado al 15-oct-2026)
+## Para retomar (estado al 19-oct-2026)
 
-Ronda de correcciones por videos del cliente: **todo hecho y en producción salvo una cosa.**
+Ronda de correcciones por videos del cliente: **todo hecho y en producción.** Lo último (19-oct):
+la película del hero suma el isotipo FR en la pared del pasillo y la recepción con gente antes de
+la sala (ver DECISIONES.md, "19-oct"). Falta que el cliente la vea.
 
-- **FALTA: un agregado en el video de inicio del hero** (la película: clips `entrada` y
-  `hacia-el-sol`, `components/Pelicula.tsx`). Es lo último de la ronda y lo más pesado; Lautaro lo
-  trae con el detalle. Antes de generar nada: ver qué hay que agregar y en qué momento.
-  **Ojo: los crudos no están en git.** `video-raw/` (142 MB), `assets/source/` (151 MB) y
+- **Ojo con los crudos:** `assets/source/` (151 MB) y
   `fotos-nuevas/` (las fuentes de la calle, 156 MB en `calle-nueva/`) viven sólo en la PC de casa.
   En otra PC: o se copian esas carpetas (Drive/pendrive), o el cambio del hero se hace en casa.
   Tampoco correr `npm run imagenes` ni `npm run video` sin esas carpetas: regeneran todo desde las
